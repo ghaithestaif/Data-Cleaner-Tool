@@ -7,15 +7,19 @@
 
 
 // See https://aka.ms/new-console-template for more information
-List<List<string>> data = Cleaning_Layer.clsClean.CleanData("D:\\Users\\GhaithEstaif\\Desktop\\my.xlsx");
+using Cleaning_Layer;
 
-
+clsConfiguration config = new clsConfiguration
+{
+    FilePath = "D:\\Users\\GhaithEstaif\\Desktop\\my.xlsx",
+    RemoveDuplicates = true,
+    HandleMissingValues = true,
+    StandardizeData = true
+};
+clsClean clsClean = new clsClean(config);
 // Print the cleaned data
 
-data.ForEach(row =>
-{
-    Console.WriteLine(string.Join(" ", row));
-});
+
 
 
 

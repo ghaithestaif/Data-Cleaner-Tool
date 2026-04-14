@@ -1,13 +1,55 @@
-﻿using System;
+﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using ExcelDataReader;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Extraction_layer
 {
     public class clsExtract
     {
+        // this function deletes columns that are entirely empty from the data, it takes a list of lists of strings as input and returns a cleaned list of lists of strings
+        static List<List<string>> _DeleteInvalidColumns(List<List<string>> data)
+        {
+            // Identify columns that are entirely empty
+            var emptyColumns = new HashSet<int>();
+            for (int col = 0; col < data[0].Count; col++)
+            {
+                bool isEmpty = true;
+                foreach (var row in data)
+                {
+                    if (!string.IsNullOrWhiteSpace(row[col]))
+                    {
+                        isEmpty = false;
+                        break;
+                    }
+                }
+                if (isEmpty)
+                {
+                    emptyColumns.Add(col);
+                }
+            }
+
+            // Remove empty columns
+            var cleanedData = new List<List<string>>();
+            foreach (var row in data)
+            {
+                var cleanedRow = new List<string>();
+                for (int col = 0; col < row.Count; col++)
+                {
+                    if (!emptyColumns.Contains(col))
+                    {
+                        cleanedRow.Add(row[col]);
+                    }
+                }
+                cleanedData.Add(cleanedRow);
+            }
+            return cleanedData;
+        }
+
+
+
         //this function reads the excel file and returns a list of lists of strings, where each inner list represents a row of data from the excel file
         // reads on sheet because the tool deals with one table
         static public List<List<string>> ExtractExcelData(string filePath)
@@ -35,7 +77,12 @@ namespace Extraction_layer
                     
                 }
             }
-            return data;
+
+            //now we have the data in a list of lists of strings, we can return it but we need to clean the empty columns and rows
+
+
+
+            return _DeleteInvalidColumns(data);
         }
         //this function reads a CSV file and returns a list of lists of strings, where each inner list represents a row of data from the CSV file
         static public List<List<string>> ExtractCSVData(string filePath)
