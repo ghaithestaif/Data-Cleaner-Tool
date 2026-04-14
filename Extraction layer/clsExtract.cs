@@ -37,10 +37,21 @@ namespace Extraction_layer
             }
             return data;
         }
-
-
-
-
+        //this function reads a CSV file and returns a list of lists of strings, where each inner list represents a row of data from the CSV file
+        static public List<List<string>> ExtractCSVData(string filePath)
+        {
+            var data = new List<List<string>>();
+            using (var reader = new StreamReader(filePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    data.Add(new List<string>(values));
+                }
+            }
+            return data;
+        }
 
     }
 }
