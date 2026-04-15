@@ -11,12 +11,19 @@ using Cleaning_Layer;
 
 clsConfiguration config = new clsConfiguration
 {
-    FilePath = "D:\\Users\\GhaithEstaif\\Desktop\\my.xlsx",
+    FilePath = "D:\\Users\\GhaithEstaif\\Desktop\\myCSV.csv",
     RemoveDuplicates = true,
     HandleMissingValues = true,
     StandardizeData = true
 };
 clsClean clsClean = new clsClean(config);
+clsClean.Clean();
+//print the cleaned data
+clsClean.Data.ForEach(row =>
+{
+    Console.WriteLine(string.Join(", ", row));
+});
+
 // Print the cleaned data
 
 

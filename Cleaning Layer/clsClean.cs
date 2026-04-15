@@ -12,20 +12,8 @@ namespace Cleaning_Layer
     {
         clsConfiguration _config;
         List<List<string>> _data;
-        public clsClean(clsConfiguration config)
-        {
-            _config = config;
-            if(!validateConfiguration())
-            {
-                return;
-            }
-            _data =_ImportData();
-            //_data.ForEach(row =>
-            //{
-            //    Console.WriteLine(string.Join(" ", row));
-            //});
-        }
-
+        public List<List<string>> Data { get { return _data; } }
+        List<ICleaningFeature> _features=new List<ICleaningFeature>();
         private bool validateConfiguration()
         {
             if (_config == null)
@@ -44,30 +32,60 @@ namespace Cleaning_Layer
         }
         List<List<string>> _ImportData()
         {
-           // Determine file type based on extension and call appropriate import method
-           string extension = Path.GetExtension(_config.FilePath).ToLower();
+            // Determine file type based on extension and call appropriate import method
+            string extension = Path.GetExtension(_config.FilePath).ToLower();
 
-           switch (extension)
-           {
-               case ".xlsx":
-               case ".xls":
-                   return clsExtract.ExtractExcelData(_config.FilePath);
-               case ".csv":
-                   return clsExtract.ExtractCSVData(_config.FilePath);
-               default:
-                   throw new NotSupportedException("Unsupported file type: " + extension);
-           }
-            
+            switch (extension)
+            {
+                case ".xlsx":
+                case ".xls":
+                    return clsExtract.ExtractExcelData(_config.FilePath);
+                case ".csv":
+                    return clsExtract.ExtractCSVData(_config.FilePath);
+                default:
+                    throw new NotSupportedException("Unsupported file type: " + extension);
+            }
+
+        }
+
+        public clsClean(clsConfiguration config)
+        {
+            _config = config;
+            if(!validateConfiguration())
+            {
+                return;
+            }
+            _data =_ImportData();
+        }
+        private void _AddFeatures()
+        {
+            if(_config.RemoveDuplicates)
+            {
+                _features.Add(new clsRemoveDuplicatesFeature());
+            }
+
+        }
+
+        public bool Clean() {
+            _AddFeatures();
+            foreach (var feature in _features)
+            {
+                feature.Apply(  _data);
+            }
+            return true;
         }
 
 
         
-        
 
 
 
 
-        
+
+
+
+
+
 
 
     }
