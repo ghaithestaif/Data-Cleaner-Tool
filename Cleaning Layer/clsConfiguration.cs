@@ -8,7 +8,16 @@ namespace Cleaning_Layer
 {
     public class clsConfiguration
     {
+        public enum enReplaceOption
+        {
+            ReplaceWithNA,
+            RemoveRow,
+            DefaultValue
+        }
+
+        public enReplaceOption? ReplaceOption { get; set; } = enReplaceOption.ReplaceWithNA;
         public bool RemoveDuplicates { get; set; } = false;
+
         public bool HandleMissingValues { get; set; } = false;
 
         public bool StandardizeData { get; set; }=false;

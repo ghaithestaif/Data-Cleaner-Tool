@@ -61,7 +61,6 @@ namespace Extraction_layer
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-                    
 
                     while (reader.Read())
                     {
@@ -69,7 +68,8 @@ namespace Extraction_layer
                         var row = new List<string>();
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            row.Add(reader.GetValue(i)?.ToString() ?? string.Empty);
+                            
+                            row.Add((reader.GetValue(i)?.ToString() ?? string.Empty).Trim());
                         }
                         data.Add(row);
                     }
@@ -94,7 +94,12 @@ namespace Extraction_layer
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    data.Add(new List<string>(values));
+                    var row = new List<string>();
+                    foreach (var value in values)
+                    {
+                        row.Add(value.Trim());
+                    }
+                    data.Add(row);
                 }
             }
             return data;

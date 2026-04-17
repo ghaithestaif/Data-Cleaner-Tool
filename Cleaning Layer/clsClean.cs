@@ -11,7 +11,11 @@ namespace Cleaning_Layer
     public class clsClean
     {
         clsConfiguration _config;
+
         List<List<string>> _data;
+
+        clsSchema _schema;
+
         public List<List<string>> Data { get { return _data; } }
         List<ICleaningFeature> _features=new List<ICleaningFeature>();
         private bool validateConfiguration()
@@ -48,7 +52,7 @@ namespace Cleaning_Layer
 
         }
 
-        public clsClean(clsConfiguration config)
+        public clsClean(clsConfiguration config, clsSchema schema)
         {
             _config = config;
             if(!validateConfiguration())
@@ -56,21 +60,31 @@ namespace Cleaning_Layer
                 return;
             }
             _data =_ImportData();
+            _schema = schema;
+
+
+
         }
         private void _AddFeatures()
         {
-            if(_config.RemoveDuplicates)
+            _features.Clear();
+            if (_config.RemoveDuplicates)
             {
                 _features.Add(new clsRemoveDuplicatesFeature());
+            }
+            if(_config.HandleMissingValues)
+            {
+                _features.Add(new clsNullEmptyDetectionFeature(_config, _schema));
             }
 
         }
 
         public bool Clean() {
+
             _AddFeatures();
             foreach (var feature in _features)
             {
-                feature.Apply(  _data);
+                feature.Apply(_data);
             }
             return true;
         }
