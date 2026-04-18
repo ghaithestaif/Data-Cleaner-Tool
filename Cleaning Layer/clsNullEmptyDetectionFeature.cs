@@ -15,26 +15,26 @@ namespace Cleaning_Layer
         clsConfiguration _config;
         clsSchema _Schema;
         public clsNullEmptyDetectionFeature(clsConfiguration config,clsSchema Schema)
-
         {
             _Schema = Schema;
             _config = config;
 
         }
-        Action<List<List<string>>, int, int> _handleMissingData;
+       // Action<List<List<string>>, int, int> _handleMissingData;
+        Func< int,string> _handleMissingData;
         void PrepareOptionAction()
         {
             if (_config.ReplaceOption == clsConfiguration.enReplaceOption.ReplaceWithNA)
             {
-                _handleMissingData   = (data, i, j) => data[i][j] = "N/A";
+                _handleMissingData   = (j) => {  return "N/A"; };
             }
             else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.RemoveRow )
             {
-                _handleMissingData = (data, i, j) => data.RemoveAt(i);
+                _handleMissingData = (j) => {  return ""; };
             }
             else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.DefaultValue)
             {
-                _handleMissingData = (data, i, j) => data[i][j] = _Schema.GetColumnByIndex(j).DefaultValue;
+                _handleMissingData = (j) =>   _Schema.GetColumnByIndex(j).DefaultValue;
             }
             else
             {
@@ -50,12 +50,13 @@ namespace Cleaning_Layer
 
             for (int i = 0; i < data.Count; i++)
             {
-                for (int j = 0; j < data[i].Count; j++)
+                var row = data[i];
+                for (int j = 0; j < row.Count; j++)
                 {
-                    if (string.IsNullOrEmpty(data[i][j]))
+                    if (string.IsNullOrEmpty(row[j]))
                     {
                         // Replace null or empty values with "N/A"
-                        _handleMissingData (data, i, j);
+                        row[j] = _handleMissingData(j);
                     }
 
                 }

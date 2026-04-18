@@ -74,7 +74,17 @@ namespace Cleaning_Layer
             }
             if(_config.HandleMissingValues)
             {
-                _features.Add(new clsNullEmptyDetectionFeature(_config, _schema));
+                if (_config.ReplaceOption.HasValue)
+                {
+                    _features.Add(new clsNullEmptyDetectionFeature(_config, _schema));
+                }
+            }
+            if(_config.StandardizeData)
+            {
+                if (_config.StanderdizeDataOption.HasValue)
+                {
+                    _features.Add(new clsStanderizeCasingFeature(_config, _schema));
+                }
             }
 
         }

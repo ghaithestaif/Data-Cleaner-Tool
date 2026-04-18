@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 
 namespace Cleaning_Layer
@@ -9,7 +10,7 @@ namespace Cleaning_Layer
     /// </summary>
     public class clsSchema
     {
-        private List<clsColumnSchema> _columns = new List<clsColumnSchema>();
+         private List<clsColumnSchema> _columns = new List<clsColumnSchema>();
 
         // Exposes the count easily
         public int NumberOfColumns => _columns.Count;
@@ -20,10 +21,20 @@ namespace Cleaning_Layer
         public void AddColumn(clsColumnSchema newColumn)
         {
             if (newColumn == null) throw new ArgumentNullException(nameof(newColumn));
+          // newColumn.ColumnIndex = _columns.Count; // Set the column index based on current count
             _columns.Add(newColumn);
         }
-
-        public clsColumnSchema GetColumnByIndex(int index)
+        public clsColumnSchema GetColumnByID(int ID)
+        {
+            var column = _columns.FirstOrDefault(c => c.ID == ID);
+            if (column == null)
+            {
+                throw new IndexOutOfRangeException($"ID {ID} is out of range.");
+            }
+            return column;
+        }
+        
+         public clsColumnSchema GetColumnByIndex(int index)
         {
             if (index < 0 || index >= _columns.Count)
             {
@@ -31,7 +42,46 @@ namespace Cleaning_Layer
             }
             return _columns[index];
         }
+        public void DeleteColumn(int index)
+        {
+            if (index < 0 || index >= _columns.Count)
+            {
+                throw new IndexOutOfRangeException($"Index {index} is out of range.");
+            }
+         //   EditIndex(index);
+            _columns.RemoveAt(index);
+            
+        }
+        //private void EditIndex(int ColumnIndex)
+        //{
+        //    for (int i = ColumnIndex + 1; i < _columns.Count; i++)
+        //    {
+        //        _columns.ElementAt(i).ColumnIndex--;
+        //    }
+        //}
 
+
+
+        public void DeleteColumnByName(string columnName)
+        {
+            var column = _columns.FirstOrDefault(c => c.ColumnName.Equals(columnName, StringComparison.OrdinalIgnoreCase));
+            if (column == null)
+            {
+                throw new ArgumentException($"Column with name '{columnName}' was not found.");
+            }
+         //   EditIndex(column.ColumnIndex);
+            _columns.Remove(column);
+        }
+        public void DeleteColumnByID(int ID)
+        {
+            var column = _columns.FirstOrDefault(c => c.ID == ID);
+            if (column == null)
+            {
+                throw new IndexOutOfRangeException($"ID {ID} is out of range.");
+            }
+         //   EditIndex(column.ColumnIndex);
+            _columns.Remove(column);
+        }
         // Added ability to find a column by name
         public clsColumnSchema GetColumnByName(string columnName)
         {

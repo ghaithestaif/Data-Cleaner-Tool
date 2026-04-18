@@ -32,14 +32,17 @@ namespace Cleaning_Layer
         }
 
         // Properties have private/internal setters to prevent accidental corruption
-        public int ColumnIndex { get; private set; }
+
+        static int columnCounter = 1; // Static counter to assign unique column indices
+       public int ID = columnCounter++; // Unique identifier for each column schema instance
+
         public string ColumnName { get; private set; }
+     //  public int ColumnIndex; // Expose the unique column index as a read-only property
         public enDataType DataType { get; internal set; }
         public bool IsNullable { get; private set; }
 
-        public clsColumnSchema(int columnIndex, string columnName, enDataType dataType, bool isNullable)
+        public clsColumnSchema( string columnName, enDataType dataType, bool isNullable)
         {
-            ColumnIndex = columnIndex;
             ColumnName = columnName;
             DataType = dataType;
             IsNullable = isNullable;

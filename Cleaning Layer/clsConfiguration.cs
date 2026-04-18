@@ -14,7 +14,13 @@ namespace Cleaning_Layer
             RemoveRow,
             DefaultValue
         }
-
+        public enum enCasingStanderdizationOption
+        {
+            TitleCase,
+            UpperCase,
+            LowerCase
+        }
+        public enCasingStanderdizationOption? StanderdizeDataOption { get; set; } = null;
         public enReplaceOption? ReplaceOption { get; set; } = enReplaceOption.ReplaceWithNA;
         public bool RemoveDuplicates { get; set; } = false;
 
