@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Cleaning_Layer.Report_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cleaning_Layer
+namespace Cleaning_Layer.Features
 {
     public class clsRemoveDuplicatesFeature : ICleaningFeature
     {
         //this feature will remove duplicate rows from the data
-        public void Apply( List<List<string>> data)
+        public clsFeatureReport Apply( List<List<string>> data)
         {
+            clsFeatureReport _report = new clsFeatureReport();
+
             //let's make each row a string and add it to a hashset to remove duplicates
 
             HashSet<string> seen = new HashSet<string>();
@@ -23,11 +26,14 @@ namespace Cleaning_Layer
                 {
                     newData.Add(data[i]);
                 }
-                
+                else
+                {
+                    _report.RemovedRecordsAffected++;
+                }
             }
             data.Clear();
             data.AddRange(newData);
-
+            return _report;
 
         }
     }

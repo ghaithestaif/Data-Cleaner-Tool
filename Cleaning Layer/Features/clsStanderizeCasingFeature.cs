@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Cleaning_Layer.Report_Classes;
+using System;
+using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-namespace Cleaning_Layer
+namespace Cleaning_Layer.Features
 {
     public class clsStanderizeCasingFeature:ICleaningFeature
     {
         clsSchema _Schema;
         clsConfiguration _Config;
         HashSet<int> _stringColumnsIndexes;
+        clsFeatureReport _report = new clsFeatureReport();
+
         public clsStanderizeCasingFeature(clsConfiguration Config,clsSchema Schema)
         {
             _Config = Config;
@@ -26,15 +29,16 @@ namespace Cleaning_Layer
                 _handleCasingStandard = (input) =>
                 {
                     return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower());
+                    _report.UpdatedRecordsAffected++;
                 };
             }
             else if (_Config.StanderdizeDataOption == clsConfiguration.enCasingStanderdizationOption.UpperCase)
             {
-                _handleCasingStandard = (input) => { return input.ToUpper(); };
+                _handleCasingStandard = (input) => { _report.UpdatedRecordsAffected++; return input.ToUpper(); };
             }
             else if (_Config.StanderdizeDataOption == clsConfiguration.enCasingStanderdizationOption.LowerCase)
             {
-                _handleCasingStandard = (input) => { return input.ToLower(); };
+                _handleCasingStandard = (input) => { _report.UpdatedRecordsAffected++; return input.ToLower(); };
             }
             else
             {
@@ -55,7 +59,7 @@ namespace Cleaning_Layer
             return stringColumnsIndexes;
         }
 
-        public void Apply(List<List<string>> data)
+        public clsFeatureReport Apply(List<List<string>> data)
         {
          
             for (int i = 0; i < data.Count; i++)
@@ -70,6 +74,7 @@ namespace Cleaning_Layer
                     }
                 }
             }
+            return _report;
         }
     }
 }

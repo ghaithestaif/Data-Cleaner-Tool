@@ -1,4 +1,7 @@
-﻿using Extraction_layer;
+﻿using Cleaning_Layer.Features;
+using Cleaning_Layer.Report_Classes;
+using Cleaning_Layer.Schema_Classes;
+using Extraction_layer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,7 +55,7 @@ namespace Cleaning_Layer
 
         }
 
-        public clsClean(clsConfiguration config, clsSchema schema)
+        public clsClean(clsConfiguration config)
         {
             _config = config;
             if(!validateConfiguration())
@@ -60,7 +63,7 @@ namespace Cleaning_Layer
                 return;
             }
             _data =_ImportData();
-            _schema = schema;
+            _schema = clsGenerateSchema.GenerateSchema(_data);
 
 
 
@@ -94,7 +97,7 @@ namespace Cleaning_Layer
             _AddFeatures();
             foreach (var feature in _features)
             {
-                feature.Apply(_data);
+                clsFeatureReportManager.AddFeatureReport(feature.Apply(_data));
             }
             return true;
         }

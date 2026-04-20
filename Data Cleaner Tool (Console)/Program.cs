@@ -22,21 +22,15 @@ clsConfiguration config = new clsConfiguration
 
 
 
-clsSchema schema = new clsSchema();
-schema.AddColumn(new clsColumnSchema("Name", clsColumnSchema.enDataType.String,true));
-schema.AddColumn(new clsColumnSchema("Age", clsColumnSchema.enDataType.Integer,true));
-schema.AddColumn(new clsColumnSchema("Date", clsColumnSchema.enDataType.DateTime,true));
-schema.AddColumn(new clsColumnSchema("score", clsColumnSchema.enDataType.Double,true));
-schema.AddColumn(new clsColumnSchema("Name", clsColumnSchema.enDataType.String, true));
 
-
-clsClean clsClean = new clsClean(config, schema);
+clsClean clsClean = new clsClean(config);
 clsClean.Clean();
 //print the cleaned data
 clsClean.Data.ForEach(row =>
 {
     Console.WriteLine(string.Join(", ", row));
-});
+}
+);
 
 // Print the cleaned data
 

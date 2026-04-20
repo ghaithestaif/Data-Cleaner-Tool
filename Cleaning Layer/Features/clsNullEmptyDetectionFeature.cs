@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Cleaning_Layer.Report_Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cleaning_Layer
+namespace Cleaning_Layer.Features
 {
     public class clsNullEmptyDetectionFeature : ICleaningFeature
     {
@@ -14,6 +15,8 @@ namespace Cleaning_Layer
 
         clsConfiguration _config;
         clsSchema _Schema;
+        clsFeatureReport _report = new clsFeatureReport();
+
         public clsNullEmptyDetectionFeature(clsConfiguration config,clsSchema Schema)
         {
             _Schema = Schema;
@@ -26,15 +29,15 @@ namespace Cleaning_Layer
         {
             if (_config.ReplaceOption == clsConfiguration.enReplaceOption.ReplaceWithNA)
             {
-                _handleMissingData   = (j) => {  return "N/A"; };
+                _handleMissingData   = (j) => { _report.UpdatedRecordsAffected++; return "N/A"; };
             }
             else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.RemoveRow )
             {
-                _handleMissingData = (j) => {  return ""; };
+                _handleMissingData = (j) => { _report.RemovedRecordsAffected++; return ""; };
             }
             else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.DefaultValue)
             {
-                _handleMissingData = (j) =>   _Schema.GetColumnByIndex(j).DefaultValue;
+                _handleMissingData = (j) =>  { _report.UpdatedRecordsAffected++; return _Schema.GetColumnByIndex(j).DefaultValue; };
             }
             else
             {
@@ -44,8 +47,9 @@ namespace Cleaning_Layer
         }
 
         //this method detects null and empty values in the dataset and replaces them with with a "N/A" or remove row(Only for now)
-        public void Apply(List<List<string>> data)
+        public clsFeatureReport Apply(List<List<string>> data)
         {
+
             PrepareOptionAction();
 
             for (int i = 0; i < data.Count; i++)
@@ -62,6 +66,7 @@ namespace Cleaning_Layer
                 }
 
             }
+            return _report;
 
         }
 
