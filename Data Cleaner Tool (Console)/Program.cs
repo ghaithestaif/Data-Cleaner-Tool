@@ -13,9 +13,9 @@ clsConfiguration config = new clsConfiguration
 {
     FilePath = "D:\\Users\\GhaithEstaif\\Desktop\\myCSV.csv",
     StandardizeData = true,
-    ReplaceOption = clsConfiguration.enReplaceOption.DefaultValue,
-    StanderdizeDataOption = clsConfiguration.enCasingStanderdizationOption.UpperCase
-   
+    HandleMissingValues = true,
+    ReplaceOption = clsConfiguration.enReplaceOption.DefaultValue
+
 };
 
 

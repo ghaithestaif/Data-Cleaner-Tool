@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extraction layer", "Extract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleaning Layer", "Cleaning Layer\Cleaning Layer.csproj", "{2C2F4A6B-5F71-4D2F-99B5-82C61C98B964}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Clean Tool", "Data Clean Tool\Data Clean Tool.csproj", "{5BF5218C-E2AF-4222-8836-0754EE9661AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2C2F4A6B-5F71-4D2F-99B5-82C61C98B964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C2F4A6B-5F71-4D2F-99B5-82C61C98B964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C2F4A6B-5F71-4D2F-99B5-82C61C98B964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF5218C-E2AF-4222-8836-0754EE9661AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF5218C-E2AF-4222-8836-0754EE9661AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF5218C-E2AF-4222-8836-0754EE9661AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF5218C-E2AF-4222-8836-0754EE9661AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
