@@ -16,5 +16,10 @@ namespace Data_Clean_Tool.Controls
         {
             InitializeComponent();
         }
+
+        private void tabDetails_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

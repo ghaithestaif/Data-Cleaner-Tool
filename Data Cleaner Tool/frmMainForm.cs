@@ -105,6 +105,15 @@ namespace Data_Cleaner_Tool
 
             this.Controls.Add(pSidePanel);
 
+            // Add a splitter to allow users to resize the left side panel
+            Splitter leftSplitter = new Splitter
+            {
+                Dock = DockStyle.Left,
+                Width = 3,
+                BackColor = Color.FromArgb(45, 45, 45) // Match toolbar/border color
+            };
+            this.Controls.Add(leftSplitter);
+
             // 5. Main Content Area (Fill)
             Guna2Panel pMainArea = new Guna2Panel
             {
@@ -127,6 +136,7 @@ namespace Data_Cleaner_Tool
             // Setup proper Z-ordering so docking works: 
             // The last added control docks to edges first. Reverse z-order fixing.
             pMainArea.BringToFront();
+            leftSplitter.BringToFront();
             pSidePanel.BringToFront();
             pToolbar.BringToFront();
             menuStrip.BringToFront();
@@ -138,8 +148,9 @@ namespace Data_Cleaner_Tool
             {
                 Text = text,
                 Location = new Point(10, yPosition),
-                Width = 150,
+                Width = 180, // Expand width to maintain a 10px margin on both sides (200 panel width - 20)
                 Height = 35,
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right, // Allows controls to scale horizontally
                 BorderRadius = 17, // Rounded pill shape
                 BorderThickness = 1,
                 BorderColor = Color.Gray,

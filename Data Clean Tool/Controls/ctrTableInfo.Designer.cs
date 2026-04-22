@@ -29,428 +29,498 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTitle = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblIconInfo = new System.Windows.Forms.Label();
-            this.lblFile = new System.Windows.Forms.Label();
-            this.txtFileBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnBrowseFile = new Guna.UI2.WinForms.Guna2Button();
-            this.lblType = new System.Windows.Forms.Label();
-            this.cmbType = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblIgnore = new System.Windows.Forms.Label();
-            this.cmbIgnore = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.chkHasHeader = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.lblUseSchema = new System.Windows.Forms.Label();
-            this.cmbSchema = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblWhitespace = new System.Windows.Forms.Label();
-            this.chkTrim = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.chkSimplify = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.lblIgnoreEmpty = new System.Windows.Forms.Label();
-            this.chkEmptyRows = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.chkEmptyCols = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.lblIgnoreHidden = new System.Windows.Forms.Label();
-            this.chkHiddenRows = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.chkHiddenCols = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.chkWatchFile = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.lblMetaInfo = new System.Windows.Forms.Label();
-            this.cmbMetaInfo = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnBrowseMeta = new Guna.UI2.WinForms.Guna2Button();
-            this.lblAlias = new System.Windows.Forms.Label();
-            this.txtAlias = new Guna.UI2.WinForms.Guna2TextBox();
-            this.SuspendLayout();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            txtTitle = new Guna.UI2.WinForms.Guna2TextBox();
+            lblIconInfo = new Label();
+            lblFile = new Label();
+            txtFileBox = new Guna.UI2.WinForms.Guna2TextBox();
+            btnBrowseFile = new Guna.UI2.WinForms.Guna2Button();
+            lblType = new Label();
+            cmbType = new Guna.UI2.WinForms.Guna2ComboBox();
+            lblIgnore = new Label();
+            cmbIgnore = new Guna.UI2.WinForms.Guna2ComboBox();
+            chkHasHeader = new Guna.UI2.WinForms.Guna2CheckBox();
+            lblUseSchema = new Label();
+            cmbSchema = new Guna.UI2.WinForms.Guna2ComboBox();
+            lblWhitespace = new Label();
+            chkTrim = new Guna.UI2.WinForms.Guna2CheckBox();
+            chkSimplify = new Guna.UI2.WinForms.Guna2CheckBox();
+            lblIgnoreEmpty = new Label();
+            chkEmptyRows = new Guna.UI2.WinForms.Guna2CheckBox();
+            chkEmptyCols = new Guna.UI2.WinForms.Guna2CheckBox();
+            lblIgnoreHidden = new Label();
+            chkHiddenRows = new Guna.UI2.WinForms.Guna2CheckBox();
+            chkHiddenCols = new Guna.UI2.WinForms.Guna2CheckBox();
+            chkWatchFile = new Guna.UI2.WinForms.Guna2CheckBox();
+            lblMetaInfo = new Label();
+            cmbMetaInfo = new Guna.UI2.WinForms.Guna2ComboBox();
+            btnBrowseMeta = new Guna.UI2.WinForms.Guna2Button();
+            lblAlias = new Label();
+            txtAlias = new Guna.UI2.WinForms.Guna2TextBox();
+            SuspendLayout();
             // 
             // txtTitle
             // 
-            this.txtTitle.BorderColor = System.Drawing.Color.Fuchsia;
-            this.txtTitle.BorderThickness = 2;
-            this.txtTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTitle.DefaultText = "my.xlsx[Sheet1]";
-            this.txtTitle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtTitle.ForeColor = System.Drawing.Color.White;
-            this.txtTitle.Location = new System.Drawing.Point(10, 10);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.PasswordChar = '\0';
-            this.txtTitle.SelectedText = "";
-            this.txtTitle.Size = new System.Drawing.Size(460, 30);
-            this.txtTitle.TabIndex = 0;
+            txtTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtTitle.BorderColor = Color.Fuchsia;
+            txtTitle.BorderThickness = 2;
+            txtTitle.Cursor = Cursors.IBeam;
+            txtTitle.CustomizableEdges = customizableEdges1;
+            txtTitle.DefaultText = "my.xlsx[Sheet1]";
+            txtTitle.FillColor = Color.FromArgb(40, 40, 40);
+            txtTitle.Font = new Font("Segoe UI", 9F);
+            txtTitle.ForeColor = Color.White;
+            txtTitle.Location = new Point(10, 10);
+            txtTitle.Name = "txtTitle";
+            txtTitle.PlaceholderText = "";
+            txtTitle.SelectedText = "";
+            txtTitle.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtTitle.Size = new Size(460, 30);
+            txtTitle.TabIndex = 0;
             // 
             // lblIconInfo
             // 
-            this.lblIconInfo.AutoSize = true;
-            this.lblIconInfo.ForeColor = System.Drawing.Color.LightGray;
-            this.lblIconInfo.Location = new System.Drawing.Point(10, 55);
-            this.lblIconInfo.Name = "lblIconInfo";
-            this.lblIconInfo.Size = new System.Drawing.Size(102, 15);
-            this.lblIconInfo.TabIndex = 1;
-            this.lblIconInfo.Text = "(?) Input from file.";
+            lblIconInfo.AutoSize = true;
+            lblIconInfo.ForeColor = Color.LightGray;
+            lblIconInfo.Location = new Point(10, 55);
+            lblIconInfo.Name = "lblIconInfo";
+            lblIconInfo.Size = new Size(102, 15);
+            lblIconInfo.TabIndex = 1;
+            lblIconInfo.Text = "(?) Input from file.";
             // 
             // lblFile
             // 
-            this.lblFile.AutoSize = true;
-            this.lblFile.ForeColor = System.Drawing.Color.LightGray;
-            this.lblFile.Location = new System.Drawing.Point(10, 95);
-            this.lblFile.Name = "lblFile";
-            this.lblFile.Size = new System.Drawing.Size(28, 15);
-            this.lblFile.TabIndex = 2;
-            this.lblFile.Text = "File:";
+            lblFile.AutoSize = true;
+            lblFile.ForeColor = Color.LightGray;
+            lblFile.Location = new Point(10, 95);
+            lblFile.Name = "lblFile";
+            lblFile.Size = new Size(28, 15);
+            lblFile.TabIndex = 2;
+            lblFile.Text = "File:";
             // 
             // txtFileBox
             // 
-            this.txtFileBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.txtFileBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFileBox.DefaultText = "D:\\Users\\Desktop\\my.xlsx[Sheet1]";
-            this.txtFileBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtFileBox.ForeColor = System.Drawing.Color.White;
-            this.txtFileBox.Location = new System.Drawing.Point(110, 90);
-            this.txtFileBox.Name = "txtFileBox";
-            this.txtFileBox.PasswordChar = '\0';
-            this.txtFileBox.SelectedText = "";
-            this.txtFileBox.Size = new System.Drawing.Size(420, 26);
-            this.txtFileBox.TabIndex = 3;
+            txtFileBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFileBox.BorderColor = Color.FromArgb(60, 60, 60);
+            txtFileBox.Cursor = Cursors.IBeam;
+            txtFileBox.CustomizableEdges = customizableEdges3;
+            txtFileBox.DefaultText = "D:\\Users\\Desktop\\my.xlsx[Sheet1]";
+            txtFileBox.FillColor = Color.FromArgb(40, 40, 40);
+            txtFileBox.Font = new Font("Segoe UI", 9F);
+            txtFileBox.ForeColor = Color.White;
+            txtFileBox.Location = new Point(110, 90);
+            txtFileBox.Name = "txtFileBox";
+            txtFileBox.PlaceholderText = "";
+            txtFileBox.SelectedText = "";
+            txtFileBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtFileBox.Size = new Size(411, 26);
+            txtFileBox.TabIndex = 3;
             // 
             // btnBrowseFile
             // 
-            this.btnBrowseFile.BorderColor = System.Drawing.Color.Gray;
-            this.btnBrowseFile.BorderThickness = 1;
-            this.btnBrowseFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnBrowseFile.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBrowseFile.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseFile.Location = new System.Drawing.Point(535, 90);
-            this.btnBrowseFile.Name = "btnBrowseFile";
-            this.btnBrowseFile.Size = new System.Drawing.Size(30, 26);
-            this.btnBrowseFile.TabIndex = 4;
-            this.btnBrowseFile.Text = "...";
+            btnBrowseFile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnBrowseFile.BorderColor = Color.Gray;
+            btnBrowseFile.BorderThickness = 1;
+            btnBrowseFile.CustomizableEdges = customizableEdges5;
+            btnBrowseFile.FillColor = Color.FromArgb(45, 45, 45);
+            btnBrowseFile.Font = new Font("Segoe UI", 9F);
+            btnBrowseFile.ForeColor = Color.White;
+            btnBrowseFile.Location = new Point(527, 88);
+            btnBrowseFile.Name = "btnBrowseFile";
+            btnBrowseFile.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnBrowseFile.Size = new Size(35, 26);
+            btnBrowseFile.TabIndex = 4;
+            btnBrowseFile.Text = "...";
             // 
             // lblType
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.ForeColor = System.Drawing.Color.LightGray;
-            this.lblType.Location = new System.Drawing.Point(10, 125);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(34, 15);
-            this.lblType.TabIndex = 5;
-            this.lblType.Text = "Type:";
+            lblType.AutoSize = true;
+            lblType.ForeColor = Color.LightGray;
+            lblType.Location = new Point(10, 125);
+            lblType.Name = "lblType";
+            lblType.Size = new Size(35, 15);
+            lblType.TabIndex = 5;
+            lblType.Text = "Type:";
             // 
             // cmbType
             // 
-            this.cmbType.BackColor = System.Drawing.Color.Transparent;
-            this.cmbType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.cmbType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cmbType.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbType.ForeColor = System.Drawing.Color.White;
-            this.cmbType.ItemHeight = 20;
-            this.cmbType.Items.AddRange(new object[] {
-            "Excel XLSX"});
-            this.cmbType.Location = new System.Drawing.Point(110, 120);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(455, 26);
-            this.cmbType.StartIndex = 0;
-            this.cmbType.TabIndex = 6;
+            cmbType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbType.BackColor = Color.Transparent;
+            cmbType.BorderColor = Color.FromArgb(60, 60, 60);
+            cmbType.CustomizableEdges = customizableEdges7;
+            cmbType.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbType.FillColor = Color.FromArgb(40, 40, 40);
+            cmbType.FocusedColor = Color.Empty;
+            cmbType.Font = new Font("Segoe UI", 10F);
+            cmbType.ForeColor = Color.White;
+            cmbType.ItemHeight = 20;
+            cmbType.Items.AddRange(new object[] { "Excel XLSX" });
+            cmbType.Location = new Point(110, 120);
+            cmbType.Name = "cmbType";
+            cmbType.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            cmbType.Size = new Size(441, 26);
+            cmbType.StartIndex = 0;
+            cmbType.TabIndex = 6;
             // 
             // lblIgnore
             // 
-            this.lblIgnore.AutoSize = true;
-            this.lblIgnore.ForeColor = System.Drawing.Color.LightGray;
-            this.lblIgnore.Location = new System.Drawing.Point(10, 155);
-            this.lblIgnore.Name = "lblIgnore";
-            this.lblIgnore.Size = new System.Drawing.Size(44, 15);
-            this.lblIgnore.TabIndex = 7;
-            this.lblIgnore.Text = "Ignore:";
+            lblIgnore.AutoSize = true;
+            lblIgnore.ForeColor = Color.LightGray;
+            lblIgnore.Location = new Point(10, 155);
+            lblIgnore.Name = "lblIgnore";
+            lblIgnore.Size = new Size(44, 15);
+            lblIgnore.TabIndex = 7;
+            lblIgnore.Text = "Ignore:";
             // 
             // cmbIgnore
             // 
-            this.cmbIgnore.BackColor = System.Drawing.Color.Transparent;
-            this.cmbIgnore.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.cmbIgnore.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbIgnore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIgnore.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cmbIgnore.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbIgnore.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbIgnore.ForeColor = System.Drawing.Color.White;
-            this.cmbIgnore.ItemHeight = 20;
-            this.cmbIgnore.Items.AddRange(new object[] {
-            "First 0 row(s)"});
-            this.cmbIgnore.Location = new System.Drawing.Point(110, 150);
-            this.cmbIgnore.Name = "cmbIgnore";
-            this.cmbIgnore.Size = new System.Drawing.Size(455, 26);
-            this.cmbIgnore.StartIndex = 0;
-            this.cmbIgnore.TabIndex = 8;
+            cmbIgnore.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbIgnore.BackColor = Color.Transparent;
+            cmbIgnore.BorderColor = Color.FromArgb(60, 60, 60);
+            cmbIgnore.CustomizableEdges = customizableEdges9;
+            cmbIgnore.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbIgnore.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbIgnore.FillColor = Color.FromArgb(40, 40, 40);
+            cmbIgnore.FocusedColor = Color.Empty;
+            cmbIgnore.Font = new Font("Segoe UI", 10F);
+            cmbIgnore.ForeColor = Color.White;
+            cmbIgnore.ItemHeight = 20;
+            cmbIgnore.Items.AddRange(new object[] { "First 0 row(s)" });
+            cmbIgnore.Location = new Point(110, 150);
+            cmbIgnore.Name = "cmbIgnore";
+            cmbIgnore.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            cmbIgnore.Size = new Size(441, 26);
+            cmbIgnore.StartIndex = 0;
+            cmbIgnore.TabIndex = 8;
             // 
             // chkHasHeader
             // 
-            this.chkHasHeader.AutoSize = true;
-            this.chkHasHeader.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHasHeader.CheckedState.BorderRadius = 0;
-            this.chkHasHeader.CheckedState.BorderThickness = 0;
-            this.chkHasHeader.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHasHeader.ForeColor = System.Drawing.Color.LightGray;
-            this.chkHasHeader.Location = new System.Drawing.Point(110, 180);
-            this.chkHasHeader.Name = "chkHasHeader";
-            this.chkHasHeader.Size = new System.Drawing.Size(83, 19);
-            this.chkHasHeader.TabIndex = 9;
-            this.chkHasHeader.Text = "has header";
-            this.chkHasHeader.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.chkHasHeader.UncheckedState.BorderRadius = 0;
-            this.chkHasHeader.UncheckedState.BorderThickness = 0;
-            this.chkHasHeader.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkHasHeader.AutoSize = true;
+            chkHasHeader.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkHasHeader.CheckedState.BorderRadius = 0;
+            chkHasHeader.CheckedState.BorderThickness = 0;
+            chkHasHeader.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkHasHeader.ForeColor = Color.LightGray;
+            chkHasHeader.Location = new Point(110, 180);
+            chkHasHeader.Name = "chkHasHeader";
+            chkHasHeader.Size = new Size(83, 19);
+            chkHasHeader.TabIndex = 9;
+            chkHasHeader.Text = "has header";
+            chkHasHeader.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkHasHeader.UncheckedState.BorderRadius = 0;
+            chkHasHeader.UncheckedState.BorderThickness = 0;
+            chkHasHeader.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
             // 
             // lblUseSchema
             // 
-            this.lblUseSchema.AutoSize = true;
-            this.lblUseSchema.ForeColor = System.Drawing.Color.LightGray;
-            this.lblUseSchema.Location = new System.Drawing.Point(10, 215);
-            this.lblUseSchema.Name = "lblUseSchema";
-            this.lblUseSchema.Size = new System.Drawing.Size(73, 15);
-            this.lblUseSchema.TabIndex = 10;
-            this.lblUseSchema.Text = "Use schema:";
+            lblUseSchema.AutoSize = true;
+            lblUseSchema.ForeColor = Color.LightGray;
+            lblUseSchema.Location = new Point(10, 215);
+            lblUseSchema.Name = "lblUseSchema";
+            lblUseSchema.Size = new Size(73, 15);
+            lblUseSchema.TabIndex = 10;
+            lblUseSchema.Text = "Use schema:";
             // 
             // cmbSchema
             // 
-            this.cmbSchema.BackColor = System.Drawing.Color.Transparent;
-            this.cmbSchema.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.cmbSchema.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbSchema.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSchema.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cmbSchema.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbSchema.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbSchema.ForeColor = System.Drawing.Color.White;
-            this.cmbSchema.ItemHeight = 20;
-            this.cmbSchema.Items.AddRange(new object[] {
-            "No"});
-            this.cmbSchema.Location = new System.Drawing.Point(110, 210);
-            this.cmbSchema.Name = "cmbSchema";
-            this.cmbSchema.Size = new System.Drawing.Size(455, 26);
-            this.cmbSchema.StartIndex = 0;
-            this.cmbSchema.TabIndex = 11;
+            cmbSchema.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbSchema.BackColor = Color.Transparent;
+            cmbSchema.BorderColor = Color.FromArgb(60, 60, 60);
+            cmbSchema.CustomizableEdges = customizableEdges11;
+            cmbSchema.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbSchema.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbSchema.FillColor = Color.FromArgb(40, 40, 40);
+            cmbSchema.FocusedColor = Color.Empty;
+            cmbSchema.Font = new Font("Segoe UI", 10F);
+            cmbSchema.ForeColor = Color.White;
+            cmbSchema.ItemHeight = 20;
+            cmbSchema.Items.AddRange(new object[] { "No" });
+            cmbSchema.Location = new Point(110, 210);
+            cmbSchema.Name = "cmbSchema";
+            cmbSchema.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            cmbSchema.Size = new Size(441, 26);
+            cmbSchema.StartIndex = 0;
+            cmbSchema.TabIndex = 11;
             // 
             // lblWhitespace
             // 
-            this.lblWhitespace.AutoSize = true;
-            this.lblWhitespace.ForeColor = System.Drawing.Color.LightGray;
-            this.lblWhitespace.Location = new System.Drawing.Point(10, 245);
-            this.lblWhitespace.Name = "lblWhitespace";
-            this.lblWhitespace.Size = new System.Drawing.Size(71, 15);
-            this.lblWhitespace.TabIndex = 12;
-            this.lblWhitespace.Text = "Whitespace:";
+            lblWhitespace.AutoSize = true;
+            lblWhitespace.ForeColor = Color.LightGray;
+            lblWhitespace.Location = new Point(10, 245);
+            lblWhitespace.Name = "lblWhitespace";
+            lblWhitespace.Size = new Size(71, 15);
+            lblWhitespace.TabIndex = 12;
+            lblWhitespace.Text = "Whitespace:";
             // 
             // chkTrim
             // 
-            this.chkTrim.AutoSize = true;
-            this.chkTrim.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkTrim.CheckedState.BorderRadius = 0;
-            this.chkTrim.CheckedState.BorderThickness = 0;
-            this.chkTrim.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkTrim.ForeColor = System.Drawing.Color.LightGray;
-            this.chkTrim.Location = new System.Drawing.Point(110, 245);
-            this.chkTrim.Name = "chkTrim";
-            this.chkTrim.Size = new System.Drawing.Size(48, 19);
-            this.chkTrim.TabIndex = 13;
-            this.chkTrim.Text = "trim";
-            this.chkTrim.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkTrim.AutoSize = true;
+            chkTrim.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkTrim.CheckedState.BorderRadius = 0;
+            chkTrim.CheckedState.BorderThickness = 0;
+            chkTrim.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkTrim.ForeColor = Color.LightGray;
+            chkTrim.Location = new Point(110, 245);
+            chkTrim.Name = "chkTrim";
+            chkTrim.Size = new Size(48, 19);
+            chkTrim.TabIndex = 13;
+            chkTrim.Text = "trim";
+            chkTrim.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkTrim.UncheckedState.BorderRadius = 0;
+            chkTrim.UncheckedState.BorderThickness = 0;
             // 
             // chkSimplify
             // 
-            this.chkSimplify.AutoSize = true;
-            this.chkSimplify.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkSimplify.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkSimplify.ForeColor = System.Drawing.Color.LightGray;
-            this.chkSimplify.Location = new System.Drawing.Point(320, 245);
-            this.chkSimplify.Name = "chkSimplify";
-            this.chkSimplify.Size = new System.Drawing.Size(68, 19);
-            this.chkSimplify.TabIndex = 14;
-            this.chkSimplify.Text = "simplify";
-            this.chkSimplify.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkSimplify.AutoSize = true;
+            chkSimplify.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkSimplify.CheckedState.BorderRadius = 0;
+            chkSimplify.CheckedState.BorderThickness = 0;
+            chkSimplify.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkSimplify.ForeColor = Color.LightGray;
+            chkSimplify.Location = new Point(320, 245);
+            chkSimplify.Name = "chkSimplify";
+            chkSimplify.Size = new Size(68, 19);
+            chkSimplify.TabIndex = 14;
+            chkSimplify.Text = "simplify";
+            chkSimplify.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkSimplify.UncheckedState.BorderRadius = 0;
+            chkSimplify.UncheckedState.BorderThickness = 0;
             // 
             // lblIgnoreEmpty
             // 
-            this.lblIgnoreEmpty.AutoSize = true;
-            this.lblIgnoreEmpty.ForeColor = System.Drawing.Color.LightGray;
-            this.lblIgnoreEmpty.Location = new System.Drawing.Point(10, 275);
-            this.lblIgnoreEmpty.Name = "lblIgnoreEmpty";
-            this.lblIgnoreEmpty.Size = new System.Drawing.Size(81, 15);
-            this.lblIgnoreEmpty.TabIndex = 15;
-            this.lblIgnoreEmpty.Text = "Ignore empty:";
+            lblIgnoreEmpty.AutoSize = true;
+            lblIgnoreEmpty.ForeColor = Color.LightGray;
+            lblIgnoreEmpty.Location = new Point(10, 275);
+            lblIgnoreEmpty.Name = "lblIgnoreEmpty";
+            lblIgnoreEmpty.Size = new Size(81, 15);
+            lblIgnoreEmpty.TabIndex = 15;
+            lblIgnoreEmpty.Text = "Ignore empty:";
             // 
             // chkEmptyRows
             // 
-            this.chkEmptyRows.AutoSize = true;
-            this.chkEmptyRows.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkEmptyRows.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkEmptyRows.ForeColor = System.Drawing.Color.LightGray;
-            this.chkEmptyRows.Location = new System.Drawing.Point(110, 275);
-            this.chkEmptyRows.Name = "chkEmptyRows";
-            this.chkEmptyRows.Size = new System.Drawing.Size(50, 19);
-            this.chkEmptyRows.TabIndex = 16;
-            this.chkEmptyRows.Text = "rows";
-            this.chkEmptyRows.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkEmptyRows.AutoSize = true;
+            chkEmptyRows.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkEmptyRows.CheckedState.BorderRadius = 0;
+            chkEmptyRows.CheckedState.BorderThickness = 0;
+            chkEmptyRows.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkEmptyRows.ForeColor = Color.LightGray;
+            chkEmptyRows.Location = new Point(110, 275);
+            chkEmptyRows.Name = "chkEmptyRows";
+            chkEmptyRows.Size = new Size(51, 19);
+            chkEmptyRows.TabIndex = 16;
+            chkEmptyRows.Text = "rows";
+            chkEmptyRows.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkEmptyRows.UncheckedState.BorderRadius = 0;
+            chkEmptyRows.UncheckedState.BorderThickness = 0;
             // 
             // chkEmptyCols
             // 
-            this.chkEmptyCols.AutoSize = true;
-            this.chkEmptyCols.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkEmptyCols.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkEmptyCols.ForeColor = System.Drawing.Color.LightGray;
-            this.chkEmptyCols.Location = new System.Drawing.Point(320, 275);
-            this.chkEmptyCols.Name = "chkEmptyCols";
-            this.chkEmptyCols.Size = new System.Drawing.Size(72, 19);
-            this.chkEmptyCols.TabIndex = 17;
-            this.chkEmptyCols.Text = "columns";
-            this.chkEmptyCols.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkEmptyCols.AutoSize = true;
+            chkEmptyCols.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkEmptyCols.CheckedState.BorderRadius = 0;
+            chkEmptyCols.CheckedState.BorderThickness = 0;
+            chkEmptyCols.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkEmptyCols.ForeColor = Color.LightGray;
+            chkEmptyCols.Location = new Point(320, 275);
+            chkEmptyCols.Name = "chkEmptyCols";
+            chkEmptyCols.Size = new Size(72, 19);
+            chkEmptyCols.TabIndex = 17;
+            chkEmptyCols.Text = "columns";
+            chkEmptyCols.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkEmptyCols.UncheckedState.BorderRadius = 0;
+            chkEmptyCols.UncheckedState.BorderThickness = 0;
             // 
             // lblIgnoreHidden
             // 
-            this.lblIgnoreHidden.AutoSize = true;
-            this.lblIgnoreHidden.ForeColor = System.Drawing.Color.LightGray;
-            this.lblIgnoreHidden.Location = new System.Drawing.Point(10, 305);
-            this.lblIgnoreHidden.Name = "lblIgnoreHidden";
-            this.lblIgnoreHidden.Size = new System.Drawing.Size(84, 15);
-            this.lblIgnoreHidden.TabIndex = 18;
-            this.lblIgnoreHidden.Text = "Ignore hidden:";
+            lblIgnoreHidden.AutoSize = true;
+            lblIgnoreHidden.ForeColor = Color.LightGray;
+            lblIgnoreHidden.Location = new Point(10, 305);
+            lblIgnoreHidden.Name = "lblIgnoreHidden";
+            lblIgnoreHidden.Size = new Size(84, 15);
+            lblIgnoreHidden.TabIndex = 18;
+            lblIgnoreHidden.Text = "Ignore hidden:";
             // 
             // chkHiddenRows
             // 
-            this.chkHiddenRows.AutoSize = true;
-            this.chkHiddenRows.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHiddenRows.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHiddenRows.ForeColor = System.Drawing.Color.LightGray;
-            this.chkHiddenRows.Location = new System.Drawing.Point(110, 305);
-            this.chkHiddenRows.Name = "chkHiddenRows";
-            this.chkHiddenRows.Size = new System.Drawing.Size(50, 19);
-            this.chkHiddenRows.TabIndex = 19;
-            this.chkHiddenRows.Text = "rows";
-            this.chkHiddenRows.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkHiddenRows.AutoSize = true;
+            chkHiddenRows.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkHiddenRows.CheckedState.BorderRadius = 0;
+            chkHiddenRows.CheckedState.BorderThickness = 0;
+            chkHiddenRows.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkHiddenRows.ForeColor = Color.LightGray;
+            chkHiddenRows.Location = new Point(110, 305);
+            chkHiddenRows.Name = "chkHiddenRows";
+            chkHiddenRows.Size = new Size(51, 19);
+            chkHiddenRows.TabIndex = 19;
+            chkHiddenRows.Text = "rows";
+            chkHiddenRows.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkHiddenRows.UncheckedState.BorderRadius = 0;
+            chkHiddenRows.UncheckedState.BorderThickness = 0;
             // 
             // chkHiddenCols
             // 
-            this.chkHiddenCols.AutoSize = true;
-            this.chkHiddenCols.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHiddenCols.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkHiddenCols.ForeColor = System.Drawing.Color.LightGray;
-            this.chkHiddenCols.Location = new System.Drawing.Point(320, 305);
-            this.chkHiddenCols.Name = "chkHiddenCols";
-            this.chkHiddenCols.Size = new System.Drawing.Size(72, 19);
-            this.chkHiddenCols.TabIndex = 20;
-            this.chkHiddenCols.Text = "columns";
-            this.chkHiddenCols.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkHiddenCols.AutoSize = true;
+            chkHiddenCols.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkHiddenCols.CheckedState.BorderRadius = 0;
+            chkHiddenCols.CheckedState.BorderThickness = 0;
+            chkHiddenCols.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkHiddenCols.ForeColor = Color.LightGray;
+            chkHiddenCols.Location = new Point(320, 305);
+            chkHiddenCols.Name = "chkHiddenCols";
+            chkHiddenCols.Size = new Size(72, 19);
+            chkHiddenCols.TabIndex = 20;
+            chkHiddenCols.Text = "columns";
+            chkHiddenCols.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkHiddenCols.UncheckedState.BorderRadius = 0;
+            chkHiddenCols.UncheckedState.BorderThickness = 0;
             // 
             // chkWatchFile
             // 
-            this.chkWatchFile.AutoSize = true;
-            this.chkWatchFile.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkWatchFile.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkWatchFile.ForeColor = System.Drawing.Color.LightGray;
-            this.chkWatchFile.Location = new System.Drawing.Point(110, 335);
-            this.chkWatchFile.Name = "chkWatchFile";
-            this.chkWatchFile.Size = new System.Drawing.Size(76, 19);
-            this.chkWatchFile.TabIndex = 21;
-            this.chkWatchFile.Text = "watch file";
-            this.chkWatchFile.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            chkWatchFile.AutoSize = true;
+            chkWatchFile.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkWatchFile.CheckedState.BorderRadius = 0;
+            chkWatchFile.CheckedState.BorderThickness = 0;
+            chkWatchFile.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkWatchFile.ForeColor = Color.LightGray;
+            chkWatchFile.Location = new Point(110, 335);
+            chkWatchFile.Name = "chkWatchFile";
+            chkWatchFile.Size = new Size(77, 19);
+            chkWatchFile.TabIndex = 21;
+            chkWatchFile.Text = "watch file";
+            chkWatchFile.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkWatchFile.UncheckedState.BorderRadius = 0;
+            chkWatchFile.UncheckedState.BorderThickness = 0;
             // 
             // lblMetaInfo
             // 
-            this.lblMetaInfo.AutoSize = true;
-            this.lblMetaInfo.ForeColor = System.Drawing.Color.LightGray;
-            this.lblMetaInfo.Location = new System.Drawing.Point(10, 370);
-            this.lblMetaInfo.Name = "lblMetaInfo";
-            this.lblMetaInfo.Size = new System.Drawing.Size(60, 15);
-            this.lblMetaInfo.TabIndex = 22;
-            this.lblMetaInfo.Text = "Meta info:";
+            lblMetaInfo.AutoSize = true;
+            lblMetaInfo.ForeColor = Color.LightGray;
+            lblMetaInfo.Location = new Point(10, 370);
+            lblMetaInfo.Name = "lblMetaInfo";
+            lblMetaInfo.Size = new Size(61, 15);
+            lblMetaInfo.TabIndex = 22;
+            lblMetaInfo.Text = "Meta info:";
             // 
             // cmbMetaInfo
             // 
-            this.cmbMetaInfo.BackColor = System.Drawing.Color.Transparent;
-            this.cmbMetaInfo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.cmbMetaInfo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbMetaInfo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMetaInfo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cmbMetaInfo.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbMetaInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbMetaInfo.ForeColor = System.Drawing.Color.White;
-            this.cmbMetaInfo.ItemHeight = 20;
-            this.cmbMetaInfo.Items.AddRange(new object[] {
-            "Every row"});
-            this.cmbMetaInfo.Location = new System.Drawing.Point(110, 365);
-            this.cmbMetaInfo.Name = "cmbMetaInfo";
-            this.cmbMetaInfo.Size = new System.Drawing.Size(420, 26);
-            this.cmbMetaInfo.StartIndex = 0;
-            this.cmbMetaInfo.TabIndex = 23;
+            cmbMetaInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbMetaInfo.BackColor = Color.Transparent;
+            cmbMetaInfo.BorderColor = Color.FromArgb(60, 60, 60);
+            cmbMetaInfo.CustomizableEdges = customizableEdges13;
+            cmbMetaInfo.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbMetaInfo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMetaInfo.FillColor = Color.FromArgb(40, 40, 40);
+            cmbMetaInfo.FocusedColor = Color.Empty;
+            cmbMetaInfo.Font = new Font("Segoe UI", 10F);
+            cmbMetaInfo.ForeColor = Color.White;
+            cmbMetaInfo.ItemHeight = 20;
+            cmbMetaInfo.Items.AddRange(new object[] { "Every row" });
+            cmbMetaInfo.Location = new Point(110, 365);
+            cmbMetaInfo.Name = "cmbMetaInfo";
+            cmbMetaInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            cmbMetaInfo.Size = new Size(406, 26);
+            cmbMetaInfo.StartIndex = 0;
+            cmbMetaInfo.TabIndex = 23;
             // 
             // btnBrowseMeta
             // 
-            this.btnBrowseMeta.BorderColor = System.Drawing.Color.Gray;
-            this.btnBrowseMeta.BorderThickness = 1;
-            this.btnBrowseMeta.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnBrowseMeta.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBrowseMeta.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseMeta.Location = new System.Drawing.Point(535, 365);
-            this.btnBrowseMeta.Name = "btnBrowseMeta";
-            this.btnBrowseMeta.Size = new System.Drawing.Size(30, 26);
-            this.btnBrowseMeta.TabIndex = 24;
-            this.btnBrowseMeta.Text = "...";
+            btnBrowseMeta.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnBrowseMeta.BorderColor = Color.Gray;
+            btnBrowseMeta.BorderThickness = 1;
+            btnBrowseMeta.CustomizableEdges = customizableEdges15;
+            btnBrowseMeta.FillColor = Color.FromArgb(45, 45, 45);
+            btnBrowseMeta.Font = new Font("Segoe UI", 9F);
+            btnBrowseMeta.ForeColor = Color.White;
+            btnBrowseMeta.Location = new Point(527, 365);
+            btnBrowseMeta.Name = "btnBrowseMeta";
+            btnBrowseMeta.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btnBrowseMeta.Size = new Size(35, 26);
+            btnBrowseMeta.TabIndex = 24;
+            btnBrowseMeta.Text = "...";
             // 
             // lblAlias
             // 
-            this.lblAlias.AutoSize = true;
-            this.lblAlias.ForeColor = System.Drawing.Color.LightGray;
-            this.lblAlias.Location = new System.Drawing.Point(10, 400);
-            this.lblAlias.Name = "lblAlias";
-            this.lblAlias.Size = new System.Drawing.Size(35, 15);
-            this.lblAlias.TabIndex = 25;
-            this.lblAlias.Text = "Alias:";
+            lblAlias.AutoSize = true;
+            lblAlias.ForeColor = Color.LightGray;
+            lblAlias.Location = new Point(10, 400);
+            lblAlias.Name = "lblAlias";
+            lblAlias.Size = new Size(35, 15);
+            lblAlias.TabIndex = 25;
+            lblAlias.Text = "Alias:";
             // 
             // txtAlias
             // 
-            this.txtAlias.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.txtAlias.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAlias.DefaultText = "my";
-            this.txtAlias.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtAlias.ForeColor = System.Drawing.Color.White;
-            this.txtAlias.Location = new System.Drawing.Point(110, 395);
-            this.txtAlias.Name = "txtAlias";
-            this.txtAlias.PasswordChar = '\0';
-            this.txtAlias.SelectedText = "";
-            this.txtAlias.Size = new System.Drawing.Size(455, 26);
-            this.txtAlias.TabIndex = 26;
+            txtAlias.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtAlias.BorderColor = Color.FromArgb(60, 60, 60);
+            txtAlias.Cursor = Cursors.IBeam;
+            txtAlias.CustomizableEdges = customizableEdges17;
+            txtAlias.DefaultText = "my";
+            txtAlias.FillColor = Color.FromArgb(40, 40, 40);
+            txtAlias.Font = new Font("Segoe UI", 9F);
+            txtAlias.ForeColor = Color.White;
+            txtAlias.Location = new Point(110, 395);
+            txtAlias.Name = "txtAlias";
+            txtAlias.PlaceholderText = "";
+            txtAlias.SelectedText = "";
+            txtAlias.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            txtAlias.Size = new Size(441, 26);
+            txtAlias.TabIndex = 26;
             // 
             // ctrTableInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.Controls.Add(this.txtAlias);
-            this.Controls.Add(this.lblAlias);
-            this.Controls.Add(this.btnBrowseMeta);
-            this.Controls.Add(this.cmbMetaInfo);
-            this.Controls.Add(this.lblMetaInfo);
-            this.Controls.Add(this.chkWatchFile);
-            this.Controls.Add(this.chkHiddenCols);
-            this.Controls.Add(this.chkHiddenRows);
-            this.Controls.Add(this.lblIgnoreHidden);
-            this.Controls.Add(this.chkEmptyCols);
-            this.Controls.Add(this.chkEmptyRows);
-            this.Controls.Add(this.lblIgnoreEmpty);
-            this.Controls.Add(this.chkSimplify);
-            this.Controls.Add(this.chkTrim);
-            this.Controls.Add(this.lblWhitespace);
-            this.Controls.Add(this.cmbSchema);
-            this.Controls.Add(this.lblUseSchema);
-            this.Controls.Add(this.chkHasHeader);
-            this.Controls.Add(this.cmbIgnore);
-            this.Controls.Add(this.lblIgnore);
-            this.Controls.Add(this.cmbType);
-            this.Controls.Add(this.lblType);
-            this.Controls.Add(this.btnBrowseFile);
-            this.Controls.Add(this.txtFileBox);
-            this.Controls.Add(this.lblFile);
-            this.Controls.Add(this.lblIconInfo);
-            this.Controls.Add(this.txtTitle);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Name = "ctrTableInfo";
-            this.Size = new System.Drawing.Size(600, 450);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(35, 35, 35);
+            Controls.Add(txtAlias);
+            Controls.Add(lblAlias);
+            Controls.Add(btnBrowseMeta);
+            Controls.Add(cmbMetaInfo);
+            Controls.Add(lblMetaInfo);
+            Controls.Add(chkWatchFile);
+            Controls.Add(chkHiddenCols);
+            Controls.Add(chkHiddenRows);
+            Controls.Add(lblIgnoreHidden);
+            Controls.Add(chkEmptyCols);
+            Controls.Add(chkEmptyRows);
+            Controls.Add(lblIgnoreEmpty);
+            Controls.Add(chkSimplify);
+            Controls.Add(chkTrim);
+            Controls.Add(lblWhitespace);
+            Controls.Add(cmbSchema);
+            Controls.Add(lblUseSchema);
+            Controls.Add(chkHasHeader);
+            Controls.Add(cmbIgnore);
+            Controls.Add(lblIgnore);
+            Controls.Add(cmbType);
+            Controls.Add(lblType);
+            Controls.Add(btnBrowseFile);
+            Controls.Add(txtFileBox);
+            Controls.Add(lblFile);
+            Controls.Add(lblIconInfo);
+            Controls.Add(txtTitle);
+            Font = new Font("Segoe UI", 9F);
+            Name = "ctrTableInfo";
+            Size = new Size(565, 396);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

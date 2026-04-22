@@ -40,6 +40,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
@@ -56,10 +58,16 @@
             lblInputHeader = new Label();
             pMainArea = new Guna.UI2.WinForms.Guna2Panel();
             lblDropData = new Label();
+            pRightPanel = new Guna.UI2.WinForms.Guna2Panel();
+            ctrTableInfo1 = new Data_Clean_Tool.Controls.ctrTableInfo();
+            ctrDataGrid1 = new Data_Clean_Tool.Controls.ctrDataGrid();
+            tableLayoutPanelRight = new TableLayoutPanel();
+            splitterRight = new Splitter();
             menuStrip1.SuspendLayout();
             pStatusBar.SuspendLayout();
             pSidePanel.SuspendLayout();
             pMainArea.SuspendLayout();
+            pRightPanel.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +77,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.System;
-            menuStrip1.Size = new Size(984, 24);
+            menuStrip1.Size = new Size(1354, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +134,7 @@
             pToolbar.Location = new Point(0, 24);
             pToolbar.Name = "pToolbar";
             pToolbar.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pToolbar.Size = new Size(984, 48);
+            pToolbar.Size = new Size(1354, 48);
             pToolbar.TabIndex = 1;
             // 
             // pStatusBar
@@ -138,10 +146,10 @@
             pStatusBar.CustomBorderThickness = new Padding(0, 1, 0, 0);
             pStatusBar.CustomizableEdges = customizableEdges3;
             pStatusBar.Dock = DockStyle.Bottom;
-            pStatusBar.Location = new Point(0, 631);
+            pStatusBar.Location = new Point(0, 875);
             pStatusBar.Name = "pStatusBar";
             pStatusBar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pStatusBar.Size = new Size(984, 30);
+            pStatusBar.Size = new Size(1354, 30);
             pStatusBar.TabIndex = 2;
             // 
             // lblStatusLeft
@@ -168,7 +176,7 @@
             pSidePanel.Location = new Point(0, 72);
             pSidePanel.Name = "pSidePanel";
             pSidePanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            pSidePanel.Size = new Size(200, 559);
+            pSidePanel.Size = new Size(200, 803);
             pSidePanel.TabIndex = 3;
             // 
             // btnFromClipboard
@@ -214,6 +222,7 @@
             btnFromFile.Text = "From File";
             btnFromFile.TextAlign = HorizontalAlignment.Left;
             btnFromFile.TextOffset = new Point(10, 0);
+            btnFromFile.Click += btnFromFile_Click;
             // 
             // lblInputHeader
             // 
@@ -237,7 +246,7 @@
             pMainArea.Location = new Point(200, 72);
             pMainArea.Name = "pMainArea";
             pMainArea.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pMainArea.Size = new Size(784, 559);
+            pMainArea.Size = new Size(578, 803);
             pMainArea.TabIndex = 4;
             // 
             // lblDropData
@@ -247,18 +256,78 @@
             lblDropData.ForeColor = Color.Gray;
             lblDropData.Location = new Point(0, 0);
             lblDropData.Name = "lblDropData";
-            lblDropData.Size = new Size(784, 559);
+            lblDropData.Size = new Size(578, 803);
             lblDropData.TabIndex = 0;
             lblDropData.Text = "ADD YOUR DATA\r\ndrag files here; or\r\nclick [From File] or [From Clipboard] buttons";
             lblDropData.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pRightPanel
+            // 
+            pRightPanel.BackColor = Color.FromArgb(35, 35, 35);
+            pRightPanel.BorderColor = Color.FromArgb(60, 60, 60);
+            pRightPanel.BorderThickness = 1;
+            pRightPanel.Controls.Add(ctrTableInfo1);
+            pRightPanel.Controls.Add(ctrDataGrid1);
+            pRightPanel.Controls.Add(tableLayoutPanelRight);
+            pRightPanel.CustomBorderThickness = new Padding(1, 0, 0, 0);
+            pRightPanel.CustomizableEdges = customizableEdges13;
+            pRightPanel.Dock = DockStyle.Right;
+            pRightPanel.Location = new Point(781, 72);
+            pRightPanel.Name = "pRightPanel";
+            pRightPanel.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            pRightPanel.Size = new Size(573, 803);
+            pRightPanel.TabIndex = 6;
+            // 
+            // ctrTableInfo1
+            // 
+            ctrTableInfo1.BackColor = Color.FromArgb(35, 35, 35);
+            ctrTableInfo1.Dock = DockStyle.Top;
+            ctrTableInfo1.Font = new Font("Segoe UI", 9F);
+            ctrTableInfo1.Location = new Point(0, 0);
+            ctrTableInfo1.Name = "ctrTableInfo1";
+            ctrTableInfo1.Size = new Size(570, 396);
+            ctrTableInfo1.TabIndex = 4;
+            // 
+            // ctrDataGrid1
+            // 
+            ctrDataGrid1.BackColor = Color.FromArgb(35, 35, 35);
+            ctrDataGrid1.Font = new Font("Segoe UI", 9F);
+            ctrDataGrid1.Location = new Point(0, 402);
+            ctrDataGrid1.Name = "ctrDataGrid1";
+            ctrDataGrid1.Size = new Size(570, 401);
+            ctrDataGrid1.TabIndex = 3;
+            // 
+            // tableLayoutPanelRight
+            // 
+            tableLayoutPanelRight.ColumnCount = 1;
+            tableLayoutPanelRight.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelRight.Dock = DockStyle.Right;
+            tableLayoutPanelRight.Location = new Point(570, 0);
+            tableLayoutPanelRight.Name = "tableLayoutPanelRight";
+            tableLayoutPanelRight.RowCount = 1;
+            tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelRight.Size = new Size(3, 803);
+            tableLayoutPanelRight.TabIndex = 5;
+            // 
+            // splitterRight
+            // 
+            splitterRight.BackColor = Color.FromArgb(40, 40, 40);
+            splitterRight.Dock = DockStyle.Right;
+            splitterRight.Location = new Point(778, 72);
+            splitterRight.Name = "splitterRight";
+            splitterRight.Size = new Size(3, 803);
+            splitterRight.TabIndex = 5;
+            splitterRight.TabStop = false;
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(984, 661);
+            ClientSize = new Size(1354, 905);
             Controls.Add(pMainArea);
+            Controls.Add(splitterRight);
+            Controls.Add(pRightPanel);
             Controls.Add(pSidePanel);
             Controls.Add(pStatusBar);
             Controls.Add(pToolbar);
@@ -268,12 +337,14 @@
             MinimumSize = new Size(800, 600);
             Name = "frmMain";
             Text = "Data Cleaner Tool";
+            Load += frmMain_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             pStatusBar.ResumeLayout(false);
             pStatusBar.PerformLayout();
             pSidePanel.ResumeLayout(false);
             pMainArea.ResumeLayout(false);
+            pRightPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -297,5 +368,10 @@
         private Guna.UI2.WinForms.Guna2Button btnFromClipboard;
         private Guna.UI2.WinForms.Guna2Panel pMainArea;
         private System.Windows.Forms.Label lblDropData;
+        private System.Windows.Forms.Splitter splitterRight;
+        private Guna.UI2.WinForms.Guna2Panel pRightPanel;
+        private Controls.ctrDataGrid ctrDataGrid1;
+        private Controls.ctrTableInfo ctrTableInfo1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRight;
     }
 }
