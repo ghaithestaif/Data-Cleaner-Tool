@@ -8,24 +8,25 @@ namespace Cleaning_Layer.Report_Classes
 {
     public class clsFeatureReport
     {
-
-       
         public enum enfeatureName
         {
             NullEmptyDetection,
             RemoveDuplicates,
-            StanderizeCasing
+            StanderizeCasing,
+            IgnoreRows
         }
+
         public enfeatureName Feature { get; set; }
-        public int RecordsAffected {
+
+        public int RecordsAffected
+        {
             get
             {
-                return  RemovedRecordsAffected + UpdatedRecordsAffected;
+                return RemovedRecordsAffected + UpdatedRecordsAffected;
             }
         }
+
         public int RemovedRecordsAffected { get; set; } = 0;
-
         public int UpdatedRecordsAffected { get; set; } = 0;
-
     }
 }

@@ -73,11 +73,12 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.FromArgb(40, 40, 40);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, runToolStripMenuItem, viewToolStripMenuItem, licensingToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.System;
-            menuStrip1.Size = new Size(1354, 24);
+            menuStrip1.Size = new Size(1449, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -85,42 +86,42 @@
             // 
             fileToolStripMenuItem.ForeColor = Color.LightGray;
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Size = new Size(46, 24);
             fileToolStripMenuItem.Text = "File";
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.ForeColor = Color.LightGray;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(39, 20);
+            editToolStripMenuItem.Size = new Size(49, 24);
             editToolStripMenuItem.Text = "Edit";
             // 
             // runToolStripMenuItem
             // 
             runToolStripMenuItem.ForeColor = Color.LightGray;
             runToolStripMenuItem.Name = "runToolStripMenuItem";
-            runToolStripMenuItem.Size = new Size(40, 20);
+            runToolStripMenuItem.Size = new Size(48, 24);
             runToolStripMenuItem.Text = "Run";
             // 
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.ForeColor = Color.LightGray;
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(44, 20);
+            viewToolStripMenuItem.Size = new Size(55, 24);
             viewToolStripMenuItem.Text = "View";
             // 
             // licensingToolStripMenuItem
             // 
             licensingToolStripMenuItem.ForeColor = Color.LightGray;
             licensingToolStripMenuItem.Name = "licensingToolStripMenuItem";
-            licensingToolStripMenuItem.Size = new Size(69, 20);
+            licensingToolStripMenuItem.Size = new Size(84, 24);
             licensingToolStripMenuItem.Text = "Licensing";
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.ForeColor = Color.LightGray;
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(44, 20);
+            helpToolStripMenuItem.Size = new Size(55, 24);
             helpToolStripMenuItem.Text = "Help";
             // 
             // pToolbar
@@ -131,10 +132,10 @@
             pToolbar.CustomBorderThickness = new Padding(0, 0, 0, 1);
             pToolbar.CustomizableEdges = customizableEdges1;
             pToolbar.Dock = DockStyle.Top;
-            pToolbar.Location = new Point(0, 24);
+            pToolbar.Location = new Point(0, 28);
             pToolbar.Name = "pToolbar";
             pToolbar.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            pToolbar.Size = new Size(1354, 48);
+            pToolbar.Size = new Size(1449, 48);
             pToolbar.TabIndex = 1;
             // 
             // pStatusBar
@@ -146,10 +147,10 @@
             pStatusBar.CustomBorderThickness = new Padding(0, 1, 0, 0);
             pStatusBar.CustomizableEdges = customizableEdges3;
             pStatusBar.Dock = DockStyle.Bottom;
-            pStatusBar.Location = new Point(0, 875);
+            pStatusBar.Location = new Point(0, 877);
             pStatusBar.Name = "pStatusBar";
             pStatusBar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pStatusBar.Size = new Size(1354, 30);
+            pStatusBar.Size = new Size(1449, 30);
             pStatusBar.TabIndex = 2;
             // 
             // lblStatusLeft
@@ -158,7 +159,7 @@
             lblStatusLeft.ForeColor = Color.DarkGray;
             lblStatusLeft.Location = new Point(10, 8);
             lblStatusLeft.Name = "lblStatusLeft";
-            lblStatusLeft.Size = new Size(261, 15);
+            lblStatusLeft.Size = new Size(323, 20);
             lblStatusLeft.TabIndex = 0;
             lblStatusLeft.Text = "Open an existing .transform document. (Ctrl+O)";
             // 
@@ -173,10 +174,10 @@
             pSidePanel.CustomBorderThickness = new Padding(0, 0, 1, 0);
             pSidePanel.CustomizableEdges = customizableEdges9;
             pSidePanel.Dock = DockStyle.Left;
-            pSidePanel.Location = new Point(0, 72);
+            pSidePanel.Location = new Point(0, 76);
             pSidePanel.Name = "pSidePanel";
             pSidePanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            pSidePanel.Size = new Size(200, 803);
+            pSidePanel.Size = new Size(200, 801);
             pSidePanel.TabIndex = 3;
             // 
             // btnFromClipboard
@@ -243,10 +244,10 @@
             pMainArea.Controls.Add(lblDropData);
             pMainArea.CustomizableEdges = customizableEdges11;
             pMainArea.Dock = DockStyle.Fill;
-            pMainArea.Location = new Point(200, 72);
+            pMainArea.Location = new Point(200, 76);
             pMainArea.Name = "pMainArea";
             pMainArea.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pMainArea.Size = new Size(578, 803);
+            pMainArea.Size = new Size(577, 801);
             pMainArea.TabIndex = 4;
             // 
             // lblDropData
@@ -256,7 +257,7 @@
             lblDropData.ForeColor = Color.Gray;
             lblDropData.Location = new Point(0, 0);
             lblDropData.Name = "lblDropData";
-            lblDropData.Size = new Size(578, 803);
+            lblDropData.Size = new Size(577, 801);
             lblDropData.TabIndex = 0;
             lblDropData.Text = "ADD YOUR DATA\r\ndrag files here; or\r\nclick [From File] or [From Clipboard] buttons";
             lblDropData.TextAlign = ContentAlignment.MiddleCenter;
@@ -272,11 +273,13 @@
             pRightPanel.CustomBorderThickness = new Padding(1, 0, 0, 0);
             pRightPanel.CustomizableEdges = customizableEdges13;
             pRightPanel.Dock = DockStyle.Right;
-            pRightPanel.Location = new Point(781, 72);
+            pRightPanel.Enabled = false;
+            pRightPanel.Location = new Point(787, 76);
             pRightPanel.Name = "pRightPanel";
             pRightPanel.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            pRightPanel.Size = new Size(573, 803);
+            pRightPanel.Size = new Size(662, 801);
             pRightPanel.TabIndex = 6;
+            pRightPanel.Visible = false;
             // 
             // ctrTableInfo1
             // 
@@ -284,47 +287,52 @@
             ctrTableInfo1.Dock = DockStyle.Top;
             ctrTableInfo1.Font = new Font("Segoe UI", 9F);
             ctrTableInfo1.Location = new Point(0, 0);
+            ctrTableInfo1.Margin = new Padding(3, 4, 3, 4);
             ctrTableInfo1.Name = "ctrTableInfo1";
-            ctrTableInfo1.Size = new Size(570, 396);
-            ctrTableInfo1.TabIndex = 4;
+            ctrTableInfo1.Size = new Size(659, 394);
+            ctrTableInfo1.TabIndex = 6;
+            ctrTableInfo1.TableInfoChanged += ctrTableInfo1_TableInfoChanged;
+            ctrTableInfo1.Load += ctrTableInfo1_Load;
             // 
             // ctrDataGrid1
             // 
             ctrDataGrid1.BackColor = Color.FromArgb(35, 35, 35);
+            ctrDataGrid1.Dock = DockStyle.Bottom;
             ctrDataGrid1.Font = new Font("Segoe UI", 9F);
             ctrDataGrid1.Location = new Point(0, 402);
+            ctrDataGrid1.Margin = new Padding(3, 4, 3, 4);
             ctrDataGrid1.Name = "ctrDataGrid1";
-            ctrDataGrid1.Size = new Size(570, 401);
+            ctrDataGrid1.Size = new Size(659, 399);
             ctrDataGrid1.TabIndex = 3;
+            ctrDataGrid1.Load += ctrDataGrid1_Load;
             // 
             // tableLayoutPanelRight
             // 
             tableLayoutPanelRight.ColumnCount = 1;
             tableLayoutPanelRight.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanelRight.Dock = DockStyle.Right;
-            tableLayoutPanelRight.Location = new Point(570, 0);
+            tableLayoutPanelRight.Location = new Point(659, 0);
             tableLayoutPanelRight.Name = "tableLayoutPanelRight";
             tableLayoutPanelRight.RowCount = 1;
             tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelRight.Size = new Size(3, 803);
+            tableLayoutPanelRight.Size = new Size(3, 801);
             tableLayoutPanelRight.TabIndex = 5;
             // 
             // splitterRight
             // 
             splitterRight.BackColor = Color.FromArgb(40, 40, 40);
             splitterRight.Dock = DockStyle.Right;
-            splitterRight.Location = new Point(778, 72);
+            splitterRight.Location = new Point(777, 76);
             splitterRight.Name = "splitterRight";
-            splitterRight.Size = new Size(3, 803);
+            splitterRight.Size = new Size(10, 801);
             splitterRight.TabIndex = 5;
             splitterRight.TabStop = false;
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(30, 30, 30);
-            ClientSize = new Size(1354, 905);
+            ClientSize = new Size(1449, 907);
             Controls.Add(pMainArea);
             Controls.Add(splitterRight);
             Controls.Add(pRightPanel);
@@ -336,6 +344,7 @@
             MainMenuStrip = menuStrip1;
             MinimumSize = new Size(800, 600);
             Name = "frmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Data Cleaner Tool";
             Load += frmMain_Load;
             menuStrip1.ResumeLayout(false);
@@ -371,7 +380,7 @@
         private System.Windows.Forms.Splitter splitterRight;
         private Guna.UI2.WinForms.Guna2Panel pRightPanel;
         private Controls.ctrDataGrid ctrDataGrid1;
-        private Controls.ctrTableInfo ctrTableInfo1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRight;
+        private Controls.ctrTableInfo ctrTableInfo1;
     }
 }

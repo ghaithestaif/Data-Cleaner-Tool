@@ -11,7 +11,8 @@ using Cleaning_Layer;
 
 clsConfiguration config = new clsConfiguration
 {
-    FilePath = "D:\\Users\\GhaithEstaif\\Desktop\\myCSV.csv",
+    FilePathwithFileName = "D:\\Users\\GhaithEstaif\\Desktop\\my.xlsx",
+    FileName = "my.xlsx",
     StandardizeData = true,
     HandleMissingValues = true,
     ReplaceOption = clsConfiguration.enReplaceOption.DefaultValue
@@ -26,12 +27,10 @@ clsConfiguration config = new clsConfiguration
 clsClean clsClean = new clsClean(config);
 clsClean.Clean();
 //print the cleaned data
-clsClean.Data.ForEach(row =>
+foreach (var row in clsClean.ReadOnlyData)
 {
     Console.WriteLine(string.Join(", ", row));
 }
-);
-
 // Print the cleaned data
 
 

@@ -8,6 +8,8 @@ namespace Data_Clean_Tool
         [STAThread]
         static void Main()
         {
+            Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

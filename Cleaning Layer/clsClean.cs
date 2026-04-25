@@ -5,10 +5,7 @@ using Extraction_layer;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Cleaning_Layer
 {
     public class clsClean
@@ -20,35 +17,41 @@ namespace Cleaning_Layer
         clsSchema _schema;
 
         public List<List<string>> Data { get { return _data; } }
-        List<ICleaningFeature> _features=new List<ICleaningFeature>();
+        public IReadOnlyList<List<string>> ReadOnlyData { get { return _data.AsReadOnly(); } }
+
+        List<ICleaningFeature> _features = new List<ICleaningFeature>();
+
         private bool validateConfiguration()
         {
             if (_config == null)
             {
                 throw new ArgumentNullException(nameof(_config), "Configuration cannot be null.");
             }
-            if (string.IsNullOrEmpty(_config.FilePath))
+
+            if (string.IsNullOrEmpty(_config.FilePathwithFileName))
             {
-                throw new ArgumentException("File path cannot be null or empty.", nameof(_config.FilePath));
+                throw new ArgumentException("File path cannot be null or empty.", nameof(_config.FilePathwithFileName));
             }
-            if (!File.Exists(_config.FilePath))
+
+            if (!File.Exists(_config.FilePathwithFileName))
             {
-                throw new FileNotFoundException("The specified file does not exist.", _config.FilePath);
+                throw new FileNotFoundException("The specified file does not exist.", _config.FilePathwithFileName);
             }
+
             return true;
         }
+
         List<List<string>> _ImportData()
         {
-            // Determine file type based on extension and call appropriate import method
-            string extension = Path.GetExtension(_config.FilePath).ToLower();
+            string extension = Path.GetExtension(_config.FilePathwithFileName).ToLower();
 
             switch (extension)
             {
                 case ".xlsx":
                 case ".xls":
-                    return clsExtract.ExtractExcelData(_config.FilePath);
+                    return clsExtract.ExtractExcelData(_config.FilePathwithFileName);
                 case ".csv":
-                    return clsExtract.ExtractCSVData(_config.FilePath);
+                    return clsExtract.ExtractCSVData(_config.FilePathwithFileName);
                 default:
                     throw new NotSupportedException("Unsupported file type: " + extension);
             }
@@ -58,61 +61,63 @@ namespace Cleaning_Layer
         public clsClean(clsConfiguration config)
         {
             _config = config;
-            if(!validateConfiguration())
+
+            if (!validateConfiguration())
             {
                 return;
             }
-            _data =_ImportData();
+
+            _data = _ImportData();
+           // _ApplyInitialFeatures();
             _schema = clsGenerateSchema.GenerateSchema(_data);
-
-
-
         }
+
         private void _AddFeatures()
         {
             _features.Clear();
+
             if (_config.RemoveDuplicates)
             {
                 _features.Add(new clsRemoveDuplicatesFeature());
             }
-            if(_config.HandleMissingValues)
+
+            if (_config.HandleMissingValues)
             {
                 if (_config.ReplaceOption.HasValue)
                 {
                     _features.Add(new clsNullEmptyDetectionFeature(_config, _schema));
                 }
             }
-            if(_config.StandardizeData)
+
+            if (_config.StandardizeData)
             {
                 if (_config.StanderdizeDataOption.HasValue)
                 {
                     _features.Add(new clsStanderizeCasingFeature(_config, _schema));
                 }
             }
-
+            if(_config.NumberOfIgnoredRows > 0)
+            {
+                _features.Add(new clsIgnoreRowsFeature(_config));
+            }
         }
 
-        public bool Clean() {
-
+        public bool Clean()
+        {
             _AddFeatures();
+
             foreach (var feature in _features)
             {
                 clsFeatureReportManager.AddFeatureReport(feature.Apply(_data));
             }
+
             return true;
         }
 
-
-        
-
-
-
-
-
-
-
-
-
+        public void UpdateConfig(clsConfiguration Config)
+        {
+            _config = Config;   
+        }
 
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cleaning_Layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,19 @@ namespace Data_Clean_Tool.Controls
         }
 
         private void tabDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void LoadData(clsClean Clean)
+        {
+            gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(Clean.Data);
+        }
+        private void gridData_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
         {
 
         }
