@@ -28,20 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
@@ -53,6 +61,12 @@
             pStatusBar = new Guna.UI2.WinForms.Guna2Panel();
             lblStatusLeft = new Label();
             pSidePanel = new Guna.UI2.WinForms.Guna2Panel();
+            btnToFile = new Guna.UI2.WinForms.Guna2Button();
+            btnStanderizeCasing = new Guna.UI2.WinForms.Guna2Button();
+            btnReplaceNULL = new Guna.UI2.WinForms.Guna2Button();
+            btnRemoveDuplicateRows = new Guna.UI2.WinForms.Guna2Button();
+            llOutput = new Label();
+            llCleaningOption = new Label();
             btnFromClipboard = new Guna.UI2.WinForms.Guna2Button();
             btnFromFile = new Guna.UI2.WinForms.Guna2Button();
             lblInputHeader = new Label();
@@ -78,7 +92,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.System;
-            menuStrip1.Size = new Size(1449, 28);
+            menuStrip1.Size = new Size(1449, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -86,42 +100,42 @@
             // 
             fileToolStripMenuItem.ForeColor = Color.LightGray;
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(46, 24);
+            fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.ForeColor = Color.LightGray;
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(49, 24);
+            editToolStripMenuItem.Size = new Size(39, 20);
             editToolStripMenuItem.Text = "Edit";
             // 
             // runToolStripMenuItem
             // 
             runToolStripMenuItem.ForeColor = Color.LightGray;
             runToolStripMenuItem.Name = "runToolStripMenuItem";
-            runToolStripMenuItem.Size = new Size(48, 24);
+            runToolStripMenuItem.Size = new Size(40, 20);
             runToolStripMenuItem.Text = "Run";
             // 
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.ForeColor = Color.LightGray;
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(55, 24);
+            viewToolStripMenuItem.Size = new Size(44, 20);
             viewToolStripMenuItem.Text = "View";
             // 
             // licensingToolStripMenuItem
             // 
             licensingToolStripMenuItem.ForeColor = Color.LightGray;
             licensingToolStripMenuItem.Name = "licensingToolStripMenuItem";
-            licensingToolStripMenuItem.Size = new Size(84, 24);
+            licensingToolStripMenuItem.Size = new Size(69, 20);
             licensingToolStripMenuItem.Text = "Licensing";
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.ForeColor = Color.LightGray;
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(55, 24);
+            helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
             // 
             // pToolbar
@@ -130,11 +144,11 @@
             pToolbar.BorderColor = Color.FromArgb(60, 60, 60);
             pToolbar.BorderThickness = 1;
             pToolbar.CustomBorderThickness = new Padding(0, 0, 0, 1);
-            pToolbar.CustomizableEdges = customizableEdges1;
+            pToolbar.CustomizableEdges = customizableEdges23;
             pToolbar.Dock = DockStyle.Top;
-            pToolbar.Location = new Point(0, 28);
+            pToolbar.Location = new Point(0, 24);
             pToolbar.Name = "pToolbar";
-            pToolbar.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            pToolbar.ShadowDecoration.CustomizableEdges = customizableEdges24;
             pToolbar.Size = new Size(1449, 48);
             pToolbar.TabIndex = 1;
             // 
@@ -145,11 +159,11 @@
             pStatusBar.BorderThickness = 1;
             pStatusBar.Controls.Add(lblStatusLeft);
             pStatusBar.CustomBorderThickness = new Padding(0, 1, 0, 0);
-            pStatusBar.CustomizableEdges = customizableEdges3;
+            pStatusBar.CustomizableEdges = customizableEdges25;
             pStatusBar.Dock = DockStyle.Bottom;
             pStatusBar.Location = new Point(0, 877);
             pStatusBar.Name = "pStatusBar";
-            pStatusBar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            pStatusBar.ShadowDecoration.CustomizableEdges = customizableEdges26;
             pStatusBar.Size = new Size(1449, 30);
             pStatusBar.TabIndex = 2;
             // 
@@ -159,7 +173,7 @@
             lblStatusLeft.ForeColor = Color.DarkGray;
             lblStatusLeft.Location = new Point(10, 8);
             lblStatusLeft.Name = "lblStatusLeft";
-            lblStatusLeft.Size = new Size(323, 20);
+            lblStatusLeft.Size = new Size(261, 15);
             lblStatusLeft.TabIndex = 0;
             lblStatusLeft.Text = "Open an existing .transform document. (Ctrl+O)";
             // 
@@ -168,24 +182,152 @@
             pSidePanel.BackColor = Color.FromArgb(35, 35, 35);
             pSidePanel.BorderColor = Color.FromArgb(60, 60, 60);
             pSidePanel.BorderThickness = 1;
+            pSidePanel.Controls.Add(btnToFile);
+            pSidePanel.Controls.Add(btnStanderizeCasing);
+            pSidePanel.Controls.Add(btnReplaceNULL);
+            pSidePanel.Controls.Add(btnRemoveDuplicateRows);
+            pSidePanel.Controls.Add(llOutput);
+            pSidePanel.Controls.Add(llCleaningOption);
             pSidePanel.Controls.Add(btnFromClipboard);
             pSidePanel.Controls.Add(btnFromFile);
             pSidePanel.Controls.Add(lblInputHeader);
             pSidePanel.CustomBorderThickness = new Padding(0, 0, 1, 0);
-            pSidePanel.CustomizableEdges = customizableEdges9;
+            pSidePanel.CustomizableEdges = customizableEdges39;
             pSidePanel.Dock = DockStyle.Left;
-            pSidePanel.Location = new Point(0, 76);
+            pSidePanel.Location = new Point(0, 72);
             pSidePanel.Name = "pSidePanel";
-            pSidePanel.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            pSidePanel.Size = new Size(200, 801);
+            pSidePanel.ShadowDecoration.CustomizableEdges = customizableEdges40;
+            pSidePanel.Size = new Size(221, 805);
             pSidePanel.TabIndex = 3;
+            // 
+            // btnToFile
+            // 
+            btnToFile.BorderColor = Color.Gray;
+            btnToFile.BorderRadius = 17;
+            btnToFile.BorderThickness = 1;
+            btnToFile.CustomizableEdges = customizableEdges27;
+            btnToFile.DisabledState.BorderColor = Color.DarkGray;
+            btnToFile.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnToFile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnToFile.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnToFile.Enabled = false;
+            btnToFile.FillColor = Color.FromArgb(40, 40, 40);
+            btnToFile.Font = new Font("Segoe UI", 9F);
+            btnToFile.ForeColor = Color.LightGray;
+            btnToFile.Location = new Point(15, 358);
+            btnToFile.Name = "btnToFile";
+            btnToFile.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            btnToFile.Size = new Size(179, 36);
+            btnToFile.TabIndex = 9;
+            btnToFile.Text = "To File";
+            btnToFile.TextAlign = HorizontalAlignment.Left;
+            btnToFile.TextOffset = new Point(10, 0);
+            btnToFile.Visible = false;
+            // 
+            // btnStanderizeCasing
+            // 
+            btnStanderizeCasing.BorderColor = Color.Gray;
+            btnStanderizeCasing.BorderRadius = 17;
+            btnStanderizeCasing.BorderThickness = 1;
+            btnStanderizeCasing.CustomizableEdges = customizableEdges29;
+            btnStanderizeCasing.DisabledState.BorderColor = Color.DarkGray;
+            btnStanderizeCasing.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnStanderizeCasing.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnStanderizeCasing.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnStanderizeCasing.Enabled = false;
+            btnStanderizeCasing.FillColor = Color.FromArgb(40, 40, 40);
+            btnStanderizeCasing.Font = new Font("Segoe UI", 9F);
+            btnStanderizeCasing.ForeColor = Color.LightGray;
+            btnStanderizeCasing.Location = new Point(10, 266);
+            btnStanderizeCasing.Name = "btnStanderizeCasing";
+            btnStanderizeCasing.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            btnStanderizeCasing.Size = new Size(179, 36);
+            btnStanderizeCasing.TabIndex = 7;
+            btnStanderizeCasing.Text = "Standerize Casing";
+            btnStanderizeCasing.TextAlign = HorizontalAlignment.Left;
+            btnStanderizeCasing.TextOffset = new Point(10, 0);
+            btnStanderizeCasing.Visible = false;
+            // 
+            // btnReplaceNULL
+            // 
+            btnReplaceNULL.BorderColor = Color.Gray;
+            btnReplaceNULL.BorderRadius = 17;
+            btnReplaceNULL.BorderThickness = 1;
+            btnReplaceNULL.CustomizableEdges = customizableEdges31;
+            btnReplaceNULL.DisabledState.BorderColor = Color.DarkGray;
+            btnReplaceNULL.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnReplaceNULL.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnReplaceNULL.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnReplaceNULL.Enabled = false;
+            btnReplaceNULL.FillColor = Color.FromArgb(40, 40, 40);
+            btnReplaceNULL.Font = new Font("Segoe UI", 9F);
+            btnReplaceNULL.ForeColor = Color.LightGray;
+            btnReplaceNULL.Location = new Point(10, 211);
+            btnReplaceNULL.Name = "btnReplaceNULL";
+            btnReplaceNULL.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            btnReplaceNULL.Size = new Size(179, 36);
+            btnReplaceNULL.TabIndex = 6;
+            btnReplaceNULL.Text = "Replace null empty values";
+            btnReplaceNULL.TextAlign = HorizontalAlignment.Left;
+            btnReplaceNULL.TextOffset = new Point(10, 0);
+            btnReplaceNULL.Visible = false;
+            // 
+            // btnRemoveDuplicateRows
+            // 
+            btnRemoveDuplicateRows.BorderColor = Color.Gray;
+            btnRemoveDuplicateRows.BorderRadius = 17;
+            btnRemoveDuplicateRows.BorderThickness = 1;
+            btnRemoveDuplicateRows.CustomizableEdges = customizableEdges33;
+            btnRemoveDuplicateRows.DisabledState.BorderColor = Color.DarkGray;
+            btnRemoveDuplicateRows.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnRemoveDuplicateRows.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnRemoveDuplicateRows.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnRemoveDuplicateRows.Enabled = false;
+            btnRemoveDuplicateRows.FillColor = Color.FromArgb(40, 40, 40);
+            btnRemoveDuplicateRows.Font = new Font("Segoe UI", 9F);
+            btnRemoveDuplicateRows.ForeColor = Color.LightGray;
+            btnRemoveDuplicateRows.Location = new Point(15, 156);
+            btnRemoveDuplicateRows.Name = "btnRemoveDuplicateRows";
+            btnRemoveDuplicateRows.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            btnRemoveDuplicateRows.Size = new Size(179, 36);
+            btnRemoveDuplicateRows.TabIndex = 5;
+            btnRemoveDuplicateRows.Text = "Remove Duplicate Rows";
+            btnRemoveDuplicateRows.TextAlign = HorizontalAlignment.Left;
+            btnRemoveDuplicateRows.TextOffset = new Point(10, 0);
+            btnRemoveDuplicateRows.Visible = false;
+            // 
+            // llOutput
+            // 
+            llOutput.Enabled = false;
+            llOutput.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            llOutput.ForeColor = Color.FromArgb(180, 100, 180);
+            llOutput.Location = new Point(3, 325);
+            llOutput.Name = "llOutput";
+            llOutput.Size = new Size(200, 30);
+            llOutput.TabIndex = 4;
+            llOutput.Text = "Output";
+            llOutput.TextAlign = ContentAlignment.MiddleCenter;
+            llOutput.Visible = false;
+            // 
+            // llCleaningOption
+            // 
+            llCleaningOption.Enabled = false;
+            llCleaningOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            llCleaningOption.ForeColor = Color.FromArgb(180, 100, 180);
+            llCleaningOption.Location = new Point(0, 123);
+            llCleaningOption.Name = "llCleaningOption";
+            llCleaningOption.Size = new Size(200, 30);
+            llCleaningOption.TabIndex = 3;
+            llCleaningOption.Text = "Cleaning Options";
+            llCleaningOption.TextAlign = ContentAlignment.MiddleCenter;
+            llCleaningOption.Visible = false;
             // 
             // btnFromClipboard
             // 
             btnFromClipboard.BorderColor = Color.Gray;
             btnFromClipboard.BorderRadius = 17;
             btnFromClipboard.BorderThickness = 1;
-            btnFromClipboard.CustomizableEdges = customizableEdges5;
+            btnFromClipboard.CustomizableEdges = customizableEdges35;
             btnFromClipboard.DisabledState.BorderColor = Color.DarkGray;
             btnFromClipboard.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFromClipboard.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -195,8 +337,8 @@
             btnFromClipboard.ForeColor = Color.LightGray;
             btnFromClipboard.Location = new Point(10, 85);
             btnFromClipboard.Name = "btnFromClipboard";
-            btnFromClipboard.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnFromClipboard.Size = new Size(150, 35);
+            btnFromClipboard.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            btnFromClipboard.Size = new Size(179, 36);
             btnFromClipboard.TabIndex = 2;
             btnFromClipboard.Text = "From Clipboard";
             btnFromClipboard.TextAlign = HorizontalAlignment.Left;
@@ -207,7 +349,7 @@
             btnFromFile.BorderColor = Color.Gray;
             btnFromFile.BorderRadius = 17;
             btnFromFile.BorderThickness = 1;
-            btnFromFile.CustomizableEdges = customizableEdges7;
+            btnFromFile.CustomizableEdges = customizableEdges37;
             btnFromFile.DisabledState.BorderColor = Color.DarkGray;
             btnFromFile.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFromFile.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -217,8 +359,8 @@
             btnFromFile.ForeColor = Color.LightGray;
             btnFromFile.Location = new Point(10, 40);
             btnFromFile.Name = "btnFromFile";
-            btnFromFile.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnFromFile.Size = new Size(150, 35);
+            btnFromFile.ShadowDecoration.CustomizableEdges = customizableEdges38;
+            btnFromFile.Size = new Size(179, 36);
             btnFromFile.TabIndex = 1;
             btnFromFile.Text = "From File";
             btnFromFile.TextAlign = HorizontalAlignment.Left;
@@ -232,7 +374,7 @@
             lblInputHeader.ForeColor = Color.FromArgb(180, 100, 180);
             lblInputHeader.Location = new Point(0, 0);
             lblInputHeader.Name = "lblInputHeader";
-            lblInputHeader.Size = new Size(200, 30);
+            lblInputHeader.Size = new Size(221, 30);
             lblInputHeader.TabIndex = 0;
             lblInputHeader.Text = "Input";
             lblInputHeader.TextAlign = ContentAlignment.MiddleCenter;
@@ -242,12 +384,12 @@
             pMainArea.AllowDrop = true;
             pMainArea.BackColor = Color.FromArgb(30, 30, 30);
             pMainArea.Controls.Add(lblDropData);
-            pMainArea.CustomizableEdges = customizableEdges11;
+            pMainArea.CustomizableEdges = customizableEdges41;
             pMainArea.Dock = DockStyle.Fill;
-            pMainArea.Location = new Point(200, 76);
+            pMainArea.Location = new Point(221, 72);
             pMainArea.Name = "pMainArea";
-            pMainArea.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            pMainArea.Size = new Size(577, 801);
+            pMainArea.ShadowDecoration.CustomizableEdges = customizableEdges42;
+            pMainArea.Size = new Size(556, 805);
             pMainArea.TabIndex = 4;
             // 
             // lblDropData
@@ -257,7 +399,7 @@
             lblDropData.ForeColor = Color.Gray;
             lblDropData.Location = new Point(0, 0);
             lblDropData.Name = "lblDropData";
-            lblDropData.Size = new Size(577, 801);
+            lblDropData.Size = new Size(556, 805);
             lblDropData.TabIndex = 0;
             lblDropData.Text = "ADD YOUR DATA\r\ndrag files here; or\r\nclick [From File] or [From Clipboard] buttons";
             lblDropData.TextAlign = ContentAlignment.MiddleCenter;
@@ -271,13 +413,13 @@
             pRightPanel.Controls.Add(ctrDataGrid1);
             pRightPanel.Controls.Add(tableLayoutPanelRight);
             pRightPanel.CustomBorderThickness = new Padding(1, 0, 0, 0);
-            pRightPanel.CustomizableEdges = customizableEdges13;
+            pRightPanel.CustomizableEdges = customizableEdges43;
             pRightPanel.Dock = DockStyle.Right;
             pRightPanel.Enabled = false;
-            pRightPanel.Location = new Point(787, 76);
+            pRightPanel.Location = new Point(787, 72);
             pRightPanel.Name = "pRightPanel";
-            pRightPanel.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            pRightPanel.Size = new Size(662, 801);
+            pRightPanel.ShadowDecoration.CustomizableEdges = customizableEdges44;
+            pRightPanel.Size = new Size(662, 805);
             pRightPanel.TabIndex = 6;
             pRightPanel.Visible = false;
             // 
@@ -299,7 +441,7 @@
             ctrDataGrid1.BackColor = Color.FromArgb(35, 35, 35);
             ctrDataGrid1.Dock = DockStyle.Bottom;
             ctrDataGrid1.Font = new Font("Segoe UI", 9F);
-            ctrDataGrid1.Location = new Point(0, 402);
+            ctrDataGrid1.Location = new Point(0, 406);
             ctrDataGrid1.Margin = new Padding(3, 4, 3, 4);
             ctrDataGrid1.Name = "ctrDataGrid1";
             ctrDataGrid1.Size = new Size(659, 399);
@@ -315,16 +457,16 @@
             tableLayoutPanelRight.Name = "tableLayoutPanelRight";
             tableLayoutPanelRight.RowCount = 1;
             tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelRight.Size = new Size(3, 801);
+            tableLayoutPanelRight.Size = new Size(3, 805);
             tableLayoutPanelRight.TabIndex = 5;
             // 
             // splitterRight
             // 
             splitterRight.BackColor = Color.FromArgb(40, 40, 40);
             splitterRight.Dock = DockStyle.Right;
-            splitterRight.Location = new Point(777, 76);
+            splitterRight.Location = new Point(777, 72);
             splitterRight.Name = "splitterRight";
-            splitterRight.Size = new Size(10, 801);
+            splitterRight.Size = new Size(10, 805);
             splitterRight.TabIndex = 5;
             splitterRight.TabStop = false;
             // 
@@ -382,5 +524,11 @@
         private Controls.ctrDataGrid ctrDataGrid1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRight;
         private Controls.ctrTableInfo ctrTableInfo1;
+        private Guna.UI2.WinForms.Guna2Button btnStanderizeCasing;
+        private Guna.UI2.WinForms.Guna2Button btnReplaceNULL;
+        private Guna.UI2.WinForms.Guna2Button btnRemoveDuplicateRows;
+        private Label llOutput;
+        private Label llCleaningOption;
+        private Guna.UI2.WinForms.Guna2Button btnToFile;
     }
 }

@@ -64,7 +64,7 @@ namespace Data_Cleaner_Tool
             
             Label lblStatusLeft = new Label
             {
-                Text = "Open an existing .transform document. (Ctrl+O)",
+                Text = "Ready",
                 Location = new Point(10, 8),
                 AutoSize = true,
                 ForeColor = Color.DarkGray
@@ -72,47 +72,83 @@ namespace Data_Cleaner_Tool
             pStatusBar.Controls.Add(lblStatusLeft);
             this.Controls.Add(pStatusBar);
 
-            // 4. Input Side Panel (Left)
+            // 4. Right Side Panel (Accordion Container)
             Guna2Panel pSidePanel = new Guna2Panel
             {
-                Dock = DockStyle.Left,
-                Width = 200,
+                Dock = DockStyle.Right,
+                Width = 220,
                 BackColor = Color.FromArgb(35, 35, 35),
                 BorderThickness = 1,
                 BorderColor = Color.FromArgb(60, 60, 60),
-                CustomBorderThickness = new Padding(0, 0, 1, 0)
+                CustomBorderThickness = new Padding(1, 0, 0, 0)
             };
-
-            // Input Header Label
-            Label lblInputHeader = new Label
-            {
-                Text = "Input",
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Height = 30,
-                ForeColor = Color.FromArgb(180, 100, 180), // Purple-ish text
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold)
-            };
-            pSidePanel.Controls.Add(lblInputHeader);
-
-            // From File Button
-            Guna2Button btnFromFile = CreateSideButton("From File", 40);
-            pSidePanel.Controls.Add(btnFromFile);
-
-            // From Clipboard Button
-            Guna2Button btnFromClipboard = CreateSideButton("From Clipboard", 85);
-            pSidePanel.Controls.Add(btnFromClipboard);
-
             this.Controls.Add(pSidePanel);
 
-            // Add a splitter to allow users to resize the left side panel
-            Splitter leftSplitter = new Splitter
+            // FlowLayoutPanel manages the vertical stacking
+            FlowLayoutPanel flowPanel = new FlowLayoutPanel
             {
-                Dock = DockStyle.Left,
-                Width = 3,
-                BackColor = Color.FromArgb(45, 45, 45) // Match toolbar/border color
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
+                WrapContents = false,
+                AutoScroll = true,
+                Padding = new Padding(5)
             };
-            this.Controls.Add(leftSplitter);
+            pSidePanel.Controls.Add(flowPanel);
+
+            // --- INPUT MENU SECTION ---
+            Guna2Button btnInputHeader = CreateHeaderButton("Input");
+            Panel pnlInputOptions = CreateOptionsContainer(90); // Height needed for options
+            
+            Guna2Button btnFromFile = CreateOptionButton("From File", 5);
+            Guna2Button btnFromClipboard = CreateOptionButton("From Clipboard", 45);
+            pnlInputOptions.Controls.Add(btnFromFile);
+            pnlInputOptions.Controls.Add(btnFromClipboard);
+
+            btnInputHeader.Click += (s, e) => { pnlInputOptions.Visible = !pnlInputOptions.Visible; };
+
+            flowPanel.Controls.Add(btnInputHeader);
+            flowPanel.Controls.Add(pnlInputOptions);
+
+
+            // --- CLEAN MENU SECTION ---
+            Guna2Button btnCleanHeader = CreateHeaderButton("Clean");
+            Panel pnlCleanOptions = CreateOptionsContainer(90); // Expand this height to fit more buttons!
+            pnlCleanOptions.Visible = false; // Start collapsed
+            
+            Guna2Button btnRemoveDuplicates = CreateOptionButton("Remove Duplicates", 5);
+            // You can add more cleanup option buttons here manually later:
+            // Guna2Button btnOtherClean = CreateOptionButton("Handle Nulls", 45);
+            pnlCleanOptions.Controls.Add(btnRemoveDuplicates);
+            // pnlCleanOptions.Controls.Add(btnOtherClean);
+
+            btnCleanHeader.Click += (s, e) => { pnlCleanOptions.Visible = !pnlCleanOptions.Visible; };
+
+            flowPanel.Controls.Add(btnCleanHeader);
+            flowPanel.Controls.Add(pnlCleanOptions);
+
+
+            // --- OUTPUT MENU SECTION ---
+            Guna2Button btnOutputHeader = CreateHeaderButton("Output");
+            Panel pnlOutputOptions = CreateOptionsContainer(50); 
+            pnlOutputOptions.Visible = false; // Start collapsed
+            
+            Guna2Button btnToFile = CreateOptionButton("To File", 5);
+            pnlOutputOptions.Controls.Add(btnToFile);
+
+            btnOutputHeader.Click += (s, e) => { pnlOutputOptions.Visible = !pnlOutputOptions.Visible; };
+
+            flowPanel.Controls.Add(btnOutputHeader);
+            flowPanel.Controls.Add(pnlOutputOptions);
+
+
+            // Add a splitter to allow users to resize the right side panel
+            Splitter rightSplitter = new Splitter
+            {
+                Dock = DockStyle.Right,
+                Width = 3,
+                BackColor = Color.FromArgb(45, 45, 45) 
+            };
+            this.Controls.Add(rightSplitter);
 
             // 5. Main Content Area (Fill)
             Guna2Panel pMainArea = new Guna2Panel
@@ -133,30 +169,61 @@ namespace Data_Cleaner_Tool
             pMainArea.Controls.Add(lblDropData);
             this.Controls.Add(pMainArea);
 
-            // Setup proper Z-ordering so docking works: 
-            // The last added control docks to edges first. Reverse z-order fixing.
+            // Setup proper Z-ordering
             pMainArea.BringToFront();
-            leftSplitter.BringToFront();
+            rightSplitter.BringToFront();
             pSidePanel.BringToFront();
             pToolbar.BringToFront();
             menuStrip.BringToFront();
         }
 
-        private Guna2Button CreateSideButton(string text, int yPosition)
+        // Helper: Creates the main category toggle buttons (Input, Clean, Output)
+        private Guna2Button CreateHeaderButton(string text)
+        {
+            return new Guna2Button
+            {
+                Text = text,
+                Width = 200, 
+                Height = 40,
+                BorderRadius = 5,
+                FillColor = Color.FromArgb(50, 50, 50),
+                HoverState = { FillColor = Color.FromArgb(70, 70, 70) },
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                TextAlign = HorizontalAlignment.Left,
+                TextOffset = new Point(10, 0),
+                Margin = new Padding(0, 10, 0, 5) // Adds space between categories
+            };
+        }
+
+        // Helper: Creates the hidden container panel to hold the sub-buttons
+        private Panel CreateOptionsContainer(int height)
+        {
+            return new Panel
+            {
+                Width = 200,
+                Height = height, 
+                BackColor = Color.Transparent,
+                Margin = new Padding(0, 0, 0, 0)
+            };
+        }
+
+        // Helper: Creates the sub-buttons (From File, To File, etc.)
+        private Guna2Button CreateOptionButton(string text, int yPosition)
         {
             return new Guna2Button
             {
                 Text = text,
                 Location = new Point(10, yPosition),
-                Width = 180, // Expand width to maintain a 10px margin on both sides (200 panel width - 20)
+                Width = 180, 
                 Height = 35,
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right, // Allows controls to scale horizontally
-                BorderRadius = 17, // Rounded pill shape
+                BorderRadius = 17, // Pill shape
                 BorderThickness = 1,
                 BorderColor = Color.Gray,
                 FillColor = Color.FromArgb(40, 40, 40),
                 HoverState = { FillColor = Color.FromArgb(60, 60, 60) },
                 ForeColor = Color.LightGray,
+                Font = new Font("Segoe UI", 9F),
                 TextAlign = HorizontalAlignment.Left,
                 TextOffset = new Point(10, 0)
             };

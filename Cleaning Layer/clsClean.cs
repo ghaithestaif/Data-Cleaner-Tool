@@ -69,7 +69,7 @@ namespace Cleaning_Layer
 
             _data = _ImportData();
            // _ApplyInitialFeatures();
-            _schema = clsGenerateSchema.GenerateSchema(_data);
+            _schema = clsGenerateSchema.GenerateSchema(ref _data);
         }
 
         private void _AddFeatures()

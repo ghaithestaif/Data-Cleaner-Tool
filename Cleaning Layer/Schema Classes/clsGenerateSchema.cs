@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq; // Added to enable LINQ for extracting columns
 
 namespace Cleaning_Layer.Schema_Classes
 {
     public class clsGenerateSchema
     {
         // A threshold of 0.8 means if 80% of the data matches a type, we assume that is the column's type.
-        private const double CONFIDENCE_THRESHOLD = 0.80;
+        private const double Threshold = 0.80;
 
-        static clsColumnSchema.enDataType GenerateColumnDataType(int columnIndex, List<List<string>> list)
+        static clsColumnSchema.enDataType GenerateColumnDataType(IEnumerable<string> columnData)
         {
             int intCount = 0, doubleCount = 0, boolCount = 0, dateTimeCount = 0, stringCount = 0;
             int nonEmptyCount = 0;
 
-            // Start at i = 1 if list[0] contains your header names
-            for (int i = 1; i < list.Count; i++)
+            // Iterate through the raw string stream cleanly!
+            foreach (var cellValue in columnData)
             {
-                if (columnIndex >= list[i].Count) continue;
-
-                string value = list[i][columnIndex]?.Trim();
+                string value = cellValue?.Trim();
 
                 // Skip empty cells so they don't skew the percentages
                 if (string.IsNullOrEmpty(value)) continue;
@@ -55,38 +54,49 @@ namespace Cleaning_Layer.Schema_Classes
             }
 
             // Calculate confidence percentages
-            if ((double)boolCount / nonEmptyCount >= CONFIDENCE_THRESHOLD)
+            if ((double)boolCount / nonEmptyCount >= Threshold)
                 return clsColumnSchema.enDataType.Boolean;
 
-            if ((double)intCount / nonEmptyCount >= CONFIDENCE_THRESHOLD)
+            if ((double)intCount / nonEmptyCount >= Threshold)
                 return clsColumnSchema.enDataType.Integer;
 
-            if ((double)doubleCount / nonEmptyCount >= CONFIDENCE_THRESHOLD)
+            if ((double)doubleCount / nonEmptyCount >= Threshold)
                 return clsColumnSchema.enDataType.Double;
 
-            if ((double)dateTimeCount / nonEmptyCount >= CONFIDENCE_THRESHOLD)
+            if ((double)dateTimeCount / nonEmptyCount >= Threshold)
                 return clsColumnSchema.enDataType.DateTime;
 
             // If no specific type meets the 80% threshold, fallback to String
             return clsColumnSchema.enDataType.String;
         }
 
-        static public clsSchema GenerateSchema(List<List<string>> list)
+        static public clsSchema GenerateSchema(ref List<List<string>> list)
         {
             clsSchema tableSchema = new clsSchema();
             if (list == null || list.Count == 0) return null;
+
             // Assuming the first row contains headers
             List<string> headers = list[0];
+
             for (int columnIndex = 0; columnIndex < headers.Count; columnIndex++)
             {
                 string columnName = headers[columnIndex].Trim();
-                var dataType = GenerateColumnDataType(columnIndex, list);
+
+                // Extract a single column using LINQ
+                // skip headers
+                int currentColumnIndex = columnIndex;  
+                var columnData = list.Skip(1).Select(row => row.Count > currentColumnIndex ? row[currentColumnIndex] : null);
+
+                // Now we simply pass our single column pipeline into the method
+                var dataType = GenerateColumnDataType(columnData);
+                
                 tableSchema.AddColumn(new clsColumnSchema(columnName, dataType));
             }
 
+            // Remove the header row from the original list since it's now represented in the schema
+            list.RemoveAt(0);
+
             return tableSchema;
-
-
         }
     }
 }

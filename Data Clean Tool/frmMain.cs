@@ -15,22 +15,56 @@ namespace Data_Clean_Tool
         {
             InitializeComponent();
         }
+        void MakeButtonsVisible()
+        {
+            llCleaningOption.Enabled = true;
+                llCleaningOption.Visible = true;
+                llOutput.Enabled = true;
+                llOutput.Visible = true;
+            btnFromClipboard.Enabled = true;
+            btnFromClipboard.Visible = true;
+            btnRemoveDuplicateRows.Enabled = true;
+            btnRemoveDuplicateRows.Visible = true;
+            btnReplaceNULL.Enabled = true;
+            btnReplaceNULL.Visible = true;
+            btnStanderizeCasing.Enabled = true;
+            btnStanderizeCasing.Visible = true;
+            btnToFile.Enabled = true;
+            btnToFile.Visible = true;
+        }
 
-        private void btnFromFile_Click(object sender, EventArgs e)
+        private async void btnFromFile_Click(object sender, EventArgs e)
         {
             string FilePath = Utility.clsUtility.GetExcelOrCsvPath();
 
-            if (FilePath != null && File.Exists(FilePath))
+            if (!File.Exists(FilePath))
+                return;
+
+            MakeButtonsVisible();
+            pRightPanel.Enabled = true;
+            pRightPanel.Visible = true;
+            _Config.FilePathwithFileName = FilePath;
+            ctrTableInfo1.SetTableInfo(_Config);
+
+            try
             {
-                pRightPanel.Enabled = true;
-                pRightPanel.Visible = true;
+                // 2. Push the heavy synchronous work to a background thread
+                await Task.Run(() =>
+                {
+                    _clean = new clsClean(_Config);
+                    
 
-                _Config.FilePathwithFileName = FilePath;
-                ctrTableInfo1.SetTableInfo(_Config);
-
-                _clean = new clsClean(_Config);
+                });
                 ctrDataGrid1.LoadData(_clean);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+       
+            
+
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -64,6 +98,10 @@ namespace Data_Clean_Tool
                 _clean = new clsClean(_Config);
                 // _clean.Clean();
                 ctrDataGrid1.LoadData(_clean);
+            }
+            if(ctrDataGrid1.HasData)
+             {
+                MakeButtonsVisible();
             }
         }
     }

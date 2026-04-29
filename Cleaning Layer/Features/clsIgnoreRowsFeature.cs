@@ -32,7 +32,7 @@ namespace Cleaning_Layer.Features
             {
                 return _report;
             }
-
+            //this method return the smallest between the tow numbers
             int rowsToRemove = Math.Min(_config.NumberOfIgnoredRows  , data.Count - startIndex);
 
             data.RemoveRange(startIndex, rowsToRemove);

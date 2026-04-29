@@ -17,6 +17,12 @@ namespace Data_Clean_Tool.Controls
         {
             InitializeComponent();
         }
+       public bool HasData
+        {
+            get { return gridData.DataSource != null; }
+        }
+
+
 
         private void tabDetails_Click(object sender, EventArgs e)
         {
@@ -25,6 +31,8 @@ namespace Data_Clean_Tool.Controls
         public void LoadData(clsClean Clean)
         {
             gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(Clean.Data);
+
+
         }
         private void gridData_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
