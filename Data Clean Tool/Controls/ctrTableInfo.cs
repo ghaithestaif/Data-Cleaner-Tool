@@ -50,9 +50,9 @@ namespace Data_Clean_Tool.Controls
             if (Config != null)
             {
                 txtFileBox.Text = Config.FilePathwithFileName;
-                chkHasHeader.Checked = Config.HasHeader;
                 txtTitle.Text = Config.FileName?.ToString();
                 llFileType.Text = Config.Extension?.ToString();
+                btnSheetName.Text = Config.SheetName?.ToString();
                 _Config = Config;
 
             }
@@ -73,7 +73,6 @@ namespace Data_Clean_Tool.Controls
                 clsConfiguration Config = new clsConfiguration
                 {
                     FilePathwithFileName = FilePath,
-                    HasHeader = chkHasHeader.Checked,
                 };
                 _Config = Config;
                 OnTableInfoChanged(Config, true);

@@ -14,9 +14,10 @@ namespace Cleaning_Layer
 
         List<List<string>> _data;
 
+
         clsSchema _schema;
 
-        public List<List<string>> Data { get { return _data; } }
+       public clsSchema Schema { get { return _schema; } }
         public IReadOnlyList<List<string>> ReadOnlyData { get { return _data.AsReadOnly(); } }
 
         List<ICleaningFeature> _features = new List<ICleaningFeature>();
@@ -41,7 +42,7 @@ namespace Cleaning_Layer
             return true;
         }
 
-        List<List<string>> _ImportData()
+        List<List<string>> _ImportData(int SheetNumber)
         {
             string extension = Path.GetExtension(_config.FilePathwithFileName).ToLower();
 
@@ -49,7 +50,7 @@ namespace Cleaning_Layer
             {
                 case ".xlsx":
                 case ".xls":
-                    return clsExtract.ExtractExcelData(_config.FilePathwithFileName);
+                    return clsExtract.ExtractExcelData(_config.FilePathwithFileName, SheetNumber);
                 case ".csv":
                     return clsExtract.ExtractCSVData(_config.FilePathwithFileName);
                 default:
@@ -57,7 +58,11 @@ namespace Cleaning_Layer
             }
 
         }
-
+        public void ExtractData(int SheetNumber=1)
+        {
+            _data = _ImportData(SheetNumber);
+            _schema = clsGenerateSchema.GenerateSchema(ref _data);
+        }
         public clsClean(clsConfiguration config)
         {
             _config = config;
@@ -67,9 +72,7 @@ namespace Cleaning_Layer
                 return;
             }
 
-            _data = _ImportData();
-           // _ApplyInitialFeatures();
-            _schema = clsGenerateSchema.GenerateSchema(ref _data);
+            
         }
 
         private void _AddFeatures()

@@ -39,6 +39,7 @@ namespace Cleaning_Layer
         public string ColumnName { get; private set; }
         public enDataType DataType { get; internal set; }
         public bool IsNullable { get;  set; }
+        public  int sheetNumber{get; set; }
         public clsColumnSchema( string columnName, enDataType dataType)
         {
             ColumnName = columnName;

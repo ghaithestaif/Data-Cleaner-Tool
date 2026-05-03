@@ -12,7 +12,6 @@ using Cleaning_Layer;
 clsConfiguration config = new clsConfiguration
 {
     FilePathwithFileName = "D:\\Users\\GhaithEstaif\\Desktop\\my.xlsx",
-    FileName = "my.xlsx",
     StandardizeData = true,
     HandleMissingValues = true,
     ReplaceOption = clsConfiguration.enReplaceOption.DefaultValue

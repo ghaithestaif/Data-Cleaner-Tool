@@ -29,11 +29,14 @@ namespace Cleaning_Layer
         public bool StandardizeData { get; set; } = false;
 
         public string? FilePathwithFileName { get; set; }
-        public string? FileName { get; set; }
+        public string? FileName { get { return Path.GetFileName(FilePathwithFileName); } }
         public string? Extension { get { return System.IO.Path.GetExtension(FilePathwithFileName); } }
 
         public bool HasHeader { get; set; } = true;
 
         public int NumberOfIgnoredRows { get; set; } = 0;
+
+        public int SheetNumber { get; set; } = 1;
+        public string? SheetName { get; set; }
     }
 }

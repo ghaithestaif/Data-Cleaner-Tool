@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cleaning_Layer;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -9,19 +10,35 @@ namespace Data_Clean_Tool.Utility
 {
     public class clsUtility
     {
-        static public DataTable ConvertListToDataTable(List<List<string>> data)
+        static public DataTable ConvertListToDataTable(IReadOnlyList<List<string>> data, clsSchema TableSchema)
         {
             DataTable table = new DataTable();
             if (data == null || data.Count == 0) return table;
 
             // Find the maximum number of columns across all rows to prevent out of bounds errors
-            int maxColumns = data.Max(row => row.Count);
+            int maxColumns = TableSchema.NumberOfColumns;
 
-            // Create the columns in the DataTable
             for (int i = 0; i < maxColumns; i++)
             {
-                table.Columns.Add($"Column {i + 1}", typeof(string));
+                var columnSchema = TableSchema.GetColumnByIndex(i);
+
+                string baseName = columnSchema.ColumnName;
+                string columnName = baseName;
+                int counter = 1;
+
+                while (table.Columns.Contains(columnName))
+                {
+                    columnName = $"{baseName}_{counter}";
+                    counter++;
+                }
+
+                table.Columns.Add(columnName, typeof(string));
             }
+
+
+
+            // Create the columns in the DataTable
+
 
             // Fill the data
             foreach (var row in data)

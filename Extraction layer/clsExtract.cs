@@ -9,22 +9,69 @@ namespace Extraction_layer
 {
     public class clsExtract
     {
-        // this function deletes columns that are entirely empty from the data, it takes a list of lists of strings as input and returns a cleaned list of lists of strings
+        // this function deletes rows that are entirely empty from the data
+        static List<List<string>> _DeleteInvalidRows(List<List<string>> data)
+        {
+            if (data == null)
+                return new List<List<string>>();
+
+            var cleanedData = new List<List<string>>();
+
+            foreach (var row in data)
+            {
+                bool hasValue = false;
+
+                foreach (var cell in row)
+                {
+                    if (!string.IsNullOrWhiteSpace(cell))
+                    {
+                        hasValue = true;
+                        break;
+                    }
+                }
+
+                if (hasValue)
+                {
+                    cleanedData.Add(row);
+                }
+            }
+
+            return cleanedData;
+        }
+
+        // this function deletes columns that are entirely empty from the data
         static List<List<string>> _DeleteInvalidColumns(List<List<string>> data)
         {
+            if (data == null || data.Count == 0)
+                return new List<List<string>>();
+
+            int maxColumns = 0;
+            foreach (var row in data)
+            {
+                if (row != null && row.Count > maxColumns)
+                {
+                    maxColumns = row.Count;
+                }
+            }
+
+            if (maxColumns == 0)
+                return new List<List<string>>();
+
             // Identify columns that are entirely empty
             var emptyColumns = new HashSet<int>();
-            for (int col = 0; col < data[0].Count; col++)
+            for (int col = 0; col < maxColumns; col++)
             {
                 bool isEmpty = true;
+
                 foreach (var row in data)
                 {
-                    if (!string.IsNullOrWhiteSpace(row[col]))
+                    if (row != null && col < row.Count && !string.IsNullOrWhiteSpace(row[col]))
                     {
                         isEmpty = false;
                         break;
                     }
                 }
+
                 if (isEmpty)
                 {
                     emptyColumns.Add(col);
@@ -45,14 +92,13 @@ namespace Extraction_layer
                 }
                 cleanedData.Add(cleanedRow);
             }
+
             return cleanedData;
         }
 
-
-
-        //this function reads the excel file and returns a list of lists of strings, where each inner list represents a row of data from the excel file
+        // this function reads the excel file and returns a list of lists of strings, where each inner list represents a row of data from the excel file
         // reads on sheet because the tool deals with one table
-        static public List<List<string>> ExtractExcelData(string filePath)
+        static public List<List<string>> ExtractExcelData(string filePath, int SheetNumber)
         {
             var data = new List<List<string>>();
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -61,30 +107,35 @@ namespace Extraction_layer
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
-
-                    while (reader.Read())
+                    int currentSheet = 1;
+                    do
                     {
-
-                        var row = new List<string>();
-                        for (int i = 0; i < reader.FieldCount; i++)
+                        if (currentSheet == SheetNumber)
                         {
-                            
-                            row.Add((reader.GetValue(i)?.ToString() ?? string.Empty).Trim());
+                            while (reader.Read())
+                            {
+                                var row = new List<string>();
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    row.Add((reader.GetValue(i)?.ToString() ?? string.Empty).Trim());
+                                }
+                                data.Add(row);
+                            }
                         }
-                        data.Add(row);
-                    }
-                    //next sheet
-                    
+                        currentSheet++;
+
+                    } while (reader.NextResult());
                 }
             }
 
-            //now we have the data in a list of lists of strings, we can return it but we need to clean the empty columns and rows
+            // remove empty rows, then remove empty columns
+            data = _DeleteInvalidRows(data);
+            data = _DeleteInvalidColumns(data);
 
-
-
-            return _DeleteInvalidColumns(data);
+            return data;
         }
-        //this function reads a CSV file and returns a list of lists of strings, where each inner list represents a row of data from the CSV file
+
+        // this function reads a CSV file and returns a list of lists of strings, where each inner list represents a row of data from the CSV file
         static public List<List<string>> ExtractCSVData(string filePath)
         {
             var data = new List<List<string>>();
@@ -105,5 +156,41 @@ namespace Extraction_layer
             return data;
         }
 
+        public static Dictionary<int, string> GetExcelSheetNames(string filePath)
+        {
+            //manage CSV
+            if (Path.GetExtension(filePath).Equals(".csv", StringComparison.OrdinalIgnoreCase))
+            {
+                return new Dictionary<int, string> { { 0, Path.GetFileNameWithoutExtension(filePath) } };
+            }
+
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentException("File path cannot be null or empty.", nameof(filePath));
+            }
+
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException("The specified file does not exist.", filePath);
+            }
+
+            var sheets = new Dictionary<int, string>();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            {
+                int sheetIndex = 0;
+
+                do
+                {
+                    sheets.Add(sheetIndex, reader.Name);
+                    sheetIndex++;
+                }
+                while (reader.NextResult());
+            }
+
+            return sheets;
+        }
     }
 }

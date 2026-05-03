@@ -17,7 +17,7 @@ namespace Data_Clean_Tool.Controls
         {
             InitializeComponent();
         }
-       public bool HasData
+        public bool HasData
         {
             get { return gridData.DataSource != null; }
         }
@@ -30,7 +30,8 @@ namespace Data_Clean_Tool.Controls
         }
         public void LoadData(clsClean Clean)
         {
-            gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(Clean.Data);
+            gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(Clean.ReadOnlyData, Clean.Schema);
+
 
 
         }
@@ -42,6 +43,35 @@ namespace Data_Clean_Tool.Controls
         private void btnUp_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pnlTopAction_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btndown_Click(object sender, EventArgs e)
+        {
+            gridData.Focus();
+            SendKeys.Send("{DOWN}");
+        }
+
+        private void btnUp_Click_1(object sender, EventArgs e)
+        {
+            gridData.Focus();
+            SendKeys.Send("{UP}");
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            gridData.Focus();
+            SendKeys.Send("{LEFT}");
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            gridData.Focus();
+            SendKeys.Send("{RIGHT}");
         }
     }
 }
