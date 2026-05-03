@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Data_Clean_Tool.Controls
 {
@@ -21,7 +22,33 @@ namespace Data_Clean_Tool.Controls
         {
             get { return gridData.DataSource != null; }
         }
+       public enum enStatus { loading, Cleaning , presentingData}
+        enStatus _status;
+        public enStatus status
+        {
+            get { return _status; }
+            set
+            {
+                _status = value;
 
+                switch (_status)
+                {
+                    case enStatus.loading:
+                        gridData.DataSource = null;
+                        llCleaning.Text = "Loading Data...";
+                        break;
+
+                    case enStatus.Cleaning:
+                        gridData.DataSource = null;
+                        llCleaning.Text = "Cleaning Data...";
+                        break;
+
+                    default:
+                        llCleaning.Text = "";
+                        break;
+                }
+            }
+        }
 
 
         private void tabDetails_Click(object sender, EventArgs e)
@@ -30,17 +57,18 @@ namespace Data_Clean_Tool.Controls
         }
         public void LoadData(clsClean Clean)
         {
+            if(Clean == null || Clean.ReadOnlyData == null || Clean.Schema == null)
+            {
+                MessageBox.Show("No data to load.");
+                return;
+            }
+            status = enStatus.presentingData;
             gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(Clean.ReadOnlyData, Clean.Schema);
 
 
 
         }
         private void gridData_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnUp_Click(object sender, EventArgs e)
         {
 
         }

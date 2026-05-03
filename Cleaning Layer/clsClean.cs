@@ -58,8 +58,10 @@ namespace Cleaning_Layer
             }
 
         }
-        public void ExtractData(int SheetNumber=1)
+        public void ExtractData(int SheetNumber)
         {
+            
+
             _data = _ImportData(SheetNumber);
             _schema = clsGenerateSchema.GenerateSchema(ref _data);
         }

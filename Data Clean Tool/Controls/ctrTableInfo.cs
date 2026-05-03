@@ -54,7 +54,6 @@ namespace Data_Clean_Tool.Controls
                 llFileType.Text = Config.Extension?.ToString();
                 btnSheetName.Text = Config.SheetName?.ToString();
                 _Config = Config;
-
             }
         }
 

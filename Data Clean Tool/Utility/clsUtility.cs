@@ -41,12 +41,12 @@ namespace Data_Clean_Tool.Utility
 
 
             // Fill the data
-            foreach (var row in data)
+            for (var row = 0; row < data.Count&& row<10000; row++)
             {
                 object[] rowData = new object[maxColumns];
-                for (int i = 0; i < row.Count; i++)
+                for (int i = 0; i < data[row].Count; i++)
                 {
-                    rowData[i] = row[i];
+                    rowData[i] = data[row][i];
                 }
                 table.Rows.Add(rowData);
             }
