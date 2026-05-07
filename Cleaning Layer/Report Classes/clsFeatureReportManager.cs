@@ -11,7 +11,7 @@ namespace Cleaning_Layer.Report_Classes
        static List<clsFeatureReport> _featureReports = new List<clsFeatureReport>();
 
         
-        static public IReadOnlyList<clsFeatureReport> clsFeatureName => _featureReports.AsReadOnly(); 
+        static public IReadOnlyList<clsFeatureReport> FeaturesReports => _featureReports.AsReadOnly(); 
 
         static   public void AddFeatureReport(clsFeatureReport report)
         {

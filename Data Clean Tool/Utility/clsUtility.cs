@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Data_Clean_Tool.Utility
 {
@@ -55,8 +56,30 @@ namespace Data_Clean_Tool.Utility
         }
 
 
-        public static string GetExcelOrCsvPath()
+        public static string GetExcelOrCsvPath(bool selectFolder = false)
         {
+            if (selectFolder)
+            {
+                using (SaveFileDialog saveDialog = new SaveFileDialog())
+                {
+                    saveDialog.Title = "Select location and file name";
+                    saveDialog.Filter =
+                        "Excel Files (*.xlsx)|*.xlsx|" +
+                        "CSV Files (*.csv)|*.csv|" +
+                        "All Files (*.*)|*.*";
+
+                    // Default file name
+                    saveDialog.FileName = "Cleaned Data.xlsx";
+
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        return saveDialog.FileName;
+                    }
+                }
+
+                return null;
+            }
+
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 // Initial directory (optional)

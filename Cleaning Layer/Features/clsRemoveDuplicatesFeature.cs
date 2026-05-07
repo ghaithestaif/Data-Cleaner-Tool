@@ -12,6 +12,10 @@ namespace Cleaning_Layer.Features
         //this feature will remove duplicate rows from the data
         public clsFeatureReport Apply( List<List<string>> data)
         {
+            if(data== null || data.Count == 0)
+            {
+                return new clsFeatureReport() { Feature = clsFeatureReport.enfeatureName.RemoveDuplicates };
+            }
             clsFeatureReport _report = new clsFeatureReport();
 
             //let's make each row a string and add it to a hashset to remove duplicates

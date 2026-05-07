@@ -16,9 +16,10 @@ namespace Cleaning_Layer.Features
 
         public clsFeatureReport Apply(List<List<string>> data)
         {
+
             if (data == null || data.Count == 0)
             {
-                return _report;
+                return new clsFeatureReport() { Feature = clsFeatureReport.enfeatureName.RemoveDuplicates };
             }
 
             if (_config.NumberOfIgnoredRows <= 0)

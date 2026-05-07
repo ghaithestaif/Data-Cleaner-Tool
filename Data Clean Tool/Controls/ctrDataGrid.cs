@@ -22,7 +22,7 @@ namespace Data_Clean_Tool.Controls
         {
             get { return gridData.DataSource != null; }
         }
-       public enum enStatus { loading, Cleaning , presentingData}
+        public enum enStatus { loading, Cleaning, presentingData }
         enStatus _status;
         public enStatus status
         {
@@ -55,9 +55,31 @@ namespace Data_Clean_Tool.Controls
         {
 
         }
+        public void Subscribe(clsClean clean)
+        {
+            clean.DataUpdated += Clean_DataUpdated;
+        }
+
+        private void Clean_DataUpdated(object sender, clsClean.DataUpdatedEventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => Clean_DataUpdated(sender, e)));
+                return;
+            }
+
+            if (e.Data == null || e.Schema == null)
+            {
+                MessageBox.Show("No data to load.");
+                return;
+            }
+            status = enStatus.presentingData;
+            gridData.DataSource = Utility.clsUtility.ConvertListToDataTable(e.Data, e.Schema);
+        }
+
         public void LoadData(clsClean Clean)
         {
-            if(Clean == null || Clean.ReadOnlyData == null || Clean.Schema == null)
+            if (Clean == null || Clean.ReadOnlyData == null || Clean.Schema == null)
             {
                 MessageBox.Show("No data to load.");
                 return;
@@ -100,6 +122,11 @@ namespace Data_Clean_Tool.Controls
         {
             gridData.Focus();
             SendKeys.Send("{RIGHT}");
+        }
+
+        private void llCleaning_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

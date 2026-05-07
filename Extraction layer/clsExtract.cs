@@ -192,5 +192,52 @@ namespace Extraction_layer
 
             return sheets;
         }
+
+        public static void WriteToExcel(IReadOnlyList<List<string>> data, string filePath, string sheetName )
+        {
+            if (data == null || data.Count == 0) return;
+            
+            using (var workbook = new ClosedXML.Excel.XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add(sheetName);
+                for (int r = 0; r < data.Count; r++)
+                {
+                    for (int c = 0; c < data[r].Count; c++)
+                    {
+                        worksheet.Cell(r + 1, c + 1).Value = data[r][c];
+                    }
+                }
+                workbook.SaveAs(filePath);
+            }
+        }
+
+        public static void WriteToCsv(IReadOnlyList<List<string>> data, string filePath)
+        {
+            if (data == null || data.Count == 0) return;
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                foreach (var row in data)
+                {
+                    var escapedRow = new List<string>();
+                    foreach (var field in row)
+                    {
+                        if (field == null)
+                        {
+                            escapedRow.Add("");
+                            continue;
+                        }
+                        // Escape quotes and put fields with commas or quotes in quotes
+                        string escapedField = field;
+                        if (escapedField.Contains("\"") || escapedField.Contains(","))
+                        {
+                            escapedField = $"\"{escapedField.Replace("\"", "\"\"")}\"";
+                        }
+                        escapedRow.Add(escapedField);
+                    }
+                    writer.WriteLine(string.Join(",", escapedRow));
+                }
+            }
+        }
     }
 }

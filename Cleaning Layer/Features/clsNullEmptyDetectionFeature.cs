@@ -25,13 +25,9 @@ namespace Cleaning_Layer.Features
         Func<int,string> _handleMissingData;
         void PrepareOptionAction()
         {
-            if (_config.ReplaceOption == clsConfiguration.enReplaceOption.ReplaceWithNA)
+            
+            if (_config.ReplaceOption == clsConfiguration.enReplaceOption.RemoveRow )
             {
-                _handleMissingData   = (j) => { Interlocked.Increment(ref UpdateRowsCount); return "N/A"; };
-            }
-            else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.RemoveRow )
-            {
-                // We don't increment here anymore because the loop will handle the increment
                 _handleMissingData = (j) => { return ""; };
             }
             else if (_config.ReplaceOption == clsConfiguration.enReplaceOption.DefaultValue)
@@ -46,6 +42,10 @@ namespace Cleaning_Layer.Features
 
         public clsFeatureReport Apply(List<List<string>> data)
         {
+            if (data == null || data.Count == 0)
+            {
+                return new clsFeatureReport() { Feature = clsFeatureReport.enfeatureName.RemoveDuplicates };
+            }
             PrepareOptionAction();
             
 

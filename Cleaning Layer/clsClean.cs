@@ -17,26 +17,47 @@ namespace Cleaning_Layer
 
         clsSchema _schema;
 
+        public class DataUpdatedEventArgs : EventArgs
+        {
+            public IReadOnlyList<List<string>> Data { get; }
+            public clsSchema Schema { get; }
+            public IReadOnlyList<clsFeatureReport> FeaturesReports { get; }
+
+            public DataUpdatedEventArgs(IReadOnlyList<List<string>> data, clsSchema schema, IReadOnlyList<clsFeatureReport> featuresReports)
+            {
+                Data = data;
+                Schema = schema;
+                FeaturesReports = featuresReports;
+            }
+        }
+
+        public event EventHandler<DataUpdatedEventArgs> DataUpdated;
+
+        protected virtual void OnDataUpdated(DataUpdatedEventArgs e)
+        {
+            DataUpdated?.Invoke(this, e);
+        }
+
        public clsSchema Schema { get { return _schema; } }
         public IReadOnlyList<List<string>> ReadOnlyData { get { return _data.AsReadOnly(); } }
 
         List<ICleaningFeature> _features = new List<ICleaningFeature>();
 
-        private bool validateConfiguration()
+        private bool validateConfiguration(clsConfiguration config)
         {
-            if (_config == null)
+            if (config == null)
             {
                 throw new ArgumentNullException(nameof(_config), "Configuration cannot be null.");
             }
 
-            if (string.IsNullOrEmpty(_config.FilePathwithFileName))
+            if (string.IsNullOrEmpty(config.FilePathwithFileName))
             {
-                throw new ArgumentException("File path cannot be null or empty.", nameof(_config.FilePathwithFileName));
+                throw new ArgumentException("File path cannot be null or empty.", nameof(config.FilePathwithFileName));
             }
 
-            if (!File.Exists(_config.FilePathwithFileName))
+            if (!File.Exists(config.FilePathwithFileName))
             {
-                throw new FileNotFoundException("The specified file does not exist.", _config.FilePathwithFileName);
+                throw new FileNotFoundException("The specified file does not exist.", config.FilePathwithFileName);
             }
 
             return true;
@@ -59,22 +80,18 @@ namespace Cleaning_Layer
 
         }
         public void ExtractData(int SheetNumber)
-        {
-            
-
+        {    
             _data = _ImportData(SheetNumber);
             _schema = clsGenerateSchema.GenerateSchema(ref _data);
+            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, null));
         }
         public clsClean(clsConfiguration config)
         {
-            _config = config;
-
-            if (!validateConfiguration())
+            if (!validateConfiguration(config))
             {
                 return;
             }
-
-            
+            _config = config;
         }
 
         private void _AddFeatures()
@@ -116,11 +133,14 @@ namespace Cleaning_Layer
                 clsFeatureReportManager.AddFeatureReport(feature.Apply(_data));
             }
 
+            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, clsFeatureReportManager.FeaturesReports));
+
             return true;
         }
 
         public void UpdateConfig(clsConfiguration Config)
         {
+            validateConfiguration(Config);
             _config = Config;   
         }
 

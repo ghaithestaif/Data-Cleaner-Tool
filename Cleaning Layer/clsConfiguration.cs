@@ -10,7 +10,7 @@ namespace Cleaning_Layer
     {
         public enum enReplaceOption
         {
-            ReplaceWithNA,
+            
             RemoveRow,
             DefaultValue
         }
@@ -23,7 +23,7 @@ namespace Cleaning_Layer
         }
 
         public enCasingStanderdizationOption? StanderdizeDataOption { get; set; } = null;
-        public enReplaceOption? ReplaceOption { get; set; } = enReplaceOption.ReplaceWithNA;
+        public enReplaceOption? ReplaceOption { get; set; } = enReplaceOption.DefaultValue;
         public bool RemoveDuplicates { get; set; } = false;
         public bool HandleMissingValues { get; set; } = false;
         public bool StandardizeData { get; set; } = false;
@@ -32,11 +32,12 @@ namespace Cleaning_Layer
         public string? FileName { get { return Path.GetFileName(FilePathwithFileName); } }
         public string? Extension { get { return System.IO.Path.GetExtension(FilePathwithFileName); } }
 
-        public bool HasHeader { get; set; } = true;
+        public bool HasHeader { get; set; } = false;
 
         public int NumberOfIgnoredRows { get; set; } = 0;
 
-        public int SheetNumber { get; set; } = 1;
+        public int SheetNumber { get; set; } = -1;
         public string? SheetName { get; set; }
+
     }
 }

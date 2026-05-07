@@ -106,12 +106,13 @@
             // 
             llCleaning.BackColor = Color.Transparent;
             llCleaning.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            llCleaning.ForeColor = Color.FromArgb(140, 100, 180);
-            llCleaning.Location = new Point(166, 194);
+            llCleaning.ForeColor = Color.DimGray;
+            llCleaning.Location = new Point(170, 150);
             llCleaning.Name = "llCleaning";
             llCleaning.Size = new Size(286, 61);
             llCleaning.TabIndex = 3;
             llCleaning.Text = "Cleaning Data";
+            llCleaning.Click += llCleaning_Click;
             // 
             // gridData
             // 
