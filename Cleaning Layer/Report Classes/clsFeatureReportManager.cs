@@ -17,9 +17,12 @@ namespace Cleaning_Layer.Report_Classes
         {
             _featureReports.Add(report);
         }
+        static public void reset()
+        {
+            _featureReports.Clear();
+        }
 
 
 
-
-    }
+        }
 }

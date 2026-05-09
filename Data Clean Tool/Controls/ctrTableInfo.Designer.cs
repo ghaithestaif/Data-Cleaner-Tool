@@ -269,11 +269,11 @@
             btnMoreReportInfo.FillColor = Color.FromArgb(45, 45, 45);
             btnMoreReportInfo.Font = new Font("Segoe UI", 9F);
             btnMoreReportInfo.ForeColor = Color.White;
-            btnMoreReportInfo.Location = new Point(529, 46);
+            btnMoreReportInfo.Location = new Point(532, 0);
             btnMoreReportInfo.Margin = new Padding(3, 4, 3, 4);
             btnMoreReportInfo.Name = "btnMoreReportInfo";
             btnMoreReportInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnMoreReportInfo.Size = new Size(108, 32);
+            btnMoreReportInfo.Size = new Size(108, 40);
             btnMoreReportInfo.TabIndex = 36;
             btnMoreReportInfo.Text = "More Info";
             btnMoreReportInfo.Click += btnMoreReportInfo_Click;

@@ -27,7 +27,7 @@ namespace Cleaning_Layer.Features
                 return _report;
             }
 
-            int startIndex = _config.HasHeader ? 1 : 0;
+            int startIndex = 0;
 
             if (data.Count <= startIndex)
             {

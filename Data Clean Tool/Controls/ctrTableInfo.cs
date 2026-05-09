@@ -53,6 +53,8 @@ namespace Data_Clean_Tool.Controls
             if (e.FeaturesReports == null)
                 return;
             // Update the UI with the new data, schema, and feature reports
+
+            
             llAffectedRows.Text = $"{e.FeaturesReports.Sum(f => f.RecordsAffected)}";
             llRemovedRows.Text = $"{e.FeaturesReports.Where(f => f.RemovedRecordsAffected > 0).Sum(f => f.RemovedRecordsAffected)}";
             llUpdatedRows.Text = $"{e.FeaturesReports.Where(f => f.UpdatedRecordsAffected > 0).Sum(f => f.UpdatedRecordsAffected)}";

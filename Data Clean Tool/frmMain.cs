@@ -1,4 +1,5 @@
 using Cleaning_Layer;
+using Cleaning_Layer.Report_Classes;
 using Data_Clean_Tool.Features;
 using Data_Clean_Tool.Utility;
 using DocumentFormat.OpenXml.Math;
@@ -23,8 +24,6 @@ namespace Data_Clean_Tool
             InitializeComponent();
         }
 
-
-
         private void LoadSheets(Dictionary<int, string> sheetNames)
         {
             _loadedSheetNames = sheetNames?.Values.ToList() ?? new List<string>();
@@ -47,6 +46,8 @@ namespace Data_Clean_Tool
 
         private async void OnSheetSelected(string sheetName)
         {
+            clsFeatureReportManager.reset();
+
             int sheetIndex = _loadedSheetNames.IndexOf(sheetName) + 1;
 
             if (_Config.SheetNumber == sheetIndex)
@@ -104,8 +105,6 @@ namespace Data_Clean_Tool
             llCleaningOption.Visible = true;
             llOutput.Enabled = true;
             llOutput.Visible = true;
-            btnFromClipboard.Enabled = true;
-            btnFromClipboard.Visible = true;
             btnRemoveDuplicateRows.Enabled = true;
             btnRemoveDuplicateRows.Visible = true;
             btnReplaceNULL.Enabled = true;
@@ -114,8 +113,10 @@ namespace Data_Clean_Tool
             btnStanderizeCasing.Visible = true;
             btnToFile.Enabled = true;
             btnToFile.Visible = true;
-            btnToFolder.Visible= true;
+            btnToFolder.Visible = true;
             btnToFolder.Enabled = true;
+            btnStart.Enabled = true;
+            btnStart.Visible = true;
         }
 
         void _HandleSheets(string FilePath)
@@ -143,7 +144,7 @@ namespace Data_Clean_Tool
                 });
 
                 // Show the cleaning summary report when done
-                
+
             }
             catch (Exception ex)
             {
@@ -158,7 +159,7 @@ namespace Data_Clean_Tool
 
         private void btnFromFile_Click_1(object sender, EventArgs e)
         {
-
+            clsFeatureReportManager.reset();
             string FilePath = Utility.clsUtility.GetExcelOrCsvPath();
             if (!File.Exists(FilePath))
                 return;
@@ -173,7 +174,7 @@ namespace Data_Clean_Tool
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -204,8 +205,8 @@ namespace Data_Clean_Tool
                     }
                 });
 
-                // Show the cleaning summary report when done
-                
+                clsFeatureReportManager.reset();
+
             }
             else
             {
@@ -301,7 +302,7 @@ namespace Data_Clean_Tool
         private void btnToFile_Click(object sender, EventArgs e)
         {
             string outputPath = Utility.clsUtility.GetExcelOrCsvPath();
-            if(outputPath == null|| !File.Exists(outputPath))
+            if (outputPath == null || !File.Exists(outputPath))
                 return;
 
             if (_Config.Extension == ".xlsx")
@@ -309,13 +310,13 @@ namespace Data_Clean_Tool
                 clsImportExportServices.ExportToExcel(_clean.ReadOnlyData, outputPath, _Config.SheetName);
 
             }
-            else if (_Config.Extension==".csv")
+            else if (_Config.Extension == ".csv")
             {
                 clsImportExportServices.ExportToCsv(_clean.ReadOnlyData, outputPath);
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void btnToFolder_Click(object sender, EventArgs e)
         {
             string outputPath = Utility.clsUtility.GetExcelOrCsvPath(true);
             if (outputPath == null && !File.Exists(outputPath))
@@ -330,6 +331,110 @@ namespace Data_Clean_Tool
             {
                 clsImportExportServices.ExportToCsv(_clean.ReadOnlyData, outputPath);
             }
+
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.O))
+            {
+                btnFromFile_Click_1(null, null);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.S))
+            {
+                btnToFile_Click(null, null);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void resetCleaningOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _Config.resetCleaningOptions();
+
+
+
+        }
+
+        private void openNewFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnFromFile_Click_1(null, null);
+        }
+
+        private void exportToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnToFile_Click(null, null);
+
+
+        }
+
+        private void exportToFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            btnToFolder_Click(null, null);
+        }
+
+        private void ignoreRowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRowsIgnore frm = new frmRowsIgnore();
+            frm.ShowDialog();
+
+
+            if (frm.selectedRowCount > 0)
+            {
+                MessageBox.Show($"{frm.selectedRowCount} rows will be removed in the cleaning process.", "Rows Ignored", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _Config.NumberOfIgnoredRows = frm.selectedRowCount;
+
+            }
+
+
+        }
+
+        private void replaceNullEmptyValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnReplaceNULL_Click(null, null);
+        }
+
+        private void standardizeCasingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnStanderizeCasing_Click(null, null);
+        }
+
+        private void removeDuplicateRowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnRemoveDuplicateRows_Click(null, null);
+        }
+
+        private void startCleaningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnStart_Click(null, null);
+        }
+
+        private void showReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport frm = new frmReport();
+            frm.ShowDialog();
+        }
+
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            btnFromFile_Click_1(null, null);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            btnToFile_Click(null, null);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
 
         }
     }

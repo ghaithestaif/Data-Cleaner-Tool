@@ -94,6 +94,7 @@ namespace Cleaning_Layer.Schema_Classes
             }
 
             // Remove the header row from the original list since it's now represented in the schema
+
             list.RemoveAt(0);
 
             return tableSchema;

@@ -32,12 +32,24 @@ namespace Cleaning_Layer
         public string? FileName { get { return Path.GetFileName(FilePathwithFileName); } }
         public string? Extension { get { return System.IO.Path.GetExtension(FilePathwithFileName); } }
 
-        public bool HasHeader { get; set; } = false;
 
         public int NumberOfIgnoredRows { get; set; } = 0;
 
         public int SheetNumber { get; set; } = -1;
         public string? SheetName { get; set; }
+
+       public void resetCleaningOptions()
+        {
+            
+            NumberOfIgnoredRows = 0;
+            StanderdizeDataOption = null;
+            ReplaceOption = enReplaceOption.DefaultValue;
+            RemoveDuplicates = false;
+            HandleMissingValues = false;
+            StandardizeData = false;
+        }
+
+
 
     }
 }

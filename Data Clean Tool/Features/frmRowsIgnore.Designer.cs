@@ -136,6 +136,7 @@
             Controls.Add(btnCancel);
             Controls.Add(btnNumberOfRows);
             Controls.Add(guna2HtmlLabel1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "frmRowsIgnore";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmRowsIgnore";
