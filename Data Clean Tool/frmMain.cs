@@ -22,6 +22,58 @@ namespace Data_Clean_Tool
         {
             InitializeComponent();
         }
+        enum enStatus
+        {
+            NoData,
+            Loading,
+            Ready,
+            Cleaning
+        }
+        enStatus _currentStatus = enStatus.NoData;
+        enStatus currStatus
+        {
+            get { return _currentStatus; }
+            set
+            {
+                _currentStatus = value;
+                switch (_currentStatus)
+                {
+                    case enStatus.NoData:
+                        HandleCleaningLoadingButtons(true);
+                        break;
+                    case enStatus.Loading:
+                        HandleCleaningLoadingButtons(false);
+                        break;
+                    case enStatus.Ready:
+                        HandleCleaningLoadingButtons(true);
+                        break;
+                    case enStatus.Cleaning:
+                        HandleCleaningLoadingButtons(false);
+                        break;
+                }
+            }
+        }
+        void HandleCleaningLoadingButtons(bool enable)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => HandleCleaningLoadingButtons(enable)));
+                return;
+            }
+
+            openNewFileToolStripMenuItem.Enabled = enable;
+            exportToFileToolStripMenuItem.Enabled = enable;
+            exportToFolderToolStripMenuItem.Enabled = enable;
+            startCleaningToolStripMenuItem.Enabled = enable;
+            showReportToolStripMenuItem.Enabled = enable;
+            showTableToolStripMenuItem.Enabled = enable;
+            btnStart.Enabled = enable;
+            btnExport.Enabled = enable;
+            btnFromFile.Enabled = enable;
+            btnOpenFile.Enabled = enable;
+            btnSave.Enabled = enable;
+            btnSaveAs.Enabled = enable;
+        }
 
         private bool EnsureConfigInitialized()
         {
@@ -63,7 +115,7 @@ namespace Data_Clean_Tool
             }
         }
         void DataUpdated(object sender, clsClean.DataUpdatedEventArgs e) {
-
+            currStatus = enStatus.Ready;
         }
 
         private async void OnSheetSelected(string sheetName)
@@ -111,7 +163,7 @@ namespace Data_Clean_Tool
 
             }
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
-
+            currStatus = enStatus.Loading;
             await Task.Run(() =>
             {
                 try
@@ -195,6 +247,7 @@ namespace Data_Clean_Tool
         {
 
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
+            currStatus = enStatus.Loading;
             _Config = new clsConfiguration();
             
             _Config.FilePathwithFileName = e.FilePath;
@@ -232,6 +285,7 @@ namespace Data_Clean_Tool
             }
 
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.Cleaning;
+            currStatus = enStatus.Cleaning;
             await Task.Run(() =>
             {
                 try

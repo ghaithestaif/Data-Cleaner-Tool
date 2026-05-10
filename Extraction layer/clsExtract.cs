@@ -1,9 +1,16 @@
-﻿using ExcelDataReader;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using ExcelDataReader;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+
 
 namespace Extraction_layer
 {
@@ -139,20 +146,32 @@ namespace Extraction_layer
         static public List<List<string>> ExtractCSVData(string filePath)
         {
             var data = new List<List<string>>();
-            using (var reader = new StreamReader(filePath))
+
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                while (!reader.EndOfStream)
+                //headers handled inside the system
+                HasHeaderRecord = false,
+                BadDataFound = null,
+                MissingFieldFound = null,
+                HeaderValidated = null
+            };
+
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, config))
+            {
+                while (csv.Read())
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
                     var row = new List<string>();
-                    foreach (var value in values)
+
+                    for (int i = 0; csv.TryGetField(i, out string field); i++)
                     {
-                        row.Add(value.Trim());
+                        row.Add(field?.Trim() ?? string.Empty);
                     }
+
                     data.Add(row);
                 }
             }
+
             return data;
         }
 

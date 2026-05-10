@@ -1,4 +1,5 @@
 ﻿using Cleaning_Layer.Report_Classes;
+using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,33 +13,29 @@ namespace Cleaning_Layer.Features
         //this feature will remove duplicate rows from the data
         public clsFeatureReport Apply( List<List<string>> data)
         {
-            if(data== null || data.Count == 0)
+            if (data == null || data.Count == 0)
             {
-                return new clsFeatureReport() { Feature = clsFeatureReport.enfeatureName.RemoveDuplicates };
+                return new clsFeatureReport()
+                {
+                    Feature = clsFeatureReport.enfeatureName.RemoveDuplicates
+                };
             }
+
             clsFeatureReport _report = new clsFeatureReport();
 
-            //let's make each row a string and add it to a hashset to remove duplicates
+            // remove duplicates safely using a stable key
+            List<List<string>> newData = data
+                .DistinctBy(row => string.Join("\u001F", row))
+                .ToList();
 
-            HashSet<string> seen = new HashSet<string>();
-            List<List<string>> newData = new List<List<string>>();
+            // calculate how many were removed
+            _report.RemovedRecordsAffected = data.Count - newData.Count;
 
-            for (int i = 0;i< data.Count; i++)
-            {
-                string rowString = string.Join(",", data[i]);
-                if (seen.Add(rowString))
-                {
-                    newData.Add(data[i]);
-                }
-                else
-                {
-                    _report.RemovedRecordsAffected++;
-                }
-            }
+            // replace original data
             data.Clear();
             data.AddRange(newData);
-            return _report;
 
+            return _report;
         }
     }
 }
