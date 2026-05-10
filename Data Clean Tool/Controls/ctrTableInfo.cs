@@ -18,20 +18,30 @@ namespace Data_Clean_Tool.Controls
 {
     public partial class ctrTableInfo : UserControl
     {
-        clsConfiguration _Config;
+        
         public class TableInfoChangedEventArgs : EventArgs
         {
-            public clsConfiguration Configuration { get; }
-            public bool IsNewFile { get; }
 
-            public TableInfoChangedEventArgs(bool isnew, clsConfiguration configuration)
+            public string FilePath;
+            public TableInfoChangedEventArgs(string FilePath)
             {
-                Configuration = configuration;
-                IsNewFile = isnew;
+                this.FilePath = FilePath;
             }
         }
 
         public event EventHandler<TableInfoChangedEventArgs> TableInfoChanged;
+
+        public class IgnoreRowsSelectedEventArgs : EventArgs
+        {
+            public int NumberOfRows { get; }
+            public IgnoreRowsSelectedEventArgs(int NumberOfRows)
+            {
+                this.NumberOfRows = NumberOfRows;
+            }
+        }
+
+        public event EventHandler<IgnoreRowsSelectedEventArgs> IgnoreRowsSelected;
+
 
         public ctrTableInfo()
         {
@@ -72,9 +82,13 @@ namespace Data_Clean_Tool.Controls
 
         }
 
-        protected virtual void OnTableInfoChanged(clsConfiguration configuration, bool isNewFile = false)
+        protected virtual void OnTableInfoChanged(string filePath)
         {
-            TableInfoChanged?.Invoke(this, new TableInfoChangedEventArgs(isNewFile, configuration));
+            TableInfoChanged?.Invoke(this, new TableInfoChangedEventArgs(filePath));
+        }
+        protected virtual void OnIgnoreRowsSelected(int numberOfRows)
+        {
+            IgnoreRowsSelected?.Invoke(this, new IgnoreRowsSelectedEventArgs(numberOfRows));
         }
 
         public void SetTableInfo(clsConfiguration Config)
@@ -85,7 +99,6 @@ namespace Data_Clean_Tool.Controls
                 txtTitle.Text = Config.FileName?.ToString();
                 llFileType.Text = Config.Extension?.ToString();
                 btnSheetName.Text = Config.SheetName?.ToString();
-                _Config = Config;
                 llAffectedRows.Text = "0";
                 llRemovedRows.Text = "0";
                 llUpdatedRows.Text = "0";
@@ -104,13 +117,8 @@ namespace Data_Clean_Tool.Controls
             }
             if (!string.IsNullOrEmpty(FilePath))
             {
-                clsConfiguration Config = new clsConfiguration
-                {
-                    FilePathwithFileName = FilePath,
-                };
-                _Config = Config;
-                OnTableInfoChanged(Config, true);
-
+           
+                OnTableInfoChanged(FilePath);
             }
 
         }
@@ -134,9 +142,7 @@ namespace Data_Clean_Tool.Controls
 
             if(frm.selectedRowCount > 0)
             {
-                MessageBox.Show($"{frm.selectedRowCount} rows will be removed in the cleaning process.", "Rows Ignored", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _Config.NumberOfIgnoredRows = frm.selectedRowCount;
-                 OnTableInfoChanged(_Config, false);
+                OnIgnoreRowsSelected(frm.selectedRowCount);
             }
 
         }

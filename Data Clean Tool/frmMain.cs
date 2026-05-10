@@ -17,11 +17,30 @@ namespace Data_Clean_Tool
         clsClean _clean;
         clsConfiguration _Config;
         private List<string> _loadedSheetNames = new List<string>();
-
-
+        
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private bool EnsureConfigInitialized()
+        {
+            if (_Config != null)
+            {
+                return true;
+            }
+
+            MessageBox.Show("Please open a file first.", "No File Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
+        }
+        private bool ValidateCleanObject()
+        {
+            if (_clean != null)
+            {
+                return true;
+            }
+            MessageBox.Show("Please select a sheet to clean.", "No Sheet Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
 
         private void LoadSheets(Dictionary<int, string> sheetNames)
@@ -43,10 +62,21 @@ namespace Data_Clean_Tool
                 sheetFlowPanel.ResumeLayout();
             }
         }
+        void DataUpdated(object sender, clsClean.DataUpdatedEventArgs e) {
+
+        }
 
         private async void OnSheetSelected(string sheetName)
         {
+
+
+
             clsFeatureReportManager.reset();
+
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
 
             int sheetIndex = _loadedSheetNames.IndexOf(sheetName) + 1;
 
@@ -70,6 +100,7 @@ namespace Data_Clean_Tool
             if (_clean == null)
             {
                 _clean = new clsClean(_Config);
+                _clean.DataUpdated += DataUpdated;
                 ctrDataGrid1.Subscribe(_clean);
                 ctrTableInfo1.Subscribe(_clean);
             }
@@ -81,19 +112,22 @@ namespace Data_Clean_Tool
             }
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
 
-            try
+            await Task.Run(() =>
             {
-                await System.Threading.Tasks.Task.Run(() =>
+                try
                 {
                     _clean.ExtractData(_Config.SheetNumber);
-                });
-            }
-            catch (System.Exception ex)
-            {
-                Data_Clean_Tool.Utility.ErrorLogger.LogError(ex, "Error occurred while selecting a sheet.");
-                MessageBox.Show("An error occurred. Check the Windows Event Log for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            ctrTableInfo1.SetTableInfo(_Config);
+                }
+                catch (Exception ex)
+                {
+                    // This runs on background thread - need to marshal back to UI
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Data_Clean_Tool.Utility.ErrorLogger.LogError(ex, "Error occurred while selecting a sheet.");
+                        MessageBox.Show("An error occurred. Check the Windows Event Log for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    });
+                }
+            });
 
         }
 
@@ -111,12 +145,14 @@ namespace Data_Clean_Tool
             btnReplaceNULL.Visible = true;
             btnStanderizeCasing.Enabled = true;
             btnStanderizeCasing.Visible = true;
-            btnToFile.Enabled = true;
-            btnToFile.Visible = true;
-            btnToFolder.Visible = true;
-            btnToFolder.Enabled = true;
+            btnSave.Enabled = true;
+            btnSave.Visible = true;
+            btnSaveAs.Visible = true;
+            btnSaveAs.Enabled = true;
             btnStart.Enabled = true;
             btnStart.Visible = true;
+            btnExport.Enabled = true;
+            btnExport.Visible = true;
         }
 
         void _HandleSheets(string FilePath)
@@ -130,41 +166,17 @@ namespace Data_Clean_Tool
             }
 
         }
-
-
-        async void _StartCleaning()
-        {
-            ctrDataGrid1.status = enStatus.Cleaning;
-            try
-            {
-                // 2. Push the heavy synchronous work to a background thread
-                await Task.Run(() =>
-                {
-                    _clean.Clean();
-                });
-
-                // Show the cleaning summary report when done
-
-            }
-            catch (Exception ex)
-            {
-                Utility.ErrorLogger.LogError(ex, "Error occurred while cleaning data.");
-                MessageBox.Show("An error occurred. Check the Windows Event Log for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-
-
-        }
-
         private void btnFromFile_Click_1(object sender, EventArgs e)
         {
-            clsFeatureReportManager.reset();
             string FilePath = Utility.clsUtility.GetExcelOrCsvPath();
             if (!File.Exists(FilePath))
                 return;
+
+
+            clsFeatureReportManager.reset();
             _Config = new clsConfiguration();
             MakeButtonsVisible();
+            
             _Config.FilePathwithFileName = FilePath;
             _HandleSheets(FilePath);
         }
@@ -181,54 +193,29 @@ namespace Data_Clean_Tool
 
         private async void ctrTableInfo1_TableInfoChanged(object sender, Data_Clean_Tool.Controls.ctrTableInfo.TableInfoChangedEventArgs e)
         {
-            if (e.IsNewFile)
-            {
 
-                _Config = e.Configuration;
-                _clean.UpdateConfig(_Config);
-                ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
-                _HandleSheets(_Config.FilePathwithFileName);
-                await Task.Run(() =>
-                {
-                    try
-                    {
-                        _clean.ExtractData(_Config.SheetNumber);
-                    }
-                    catch (Exception ex)
-                    {
-                        // This runs on background thread - need to marshal back to UI
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            ErrorLogger.LogError(ex, "Background processing error");
-                            MessageBox.Show("Error processing data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        });
-                    }
-                });
+            ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
+            _Config = new clsConfiguration();
+            
+            _Config.FilePathwithFileName = e.FilePath;
+            _HandleSheets(_Config.FilePathwithFileName);
+            clsFeatureReportManager.reset();
 
-                clsFeatureReportManager.reset();
-
-            }
-            else
-            {
-                _Config = e.Configuration;
-                _clean.UpdateConfig(_Config);
-                _StartCleaning();
-
-
-            }
             if (ctrDataGrid1.HasData)
             {
                 MakeButtonsVisible();
             }
         }
 
-        private void btnFromClipboard_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnRemoveDuplicateRows_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
+
             //show a dialog 
             if (MessageBox.Show("This will remove duplicate rows based on all columns. Do you want to continue?", "Confirm Remove Duplicates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
@@ -239,8 +226,12 @@ namespace Data_Clean_Tool
 
         private async void btnStart_Click(object sender, EventArgs e)
         {
-            ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.Cleaning;
+            if (!EnsureConfigInitialized() || !ValidateCleanObject())
+            {
+                return;
+            }
 
+            ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.Cleaning;
             await Task.Run(() =>
             {
                 try
@@ -257,11 +248,16 @@ namespace Data_Clean_Tool
                     });
                 }
             });
-
+            
         }
 
         private void btnReplaceNULL_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
+
             // Pass in your existing _Config or a new one
             using (frmEmptyNullReplace frm = new frmEmptyNullReplace())
             {
@@ -283,6 +279,11 @@ namespace Data_Clean_Tool
 
         private void btnStanderizeCasing_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
+
             using (frmStanderizeCase frm = new frmStanderizeCase())
             {
                 // Check if the user clicked the Confirm/Save button
@@ -299,39 +300,33 @@ namespace Data_Clean_Tool
             }
         }
 
-        private void btnToFile_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            string outputPath = Utility.clsUtility.GetExcelOrCsvPath();
-            if (outputPath == null || !File.Exists(outputPath))
+            if (!EnsureConfigInitialized() || !ValidateCleanObject())
+            {
                 return;
-
-            if (_Config.Extension == ".xlsx")
-            {
-                clsImportExportServices.ExportToExcel(_clean.ReadOnlyData, outputPath, _Config.SheetName);
-
             }
-            else if (_Config.Extension == ".csv")
+
+            if (_Config.FilePathwithFileName == null || !File.Exists(_Config.FilePathwithFileName))
             {
-                clsImportExportServices.ExportToCsv(_clean.ReadOnlyData, outputPath);
+                return;
             }
+
+            clsImportExportServices.ExportData(_clean.ReadOnlyData, _Config.FilePathwithFileName, _Config.SheetName);
         }
 
-        private void btnToFolder_Click(object sender, EventArgs e)
+        private void btnSaveAs_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized() || !ValidateCleanObject())
+            {
+                return;
+            }
+
             string outputPath = Utility.clsUtility.GetExcelOrCsvPath(true);
-            if (outputPath == null && !File.Exists(outputPath))
+            if (string.IsNullOrWhiteSpace(outputPath))
                 return;
 
-            if (_Config.Extension == ".xlsx")
-            {
-                clsImportExportServices.ExportToExcel(_clean.ReadOnlyData, outputPath, _Config.SheetName);
-
-            }
-            else if (_Config.Extension == ".csv")
-            {
-                clsImportExportServices.ExportToCsv(_clean.ReadOnlyData, outputPath);
-            }
-
+            clsImportExportServices.ExportData(_clean.ReadOnlyData, outputPath, _Config.SheetName);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -343,7 +338,7 @@ namespace Data_Clean_Tool
             }
             if (keyData == (Keys.Control | Keys.S))
             {
-                btnToFile_Click(null, null);
+                btnSave_Click(null, null);
                 return true;
             }
 
@@ -352,12 +347,13 @@ namespace Data_Clean_Tool
 
         private void resetCleaningOptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
+
             _Config.resetCleaningOptions();
-
-
-
         }
-
         private void openNewFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnFromFile_Click_1(null, null);
@@ -365,7 +361,7 @@ namespace Data_Clean_Tool
 
         private void exportToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnToFile_Click(null, null);
+            btnSave_Click(null, null);
 
 
         }
@@ -373,11 +369,16 @@ namespace Data_Clean_Tool
         private void exportToFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            btnToFolder_Click(null, null);
+            btnSaveAs_Click(null, null);
         }
 
         private void ignoreRowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!EnsureConfigInitialized())
+            {
+                return;
+            }
+
             frmRowsIgnore frm = new frmRowsIgnore();
             frm.ShowDialog();
 
@@ -418,10 +419,7 @@ namespace Data_Clean_Tool
             frm.ShowDialog();
         }
 
-        private void btnRedo_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
@@ -430,11 +428,16 @@ namespace Data_Clean_Tool
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            btnToFile_Click(null, null);
+            btnSave_Click(null, null);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+
+        }
+        private void ctrTableInfo1_IgnoreRowsSelected(object sender, Data_Clean_Tool.Controls.ctrTableInfo.IgnoreRowsSelectedEventArgs e)
+        {
+           _Config.NumberOfIgnoredRows = e.NumberOfRows;
 
         }
     }

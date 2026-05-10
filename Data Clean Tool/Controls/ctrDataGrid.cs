@@ -22,7 +22,7 @@ namespace Data_Clean_Tool.Controls
         {
             get { return gridData.DataSource != null; }
         }
-        public enum enStatus { loading, Cleaning, presentingData }
+        public enum enStatus { loading, Cleaning,Empty, presentingData }
         enStatus _status;
         public enStatus status
         {
@@ -36,6 +36,11 @@ namespace Data_Clean_Tool.Controls
                     case enStatus.loading:
                         gridData.DataSource = null;
                         llCleaning.Text = "Loading Data...";
+                        break;
+
+                    case enStatus.Empty:
+                        gridData.DataSource = null;
+                        llCleaning.Text = "No Data Available.";
                         break;
 
                     case enStatus.Cleaning:
