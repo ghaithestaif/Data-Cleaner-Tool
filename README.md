@@ -118,7 +118,7 @@ Data Cleaner Tool/
    ```
 
 ### Download Release
-Download the latest release from the [Releases](https://github.com/yourusername/data-cleaner-tool/releases) page and extract the zip file. Run `Data Clean Tool.exe`.
+Download the latest release from the [Releases](https://github.com/ghaithestaif/data-cleaner-tool/releases) page and extract the zip file. Run `Data Clean Tool.exe`.
 
 ## 📖 Usage
 
@@ -200,8 +200,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - 📧 Email: support@datacleanertool.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/data-cleaner-tool/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/data-cleaner-tool/discussions)
 
 ## 📊 Project Statistics
 

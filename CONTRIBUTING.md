@@ -155,10 +155,6 @@ Brief description of changes
 - [ ] Breaking change
 - [ ] Documentation update
 
-## Testing
-- [ ] Unit tests pass
-- [ ] Manual testing completed
-- [ ] Edge cases considered
 
 ## Checklist
 - [ ] Code follows style guidelines
