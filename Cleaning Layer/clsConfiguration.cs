@@ -33,7 +33,7 @@ namespace Cleaning_Layer
         public string? Extension { get { return System.IO.Path.GetExtension(FilePathwithFileName); } }
 
 
-        public int NumberOfIgnoredRows { get; set; } = 0;
+        public int NumberOfIRemovedRows { get; set; } = 0;
 
         public int SheetNumber { get; set; } = -1;
         public string? SheetName { get; set; }
@@ -41,7 +41,7 @@ namespace Cleaning_Layer
        public void resetCleaningOptions()
         {
             
-            NumberOfIgnoredRows = 0;
+            NumberOfIRemovedRows = 0;
             StanderdizeDataOption = null;
             ReplaceOption = enReplaceOption.DefaultValue;
             RemoveDuplicates = false;

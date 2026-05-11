@@ -16,7 +16,7 @@ namespace Cleaning_Layer
             return clsExtract.GetExcelSheetNames(filePath);
         }
         
-        public static void ExportData(IReadOnlyList<List<string>> data, string filePath, string sheetname)
+        public static bool ExportData(IReadOnlyList<List<string>> data, string filePath, string sheetname)
         {
             string extension = Path.GetExtension(filePath).ToLowerInvariant();
 
@@ -32,6 +32,8 @@ namespace Cleaning_Layer
             {
                 throw new NotSupportedException($"Unsupported export file type: {extension}");
             }
+
+            return true;
         }
 
 

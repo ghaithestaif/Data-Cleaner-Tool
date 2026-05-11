@@ -47,34 +47,44 @@ namespace Data_Clean_Tool.Controls
         {
             InitializeComponent();
         }
-        private void Clean_DataUpdated(object sender, clsClean.DataUpdatedEventArgs e)
+        private void Clean_DataUpdatedTableInfo(object sender, clsClean.DataUpdatedEventArgs e)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action(() => Clean_DataUpdated(sender, e)));
+                this.Invoke(new Action(() => Clean_DataUpdatedTableInfo(sender, e)));
                 return;
             }
 
             if (e.Data == null || e.Schema == null)
             {
                 MessageBox.Show("No data to load.");
+                return;     
+            }
+
+            txtFileBox.Text = e.Config.FilePathwithFileName;
+            txtTitle.Text = e.Config.FileName?.ToString();
+            llFileType.Text = e.Config.Extension?.ToString();
+            btnSheetName.Text = e.Config.SheetName?.ToString();
+            string nameWithoutExtension = Path.GetFileNameWithoutExtension(e.Config.FileName);
+            txtAlias.Text = nameWithoutExtension;
+
+            if (e.FeaturesReports == null)
+            {
+                llAffectedRows.Text = "0";
+                llRemovedRows.Text = "0";
+                llUpdatedRows.Text = "0";
                 return;
             }
-            if (e.FeaturesReports == null)
-                return;
-            // Update the UI with the new data, schema, and feature reports
 
-            
+            // Update the UI with the new data, schema, and feature reports
             llAffectedRows.Text = $"{e.FeaturesReports.Sum(f => f.RecordsAffected)}";
             llRemovedRows.Text = $"{e.FeaturesReports.Where(f => f.RemovedRecordsAffected > 0).Sum(f => f.RemovedRecordsAffected)}";
             llUpdatedRows.Text = $"{e.FeaturesReports.Where(f => f.UpdatedRecordsAffected > 0).Sum(f => f.UpdatedRecordsAffected)}";
-
-
         }
 
         public void Subscribe(clsClean clean)
         {
-            clean.DataUpdated += Clean_DataUpdated;
+            clean.DataUpdated += Clean_DataUpdatedTableInfo;
         }
 
         private void ctrTableInfo_Load(object sender, EventArgs e)
@@ -93,16 +103,7 @@ namespace Data_Clean_Tool.Controls
 
         public void SetTableInfo(clsConfiguration Config)
         {
-            if (Config != null)
-            {
-                txtFileBox.Text = Config.FilePathwithFileName;
-                txtTitle.Text = Config.FileName?.ToString();
-                llFileType.Text = Config.Extension?.ToString();
-                btnSheetName.Text = Config.SheetName?.ToString();
-                llAffectedRows.Text = "0";
-                llRemovedRows.Text = "0";
-                llUpdatedRows.Text = "0";
-            }
+            
         }
 
 
@@ -112,7 +113,8 @@ namespace Data_Clean_Tool.Controls
             string FilePath = Utility.clsUtility.GetExcelOrCsvPath();
             if (!File.Exists(FilePath))
             {
-                MessageBox.Show("Please select a valid file.", "Invalid File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var msg = new frmMessage(frmMessage.enMessageState.Error, "Please select a valid file.");
+                msg.ShowDialog();
                 return;
             }
             if (!string.IsNullOrEmpty(FilePath))
@@ -134,7 +136,7 @@ namespace Data_Clean_Tool.Controls
 
         }
 
-        private void btnIgnoreRows_Click(object sender, EventArgs e)
+        private void btnRemoveRows_Click(object sender, EventArgs e)
         {
             frmRowsIgnore frm = new frmRowsIgnore();
             frm.ShowDialog();

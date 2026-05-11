@@ -260,7 +260,7 @@
             showReportToolStripMenuItem.ForeColor = Color.LightGray;
             showReportToolStripMenuItem.Image = Properties.Resources.icons8_assessment_50;
             showReportToolStripMenuItem.Name = "showReportToolStripMenuItem";
-            showReportToolStripMenuItem.Size = new Size(224, 26);
+            showReportToolStripMenuItem.Size = new Size(177, 26);
             showReportToolStripMenuItem.Text = "Show Report";
             showReportToolStripMenuItem.Click += showReportToolStripMenuItem_Click;
             // 
@@ -270,7 +270,7 @@
             showTableToolStripMenuItem.ForeColor = Color.LightGray;
             showTableToolStripMenuItem.Image = Properties.Resources.database;
             showTableToolStripMenuItem.Name = "showTableToolStripMenuItem";
-            showTableToolStripMenuItem.Size = new Size(224, 26);
+            showTableToolStripMenuItem.Size = new Size(177, 26);
             showTableToolStripMenuItem.Text = "Show Table";
             // 
             // helpToolStripMenuItem
@@ -649,17 +649,18 @@
             sheetFlowPanel.Padding = new Padding(12);
             sheetFlowPanel.Size = new Size(469, 816);
             sheetFlowPanel.TabIndex = 1;
+            sheetFlowPanel.Visible = false;
             // 
             // lblDropData
             // 
             lblDropData.Dock = DockStyle.Fill;
-            lblDropData.Font = new Font("Segoe UI", 11F);
+            lblDropData.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDropData.ForeColor = Color.Gray;
             lblDropData.Location = new Point(0, 0);
             lblDropData.Name = "lblDropData";
             lblDropData.Size = new Size(469, 816);
             lblDropData.TabIndex = 0;
-            lblDropData.Text = "ADD YOUR DATA\r\ndrag files here; or\r\nclick [From File] or [From Clipboard] buttons";
+            lblDropData.Text = "ADD YOUR DATA TO START CLEANING\r\nclick [From File] button";
             lblDropData.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pRightPanel
