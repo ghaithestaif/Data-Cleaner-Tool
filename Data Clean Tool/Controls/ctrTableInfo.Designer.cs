@@ -29,24 +29,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtTitle = new Guna.UI2.WinForms.Guna2TextBox();
             lblFile = new Label();
             txtFileBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -65,7 +65,7 @@
             llUpdatedRows = new Label();
             label5 = new Label();
             llRemovedRows = new Label();
-            btnIgnoreRows = new Guna.UI2.WinForms.Guna2Button();
+            btnRemoveRows = new Guna.UI2.WinForms.Guna2Button();
             gbReport.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             txtTitle.BorderColor = Color.Fuchsia;
             txtTitle.BorderThickness = 2;
             txtTitle.Cursor = Cursors.IBeam;
-            txtTitle.CustomizableEdges = customizableEdges1;
+            txtTitle.CustomizableEdges = customizableEdges19;
             txtTitle.DefaultText = "my.xlsx[Sheet1]";
             txtTitle.FillColor = Color.FromArgb(40, 40, 40);
             txtTitle.Font = new Font("Segoe UI", 9F);
@@ -85,7 +85,7 @@
             txtTitle.Name = "txtTitle";
             txtTitle.PlaceholderText = "";
             txtTitle.SelectedText = "";
-            txtTitle.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtTitle.ShadowDecoration.CustomizableEdges = customizableEdges20;
             txtTitle.Size = new Size(520, 40);
             txtTitle.TabIndex = 0;
             // 
@@ -104,7 +104,7 @@
             txtFileBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtFileBox.BorderColor = Color.FromArgb(60, 60, 60);
             txtFileBox.Cursor = Cursors.IBeam;
-            txtFileBox.CustomizableEdges = customizableEdges3;
+            txtFileBox.CustomizableEdges = customizableEdges21;
             txtFileBox.DefaultText = "D:\\Users\\Desktop\\my.xlsx[Sheet1]";
             txtFileBox.FillColor = Color.FromArgb(40, 40, 40);
             txtFileBox.Font = new Font("Segoe UI", 9F);
@@ -115,7 +115,7 @@
             txtFileBox.PlaceholderText = "";
             txtFileBox.ReadOnly = true;
             txtFileBox.SelectedText = "";
-            txtFileBox.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtFileBox.ShadowDecoration.CustomizableEdges = customizableEdges22;
             txtFileBox.Size = new Size(472, 35);
             txtFileBox.TabIndex = 3;
             // 
@@ -124,14 +124,14 @@
             btnBrowseFile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnBrowseFile.BorderColor = Color.Gray;
             btnBrowseFile.BorderThickness = 1;
-            btnBrowseFile.CustomizableEdges = customizableEdges5;
+            btnBrowseFile.CustomizableEdges = customizableEdges23;
             btnBrowseFile.FillColor = Color.FromArgb(45, 45, 45);
             btnBrowseFile.Font = new Font("Segoe UI", 9F);
             btnBrowseFile.ForeColor = Color.White;
             btnBrowseFile.Location = new Point(596, 80);
             btnBrowseFile.Margin = new Padding(3, 4, 3, 4);
             btnBrowseFile.Name = "btnBrowseFile";
-            btnBrowseFile.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnBrowseFile.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btnBrowseFile.Size = new Size(40, 35);
             btnBrowseFile.TabIndex = 4;
             btnBrowseFile.Text = "...";
@@ -162,7 +162,7 @@
             txtAlias.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtAlias.BorderColor = Color.FromArgb(60, 60, 60);
             txtAlias.Cursor = Cursors.IBeam;
-            txtAlias.CustomizableEdges = customizableEdges7;
+            txtAlias.CustomizableEdges = customizableEdges25;
             txtAlias.DefaultText = "my";
             txtAlias.FillColor = Color.FromArgb(40, 40, 40);
             txtAlias.Font = new Font("Segoe UI", 9F);
@@ -173,7 +173,7 @@
             txtAlias.PlaceholderText = "";
             txtAlias.ReadOnly = true;
             txtAlias.SelectedText = "";
-            txtAlias.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            txtAlias.ShadowDecoration.CustomizableEdges = customizableEdges26;
             txtAlias.Size = new Size(497, 35);
             txtAlias.TabIndex = 26;
             // 
@@ -182,7 +182,7 @@
             llFileType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             llFileType.BorderColor = Color.FromArgb(60, 60, 60);
             llFileType.Cursor = Cursors.IBeam;
-            llFileType.CustomizableEdges = customizableEdges9;
+            llFileType.CustomizableEdges = customizableEdges27;
             llFileType.DefaultText = "Excel XLSX";
             llFileType.FillColor = Color.FromArgb(40, 40, 40);
             llFileType.Font = new Font("Segoe UI", 9F);
@@ -193,7 +193,7 @@
             llFileType.PlaceholderText = "";
             llFileType.ReadOnly = true;
             llFileType.SelectedText = "";
-            llFileType.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            llFileType.ShadowDecoration.CustomizableEdges = customizableEdges28;
             llFileType.Size = new Size(497, 35);
             llFileType.TabIndex = 27;
             // 
@@ -202,7 +202,7 @@
             btnSheetName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnSheetName.BorderColor = Color.FromArgb(60, 60, 60);
             btnSheetName.Cursor = Cursors.IBeam;
-            btnSheetName.CustomizableEdges = customizableEdges11;
+            btnSheetName.CustomizableEdges = customizableEdges29;
             btnSheetName.DefaultText = "??";
             btnSheetName.FillColor = Color.FromArgb(40, 40, 40);
             btnSheetName.Font = new Font("Segoe UI", 9F);
@@ -213,7 +213,7 @@
             btnSheetName.PlaceholderText = "";
             btnSheetName.ReadOnly = true;
             btnSheetName.SelectedText = "";
-            btnSheetName.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnSheetName.ShadowDecoration.CustomizableEdges = customizableEdges30;
             btnSheetName.Size = new Size(497, 35);
             btnSheetName.TabIndex = 33;
             // 
@@ -248,14 +248,14 @@
             gbReport.Controls.Add(llRemovedRows);
             gbReport.Controls.Add(label1);
             gbReport.CustomBorderColor = Color.DimGray;
-            gbReport.CustomizableEdges = customizableEdges15;
+            gbReport.CustomizableEdges = customizableEdges33;
             gbReport.Dock = DockStyle.Bottom;
             gbReport.FillColor = Color.FromArgb(35, 35, 35);
             gbReport.Font = new Font("Segoe UI", 9F);
             gbReport.ForeColor = Color.White;
             gbReport.Location = new Point(0, 316);
             gbReport.Name = "gbReport";
-            gbReport.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            gbReport.ShadowDecoration.CustomizableEdges = customizableEdges34;
             gbReport.Size = new Size(640, 96);
             gbReport.TabIndex = 35;
             gbReport.Text = "Report";
@@ -265,14 +265,14 @@
             btnMoreReportInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMoreReportInfo.BorderColor = Color.Gray;
             btnMoreReportInfo.BorderThickness = 1;
-            btnMoreReportInfo.CustomizableEdges = customizableEdges13;
+            btnMoreReportInfo.CustomizableEdges = customizableEdges31;
             btnMoreReportInfo.FillColor = Color.FromArgb(45, 45, 45);
             btnMoreReportInfo.Font = new Font("Segoe UI", 9F);
             btnMoreReportInfo.ForeColor = Color.White;
             btnMoreReportInfo.Location = new Point(532, 0);
             btnMoreReportInfo.Margin = new Padding(3, 4, 3, 4);
             btnMoreReportInfo.Name = "btnMoreReportInfo";
-            btnMoreReportInfo.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnMoreReportInfo.ShadowDecoration.CustomizableEdges = customizableEdges32;
             btnMoreReportInfo.Size = new Size(108, 40);
             btnMoreReportInfo.TabIndex = 36;
             btnMoreReportInfo.Text = "More Info";
@@ -328,30 +328,30 @@
             llRemovedRows.TabIndex = 36;
             llRemovedRows.Text = "??";
             // 
-            // btnIgnoreRows
+            // btnRemoveRows
             // 
-            btnIgnoreRows.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnIgnoreRows.BorderColor = Color.Gray;
-            btnIgnoreRows.BorderThickness = 1;
-            btnIgnoreRows.CustomizableEdges = customizableEdges17;
-            btnIgnoreRows.FillColor = Color.FromArgb(45, 45, 45);
-            btnIgnoreRows.Font = new Font("Segoe UI", 9F);
-            btnIgnoreRows.ForeColor = Color.White;
-            btnIgnoreRows.Location = new Point(118, 271);
-            btnIgnoreRows.Margin = new Padding(3, 4, 3, 4);
-            btnIgnoreRows.Name = "btnIgnoreRows";
-            btnIgnoreRows.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            btnIgnoreRows.Size = new Size(200, 32);
-            btnIgnoreRows.TabIndex = 41;
-            btnIgnoreRows.Text = "Ignore Rows";
-            btnIgnoreRows.Click += btnIgnoreRows_Click;
+            btnRemoveRows.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRemoveRows.BorderColor = Color.Gray;
+            btnRemoveRows.BorderThickness = 1;
+            btnRemoveRows.CustomizableEdges = customizableEdges35;
+            btnRemoveRows.FillColor = Color.FromArgb(45, 45, 45);
+            btnRemoveRows.Font = new Font("Segoe UI", 9F);
+            btnRemoveRows.ForeColor = Color.White;
+            btnRemoveRows.Location = new Point(118, 271);
+            btnRemoveRows.Margin = new Padding(3, 4, 3, 4);
+            btnRemoveRows.Name = "btnRemoveRows";
+            btnRemoveRows.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            btnRemoveRows.Size = new Size(200, 32);
+            btnRemoveRows.TabIndex = 41;
+            btnRemoveRows.Text = "Remove Rows";
+            btnRemoveRows.Click += btnRemoveRows_Click;
             // 
             // ctrTableInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(35, 35, 35);
-            Controls.Add(btnIgnoreRows);
+            Controls.Add(btnRemoveRows);
             Controls.Add(gbReport);
             Controls.Add(btnSheetName);
             Controls.Add(label2);
@@ -395,6 +395,6 @@
         private Label label5;
         private Label llRemovedRows;
         private Guna.UI2.WinForms.Guna2Button btnMoreReportInfo;
-        private Guna.UI2.WinForms.Guna2Button btnIgnoreRows;
+        private Guna.UI2.WinForms.Guna2Button btnRemoveRows;
     }
 }

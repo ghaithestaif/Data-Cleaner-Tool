@@ -82,7 +82,8 @@ namespace Data_Clean_Tool
                 return true;
             }
 
-            MessageBox.Show("Please open a file first.", "No File Loaded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var msg = new frmMessage(frmMessage.enMessageState.Information, "Please open a file first.");
+            msg.ShowDialog();
             return false;
         }
         private bool ValidateCleanObject()
@@ -91,7 +92,8 @@ namespace Data_Clean_Tool
             {
                 return true;
             }
-            MessageBox.Show("Please select a sheet to clean.", "No Sheet Selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var msg = new frmMessage(frmMessage.enMessageState.Information, "Please select a sheet to clean.");
+            msg.ShowDialog();
             return false;
         }
 
@@ -124,30 +126,12 @@ namespace Data_Clean_Tool
 
 
             clsFeatureReportManager.reset();
+            int sheetIndex = _loadedSheetNames.IndexOf(sheetName) + 1;
 
             if (!EnsureConfigInitialized())
             {
                 return;
             }
-
-            int sheetIndex = _loadedSheetNames.IndexOf(sheetName) + 1;
-
-            if (_Config.SheetNumber == sheetIndex)
-            {
-                return; // No change in sheet selection
-            }
-            if (string.IsNullOrWhiteSpace(sheetName))
-            {
-                return;
-            }
-            if (sheetIndex <= 0)
-            {
-                return;
-            }
-
-
-            _Config.SheetName = sheetName;
-            _Config.SheetNumber = sheetIndex;
 
             if (_clean == null)
             {
@@ -156,12 +140,40 @@ namespace Data_Clean_Tool
                 ctrDataGrid1.Subscribe(_clean);
                 ctrTableInfo1.Subscribe(_clean);
             }
-
             else
             {
                 _clean.UpdateConfig(_Config);
 
             }
+            if (_clean.State == clsClean.enState.InProgress )
+            {
+                return;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(sheetName))
+            {
+                return;
+            }
+            if (_Config.SheetNumber == sheetIndex)
+            {
+                return; // No change in sheet selection
+            } 
+            if (sheetIndex <= 0)
+            {
+                return;
+            }
+            _Config.SheetName = sheetName;
+            _Config.SheetNumber = sheetIndex;
+            
+
+
+
+
+
+
+
+            //start the importing 
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.loading;
             currStatus = enStatus.Loading;
             await Task.Run(() =>
@@ -176,7 +188,8 @@ namespace Data_Clean_Tool
                     this.Invoke((MethodInvoker)delegate
                     {
                         Data_Clean_Tool.Utility.ErrorLogger.LogError(ex, "Error occurred while selecting a sheet.");
-                        MessageBox.Show("An error occurred. Check the Windows Event Log for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var msg = new frmMessage(frmMessage.enMessageState.Error, "An error occurred. Check the Windows Event Log for details.");
+                        msg.ShowDialog();
                     });
                 }
             });
@@ -205,6 +218,7 @@ namespace Data_Clean_Tool
             btnStart.Visible = true;
             btnExport.Enabled = true;
             btnExport.Visible = true;
+            sheetFlowPanel.Visible= true;
         }
 
         void _HandleSheets(string FilePath)
@@ -251,13 +265,13 @@ namespace Data_Clean_Tool
             _Config = new clsConfiguration();
             
             _Config.FilePathwithFileName = e.FilePath;
+            
             _HandleSheets(_Config.FilePathwithFileName);
-            clsFeatureReportManager.reset();
-
             if (ctrDataGrid1.HasData)
             {
                 MakeButtonsVisible();
             }
+
         }
 
 
@@ -270,22 +284,38 @@ namespace Data_Clean_Tool
             }
 
             //show a dialog 
-            if (MessageBox.Show("This will remove duplicate rows based on all columns. Do you want to continue?", "Confirm Remove Duplicates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            using (var msg = new frmMessage(frmMessage.enMessageState.Warning, "This will remove duplicate rows based on all columns. Do you want to continue?"))
             {
-                _Config.RemoveDuplicates = true;
+                if (msg.ShowDialog() == DialogResult.OK)
+                {
+                    _Config.RemoveDuplicates = true;
+                }
             }
 
         }
 
         private async void btnStart_Click(object sender, EventArgs e)
         {
+
             if (!EnsureConfigInitialized() || !ValidateCleanObject())
             {
                 return;
             }
+            if (_clean.State == clsClean.enState.InProgress)
+            {
+                return;
+            }
+            using (var msg = new frmMessage(frmMessage.enMessageState.Warning, "this will make changes to the data. Do you want to continue?"))
+            {
+                if (msg.ShowDialog() == DialogResult.OK)
+                {
+                    _Config.RemoveDuplicates = true;
+                }
+            }
 
             ctrDataGrid1.status = Data_Clean_Tool.Controls.ctrDataGrid.enStatus.Cleaning;
             currStatus = enStatus.Cleaning;
+
             await Task.Run(() =>
             {
                 try
@@ -298,7 +328,8 @@ namespace Data_Clean_Tool
                     this.Invoke((MethodInvoker)delegate
                     {
                         ErrorLogger.LogError(ex, "Background processing error");
-                        MessageBox.Show("Error processing data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var msg = new frmMessage(frmMessage.enMessageState.Error, "Error processing data.");
+                        msg.ShowDialog();
                     });
                 }
             });
@@ -366,7 +397,12 @@ namespace Data_Clean_Tool
                 return;
             }
 
-            clsImportExportServices.ExportData(_clean.ReadOnlyData, _Config.FilePathwithFileName, _Config.SheetName);
+            if (clsImportExportServices.ExportData(_clean.ReadOnlyData, _Config.FilePathwithFileName, _Config.SheetName))
+            {
+                var msg = new frmMessage(frmMessage.enMessageState.Succeed, "Saving the cleaned data to the original file done succesfully");
+                msg.ShowDialog();
+            }
+
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
@@ -439,8 +475,9 @@ namespace Data_Clean_Tool
 
             if (frm.selectedRowCount > 0)
             {
-                MessageBox.Show($"{frm.selectedRowCount} rows will be removed in the cleaning process.", "Rows Ignored", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _Config.NumberOfIgnoredRows = frm.selectedRowCount;
+                var msg = new frmMessage(frmMessage.enMessageState.Information, $"{frm.selectedRowCount} rows will be removed in the cleaning process.");
+                msg.ShowDialog();
+                _Config.NumberOfIRemovedRows = frm.selectedRowCount;
 
             }
 
@@ -491,7 +528,7 @@ namespace Data_Clean_Tool
         }
         private void ctrTableInfo1_IgnoreRowsSelected(object sender, Data_Clean_Tool.Controls.ctrTableInfo.IgnoreRowsSelectedEventArgs e)
         {
-           _Config.NumberOfIgnoredRows = e.NumberOfRows;
+           _Config.NumberOfIRemovedRows = e.NumberOfRows;
 
         }
     }

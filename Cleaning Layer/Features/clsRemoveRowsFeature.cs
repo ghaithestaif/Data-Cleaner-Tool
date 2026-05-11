@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Cleaning_Layer.Features
 {
-    public class clsIgnoreRowsFeature : ICleaningFeature
+    public class clsRemoveRowsFeature : ICleaningFeature
     {
         private readonly clsConfiguration _config;
         private readonly clsFeatureReport _report = new clsFeatureReport();
 
-        public clsIgnoreRowsFeature(clsConfiguration config)
+        public clsRemoveRowsFeature(clsConfiguration config)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
@@ -22,7 +22,7 @@ namespace Cleaning_Layer.Features
                 return new clsFeatureReport() { Feature = clsFeatureReport.enfeatureName.RemoveDuplicates };
             }
 
-            if (_config.NumberOfIgnoredRows <= 0)
+            if (_config.NumberOfIRemovedRows <= 0)
             {
                 return _report;
             }
@@ -34,7 +34,7 @@ namespace Cleaning_Layer.Features
                 return _report;
             }
             //this method return the smallest between the tow numbers
-            int rowsToRemove = Math.Min(_config.NumberOfIgnoredRows  , data.Count - startIndex);
+            int rowsToRemove = Math.Min(_config.NumberOfIRemovedRows  , data.Count - startIndex);
 
             data.RemoveRange(startIndex, rowsToRemove);
 

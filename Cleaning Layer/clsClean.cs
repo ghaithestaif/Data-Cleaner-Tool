@@ -1,6 +1,7 @@
 ﻿using Cleaning_Layer.Features;
 using Cleaning_Layer.Report_Classes;
 using Cleaning_Layer.Schema_Classes;
+using DocumentFormat.OpenXml.Presentation;
 using Extraction_layer;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,28 @@ namespace Cleaning_Layer
 
 
         clsSchema _schema;
+      public enum enState       
+        {
+            NotStarted,
+            InProgress,
+            Completed,
+            
+        }
+        public enState State { get; private set; } = enState.NotStarted;
+
 
         public class DataUpdatedEventArgs : EventArgs
         {
             public IReadOnlyList<List<string>> Data { get; }
             public clsSchema Schema { get; }
             public IReadOnlyList<clsFeatureReport> FeaturesReports { get; }
-
-            public DataUpdatedEventArgs(IReadOnlyList<List<string>> data, clsSchema schema, IReadOnlyList<clsFeatureReport> featuresReports)
+            public clsConfiguration Config { get; }
+            public DataUpdatedEventArgs(IReadOnlyList<List<string>> data, clsSchema schema, clsConfiguration config, IReadOnlyList<clsFeatureReport> featuresReports )
             {
                 Data = data;
                 Schema = schema;
                 FeaturesReports = featuresReports;
+                Config = config;
             }
         }
 
@@ -35,6 +46,7 @@ namespace Cleaning_Layer
 
         protected virtual void OnDataUpdated(DataUpdatedEventArgs e)
         {
+            State=enState.Completed;
             DataUpdated?.Invoke(this, e);
         }
 
@@ -65,6 +77,7 @@ namespace Cleaning_Layer
 
         List<List<string>> _ImportData(int SheetNumber)
         {
+            State = enState.InProgress;
             string extension = Path.GetExtension(_config.FilePathwithFileName).ToLower();
 
             switch (extension)
@@ -76,6 +89,7 @@ namespace Cleaning_Layer
                     return clsExtract.ExtractCSVData(_config.FilePathwithFileName);
                 default:
                     throw new NotSupportedException("Unsupported file type: " + extension);
+
             }
 
         }
@@ -83,7 +97,7 @@ namespace Cleaning_Layer
         {    
             _data = _ImportData(SheetNumber);
             _schema = clsGenerateSchema.GenerateSchema(ref _data);
-            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, null));
+            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, _config, null));
         }
         public clsClean(clsConfiguration config)
         {
@@ -97,7 +111,10 @@ namespace Cleaning_Layer
         private void _AddFeatures()
         {
             _features.Clear();
-
+            if (_config.NumberOfIRemovedRows > 0)
+            {
+                _features.Add(new clsRemoveRowsFeature(_config));
+            }
             if (_config.RemoveDuplicates)
             {
                 _features.Add(new clsRemoveDuplicatesFeature());
@@ -118,14 +135,12 @@ namespace Cleaning_Layer
                     _features.Add(new clsStanderizeCasingFeature(_config, _schema));
                 }
             }
-            if(_config.NumberOfIgnoredRows > 0)
-            {
-                _features.Add(new clsIgnoreRowsFeature(_config));
-            }
+            
         }
 
         public bool Clean()
         {
+            State=enState.InProgress;
             _AddFeatures();
 
             foreach (var feature in _features)
@@ -133,7 +148,7 @@ namespace Cleaning_Layer
                 clsFeatureReportManager.AddFeatureReport(feature.Apply(_data));
             }
 
-            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, clsFeatureReportManager.FeaturesReports));
+            OnDataUpdated(new DataUpdatedEventArgs(ReadOnlyData, _schema, _config, clsFeatureReportManager.FeaturesReports));
 
             return true;
         }

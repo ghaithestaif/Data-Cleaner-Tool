@@ -24,5 +24,5 @@ namespace Cleaning_Layer.Report_Classes
 
 
 
-        }
+    }
 }
