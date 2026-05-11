@@ -20,6 +20,8 @@ A powerful, professional data cleaning tool built with .NET 8.0 and Windows Form
 - **Real-time Reporting**: Detailed operation statistics and change tracking
 - **Modern UI**: Professional interface using Guna.UI2.WinForms components
 
+![Main](Images/Main.png)
+
 ### Architecture Highlights
 - **Layered Architecture**: Clean separation between UI, business logic, and data extraction
 - **Interface-based Design**: Extensible cleaning features using Strategy pattern
@@ -101,6 +103,7 @@ Data Cleaner Tool/
    ```
    Data Cleaner Tool (Console).sln
    ```
+   
 
 3. Restore NuGet packages:
    ```bash
@@ -111,8 +114,14 @@ Data Cleaner Tool/
    ```bash
    dotnet build --configuration Release
    ```
+5. the app must start with  Data Cleaner Tool not Extraction Layer
+     1.  ![SetupImage](Images/SetupImage.png)
+     2. click on the "Configure startup Projects"
+     3. choose Data Cleaner Tool
 
-5. Run the application:
+6. Before running the app the visual studio is going to ask for permission to be admin and that for writing the errors to the event log
+  
+7. Run the application:
    ```bash
    dotnet run --project "Data Clean Tool"
    ```
